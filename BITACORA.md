@@ -1033,4 +1033,11 @@ privado.
 
 Antes de armarla revisé que no quedaran datos personales en lo público y pasé a primera persona unas diez
 frases de esta bitácora que hablaban de mí en tercera persona.
+La versión pública quedó en `FTornello/mineria-argentina-en-datos`. Para actualizarla dejé un script,
+`scripts/armar_publico.sh`, que arma la rama `publicar` con todo lo de `main` menos lo privado, como un
+commit nuevo. No sube nada solo: publicar sigue siendo un paso aparte.
+
+Activé GitHub Pages en el repositorio público. La portada quedó en
+https://ftornello.github.io/mineria-argentina-en-datos/pagina/ y la revisé en el navegador: carga, dibuja
+los gráficos y los links entre las notas funcionan.
 
