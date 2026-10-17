@@ -1,5 +1,7 @@
 # Minería en Argentina: el récord, mina por mina
 
+*[English version](README.en.md)*
+
 Análisis en SQL de la minería argentina con fuentes públicas e informes de las empresas, hecho con una IA (Claude Code) como asistente. 34 preguntas, 63 controles automáticos y 19 errores detectados y corregidos en el camino, todos registrados.
 
 **[Ver la portada publicada](https://ftornello.github.io/mineria-argentina-en-datos/pagina/)** · **[Portada](pagina/index.html)** · **[La nota del oro](pagina/notas/oro.html)** · **[La del litio](pagina/notas/litio.html)** · **[La de San Juan](pagina/notas/san-juan.html)** · [Cómo lo hice con una IA](#cómo-lo-hice-con-una-ia) · [Las 34 preguntas](#las-34-preguntas)
