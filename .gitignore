@@ -1,0 +1,7 @@
+# Los archivos de las fuentes se bajan con un script; no van al repo
+data/raw/
+.DS_Store
+
+# Copia comprimida de los archivos originales; va a un respaldo externo
+respaldo/
+

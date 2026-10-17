@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuánto oro le queda al país</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-0: #f6f5f2;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #77756f;
+  --rule: #dddbd5;
+  --grid: #ebe9e4;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --otros: #b9b7b0;
+  --acento: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #9a988f;
+    --rule: #383835;
+    --grid: #2a2a28;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --otros: #5e5d58;
+    --acento: #6da7ec;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211;
+  --surface-1: #1a1a19;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #9a988f;
+  --rule: #383835;
+  --grid: #2a2a28;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --otros: #5e5d58;
+  --acento: #6da7ec;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  font: 17px/1.6 Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+.contenedor { max-width: 760px; margin: 0 auto; padding: 0 16px 80px; }
+header.portada { padding: 56px 0 24px; border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+.antetitulo { font: 600 13px/1.4 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.12; margin: 10px 0 16px; letter-spacing: -.01em; }
+h2 { font-size: 28px; line-height: 1.2; margin: 56px 0 8px; }
+h3 { font: 600 17px/1.35 system-ui, sans-serif; margin: 32px 0 6px; }
+p { margin: 0 0 16px; }
+.bajada { font-size: 20px; color: var(--text-secondary); }
+.nota { font: 14px/1.5 system-ui, sans-serif; color: var(--text-secondary); }
+.indice { font: 15px/1.6 system-ui, sans-serif; margin: 24px 0 0; padding-left: 20px; }
+.indice a { color: var(--acento); }
+.numero-historia { font: 600 13px/1 system-ui, sans-serif; color: var(--acento); letter-spacing: .08em; text-transform: uppercase; margin-top: 64px; }
+.limite {
+  font: 14px/1.5 system-ui, sans-serif; color: var(--text-secondary);
+  border-left: 3px solid var(--rule); padding: 4px 0 4px 14px; margin: 16px 0 24px;
+}
+.limite strong { color: var(--text-primary); }
+figure.grafico {
+  margin: 24px 0 32px; background: var(--surface-1); border: 1px solid var(--rule);
+  border-radius: 10px; padding: 18px 18px 12px;
+}
+figure.grafico .titulo { font: 600 15px/1.35 system-ui, sans-serif; margin: 0 0 2px; }
+figure.grafico .subtitulo { font: 13px/1.4 system-ui, sans-serif; color: var(--text-secondary); margin: 0 0 10px; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font: 13px/1.3 system-ui, sans-serif; color: var(--text-secondary); margin: 4px 0 6px; }
+.leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+.leyenda i { display: inline-block; width: 14px; height: 0; border-top: 2px solid; }
+.leyenda i.caja { height: 10px; border: none; border-radius: 2px; }
+.lienzo { position: relative; }
+.lienzo svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lienzo text { font-family: system-ui, sans-serif; }
+.eje text { font-size: 11px; fill: var(--text-muted); }
+.eje line.grilla { stroke: var(--grid); }
+.etiqueta { font-size: 12px; fill: var(--text-secondary); font-weight: 600; }
+figcaption { font: 12.5px/1.45 system-ui, sans-serif; color: var(--text-muted); margin-top: 8px; }
+details.tabla { font: 13px/1.4 system-ui, sans-serif; margin-top: 6px; }
+details.tabla summary { cursor: pointer; color: var(--text-secondary); }
+details.tabla table, table.datos { border-collapse: collapse; width: 100%; margin: 8px 0; font: 13px/1.4 system-ui, sans-serif; }
+details.tabla th, details.tabla td, table.datos th, table.datos td { padding: 4px 8px; border-bottom: 1px solid var(--grid); text-align: right; }
+details.tabla th:first-child, details.tabla td:first-child, table.datos th:first-child, table.datos td:first-child { text-align: left; }
+table.datos th { color: var(--text-secondary); font-weight: 600; }
+.tabla-scroll { overflow-x: auto; }
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 24px 0 32px; }
+.cifra { background: var(--surface-1); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; }
+.cifra .valor { font: 700 30px/1.1 system-ui, sans-serif; letter-spacing: -.01em; }
+.cifra .texto { font: 13px/1.4 system-ui, sans-serif; color: var(--text-secondary); margin-top: 6px; }
+.tooltip {
+  position: absolute; pointer-events: none; z-index: 5; min-width: 140px;
+  background: var(--surface-1); border: 1px solid var(--rule); border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12); padding: 8px 10px; font: 12.5px/1.45 system-ui, sans-serif;
+  opacity: 0; transition: opacity .1s;
+}
+.tooltip .encabezado { color: var(--text-muted); margin-bottom: 4px; }
+.tooltip .fila { display: flex; align-items: center; gap: 8px; }
+.tooltip .fila i { width: 12px; border-top: 2px solid; }
+.tooltip .fila b { font-weight: 700; color: var(--text-primary); min-width: 48px; }
+.tooltip .fila span { color: var(--text-secondary); }
+footer { border-top: 1px solid var(--rule); margin-top: 64px; padding-top: 24px; }
+footer ul { padding-left: 20px; font: 14px/1.6 system-ui, sans-serif; color: var(--text-secondary); }
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .bajada { font-size: 18px; }
+  figure.grafico { padding: 14px 12px 10px; }
+}
+
+/* ---------- piezas visuales de las notas ---------- */
+svg.mapa { max-width: 380px; display: block; margin: 0 auto; }
+.provincia { fill: var(--grid); stroke: var(--surface-1); stroke-width: .8; }
+.provincia.destacada { fill: var(--rule); }
+circle.anterior { fill: none; stroke: var(--text-muted); stroke-width: 1.2; stroke-dasharray: 3 2.5; }
+line.guia { stroke: var(--text-muted); stroke-width: .8; }
+.etiqueta-mapa { font: 600 13px system-ui, sans-serif; fill: var(--text-primary); }
+.etiqueta-mapa-valor { font: 12px system-ui, sans-serif; fill: var(--text-secondary); }
+.rotulo-fila { font: 13px system-ui, sans-serif; fill: var(--text-secondary); }
+.rotulo-fila.fuerte { font-weight: 700; fill: var(--text-primary); }
+.valor-fila { font: 600 12.5px system-ui, sans-serif; fill: var(--text-primary); }
+line.conector { stroke: var(--text-muted); stroke-dasharray: 2 2; }
+
+.cien-grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 18px; margin-top: 8px; }
+.cien svg { width: 100%; max-width: 150px; display: block; }
+.cien-numero { font: 700 30px/1 system-ui, sans-serif; margin-top: 8px; }
+.cien-nombre { font: 600 13.5px/1.3 system-ui, sans-serif; margin-top: 4px; }
+.cien-nota { font: 12.5px/1.35 system-ui, sans-serif; color: var(--text-muted); margin-top: 2px; }
+
+.ad { display: grid; gap: 18px; margin-top: 6px; }
+.ad-fila { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; row-gap: 4px; }
+.ad-nombre { grid-column: 1 / -1; font: 600 13.5px system-ui, sans-serif; }
+.ad-barra { grid-column: 1; display: grid; grid-template-columns: 40px 1fr 64px; align-items: center; gap: 8px; }
+.ad-anio { font: 12px system-ui, sans-serif; color: var(--text-muted); }
+.ad-pista { height: 14px; }
+.ad-relleno { height: 100%; border-radius: 0 4px 4px 0; }
+.ad-valor { font: 600 12.5px system-ui, sans-serif; }
+.ad-cambio { grid-column: 2; grid-row: 2 / span 2; align-self: center; font: 700 22px system-ui, sans-serif; color: var(--text-primary); }
+
+ol.linea-tiempo { list-style: none; margin: 18px 0 8px; padding: 0 0 0 22px; border-left: 2px solid var(--rule); }
+ol.linea-tiempo li { position: relative; margin: 0 0 16px; font: 15px/1.45 system-ui, sans-serif; }
+ol.linea-tiempo li::before {
+  content: ""; position: absolute; left: -29px; top: 5px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface-0); border: 2px solid var(--text-muted);
+}
+ol.linea-tiempo li.sube::before { background: var(--series-3); border-color: var(--series-3); }
+ol.linea-tiempo li.baja::before { background: var(--series-2); border-color: var(--series-2); }
+ol.linea-tiempo li.rigi::before { background: var(--series-1); border-color: var(--series-1); }
+.lt-fecha { display: block; font: 700 12.5px system-ui, sans-serif; color: var(--text-muted); letter-spacing: .04em; }
+
+.dos-cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 24px 0; }
+.dos-cifras > div { background: var(--surface-1); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; }
+.dos-cifras .n { font: 700 46px/1 system-ui, sans-serif; }
+.dos-cifras .t { font: 14px/1.4 system-ui, sans-serif; color: var(--text-secondary); margin-top: 8px; }
+.dos-cifras i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+.etiqueta-mapa, .etiqueta-mapa-valor { paint-order: stroke; stroke: var(--surface-1); stroke-width: 3px; stroke-linejoin: round; }
+.lt-referencia { font: 12.5px/1.45 system-ui, sans-serif; color: var(--text-muted); }
+.lt-referencia i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: -1px; }
+.marca { font: 11.5px system-ui, sans-serif; fill: var(--text-secondary); }
+
+.bh { display: grid; grid-template-columns: minmax(110px, 34%) 1fr; gap: 8px 12px; align-items: center; margin-top: 8px; }
+.bh-nombre { font: 13.5px/1.3 system-ui, sans-serif; color: var(--text-secondary); text-align: right; }
+.bh-pista { display: flex; align-items: center; gap: 8px; }
+.bh-relleno { height: 18px; border-radius: 0 4px 4px 0; min-width: 2px; }
+.bh-valor { font: 600 13px system-ui, sans-serif; }
+.bh-nota { font: 12px/1.35 system-ui, sans-serif; color: var(--text-muted); margin-top: -4px; }
+
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 20px 0; }
+.tarjeta { background: var(--surface-1); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; font: 14px/1.45 system-ui, sans-serif; }
+.tarjeta p { margin: 8px 0 0; }
+.tarjeta .rotulo { display: block; font: 700 11px system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+.tarjeta s { color: var(--text-secondary); text-decoration-color: var(--series-2); text-decoration-thickness: 2px; }
+.tarjeta-n { font: 700 12px system-ui, sans-serif; color: var(--text-muted); }
+.tarjeta-como { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--rule); font: 600 13px system-ui, sans-serif; color: var(--text-primary); }
+.tres-cifras { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+/* Formato de nota: título, bajada, firma e intertítulos. */
+.nota-cabecera { padding: 48px 0 8px; }
+.seccion-nota { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--acento); }
+.nota-cabecera h1 { font-size: clamp(30px, 5.6vw, 42px); margin: 12px 0 14px; }
+.firma { font: 13px/1.4 system-ui, sans-serif; color: var(--text-muted); margin: 0 0 8px; }
+h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
+.nota-corta { font-size: 17px; }
+.separador { border: 0; border-top: 1px solid var(--rule); margin: 64px 0 0; }
+.dos-cifras .fuente-cifra { font: 12px/1.4 system-ui, sans-serif; color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+<header class="nota-cabecera">
+  <div class="seccion-nota">Minería · Oro</div>
+  <h1>El oro bate récords. ¿Cuánto le queda al país?</h1>
+  <p class="bajada">Las minas de oro nunca facturaron tanto. Pero en tres de las cuatro minas de las que hay datos de pagos, la parte que llegó al Estado se achicó justo en los años de precio récord. Y la mina que más cayó es la que había prometido crecer.</p>
+  <p class="firma"><a href="../index.html">← Todas las notas</a> · Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026 · <a href="#como-lo-hice">Cómo lo hice con una IA</a> · <a href="litio.html">El litio</a> · <a href="san-juan.html">San Juan</a></p>
+</header>
+
+<figure class="grafico" id="g-cada-100"></figure>
+<p class="nota-corta">Veladero, en San Juan, pagó 363 millones de dólares en 2025 entre impuestos y regalías: 23 de cada 100 dólares del oro que produjo. Dos años antes eran 32.</p>
+
+<figure class="grafico" id="g-parte-estado"></figure>
+<p class="nota-corta">Cerro Vanguardia, en Santa Cruz, es la excepción: pasó de 14 a 20 entre 2024 y 2025 (no hay dato de 2023).</p>
+<p class="limite"><strong>Lo que todavía no se sabe:</strong> son pagos en efectivo de cada año. El impuesto a las ganancias se paga en buena parte al año siguiente, así que lo que corresponde al récord de 2025 recién aparece en los pagos de 2026. Tampoco incluyen cargas sociales ni IVA.</p>
+
+<h2 class="intertitulo">Por qué: el precio subió, el costo no</h2>
+<div class="dos-cifras">
+  <div><div class="n">+147%</div><div class="t"><i style="background: var(--series-2)"></i>subió el precio del oro entre 2019 y 2025</div></div>
+  <div><div class="n">−27%</div><div class="t"><i style="background: var(--series-3)"></i>bajaron las onzas producidas en el país</div><div class="fuente-cifra">El récord de exportaciones es de precio, como ya señalaron la cámara minera y la Bolsa de Comercio de Rosario.</div></div>
+</div>
+<figure class="grafico" id="g-veladero-margen"></figure>
+<p class="nota-corta">En Veladero, producir una onza cuesta lo mismo que en 2021. Todo lo que subió el precio fue margen: unos 900 millones de dólares en 2025, antes del impuesto a las ganancias. Lo pagado al Estado creció 43% en dos años; el valor producido, 97%.</p>
+
+<h2 class="intertitulo">Cerro Negro: lo prometido y lo producido</h2>
+<figure class="grafico" id="g-cerro-negro"></figure>
+<p class="nota-corta">En junio de 2023 Newmont anunció 540 millones de dólares para extender la vida de Cerro Negro hasta 2034 y subir la producción a más de 350.000 onzas por año desde 2024. Produjo 238.000 en 2024 y 202.000 en 2025.</p>
+<p class="nota-corta">En abril de 2024 murieron dos trabajadores y la mina estuvo parada seis semanas. Aun sumándole esas semanas, 2024 habría dado unas 270.000 onzas. La otra explicación está en los informes de la empresa: cada tonelada trae hoy 8,3 gramos de oro; en 2018 traía 13,9.</p>
+
+<h2 class="intertitulo">Dónde se saca el oro</h2>
+<figure class="grafico" id="g-mapa"></figure>
+<figure class="grafico" id="g-cascada"></figure>
+<p class="nota-corta">El país sacó 2.038.000 onzas en 2015 y 1.184.000 en 2025. Las dos minas nuevas, Cerro Moro y Lindero, compensan apenas una sexta parte de lo que perdieron las demás.</p>
+
+<h2 class="intertitulo">Veinte años en doce fechas</h2>
+<ol class="linea-tiempo" id="lt-oro"></ol>
+<p class="lt-referencia"><i style="background: var(--series-3)"></i>empieza una mina <i style="background: var(--series-2)"></i>cierra, se frena o hay un accidente <i style="background: var(--series-1)"></i>anuncio o RIGI <i style="border: 2px solid var(--text-muted); width: 6px; height: 6px"></i>cambio de dueño</p>
+
+<hr class="separador" id="como-lo-hice">
+<h2 class="intertitulo">Cómo lo hice con una IA</h2>
+<p class="nota-corta">Hice este análisis con Claude Code, una inteligencia artificial que escribe código. Buscó fuentes, bajó los datos, escribió las consultas SQL y armó esta página. Yo marqué el rumbo, revisé lo que hacía y decidí qué contar.</p>
+<div class="dos-cifras tres-cifras">
+  <div><div class="n" id="c-preguntas"></div><div class="t">preguntas respondidas con consultas SQL, cada una comentada</div></div>
+  <div><div class="n" id="c-controles"></div><div class="t">controles automáticos que frenan todo si un número no cierra</div></div>
+  <div><div class="n" id="c-errores"></div><div class="t">afirmaciones que resultaron estar mal, detectadas y corregidas</div></div>
+</div>
+<p class="nota-corta">Hubo errores, casi todos de la IA, y cada uno quedó registrado: qué se dijo, qué era en realidad y cómo se detectó.</p>
+<figure class="grafico" id="g-deteccion"></figure>
+<p class="nota-corta">Los controles automáticos atraparon solo tres. La mayoría apareció al volver a leer la fuente original o al cruzarla con otra que no tenía por qué coincidir. Algunos ejemplos:</p>
+<div class="tarjetas" id="tarjetas"></div>
+<details class="tabla"><summary>Ver los 19 errores</summary><div class="tabla-scroll"><table class="datos" id="t-errores"></table></div></details>
+
+<footer>
+  <p class="nota"><strong>Fuentes.</strong> Producción de cada mina: informes anuales de Barrick, Goldcorp, Newmont, AngloGold Ashanti, Fortuna, Yamana, Pan American y Hochschild. Total del país: Cámara Argentina de Empresarios Mineros. Precios, exportaciones y ubicación de las minas: Secretaría de Minería. Pagos al Estado: informe tributario de Barrick y base canadiense ESTMA. RIGI: tablero del Ministerio de Economía. Mapa: Instituto Geográfico Nacional. Hechos: comunicados de las empresas y prensa, citados uno por uno en la base. Todo está en una base PostgreSQL que se reconstruye desde cero y se controla sola.</p>
+</footer>
+
+</div>
+
+<script>
+const DATOS = {"cerro_negro": [{"anio": 2016, "ley": 14.35, "toneladas": 827}, {"anio": 2017, "ley": 14.31, "toneladas": 1031}, {"anio": 2018, "ley": 13.89, "toneladas": 1126}, {"anio": 2021, "ley": 10.152, "toneladas": 885}, {"anio": 2022, "ley": 9.84, "toneladas": 946}, {"anio": 2023, "ley": 8.314, "toneladas": 1076}, {"anio": 2024, "ley": 9.379, "toneladas": 837}, {"anio": 2025, "ley": 8.287, "toneladas": 789}], "veladero_margen": [{"anio": 2017, "precio": 1258, "aisc": 987}, {"anio": 2018, "precio": 1269, "aisc": 1154}, {"anio": 2019, "precio": 1393, "aisc": 1105}, {"anio": 2020, "precio": 1770, "aisc": 1308}, {"anio": 2021, "precio": 1800, "aisc": 1493}, {"anio": 2022, "precio": 1801, "aisc": 1528}, {"anio": 2023, "precio": 1943, "aisc": 1516}, {"anio": 2024, "precio": 2388, "aisc": 1334}, {"anio": 2025, "precio": 3442, "aisc": 1450}], "pagos_oro": [{"mina": "Cerro Negro", "anio": 2022, "valor_musd": 501, "pagado_musd": 88, "pct": 17.6}, {"mina": "Cerro Negro", "anio": 2023, "valor_musd": 523, "pagado_musd": 71, "pct": 13.6}, {"mina": "Cerro Negro", "anio": 2024, "valor_musd": 568, "pagado_musd": 36, "pct": 6.3}, {"mina": "Cerro Negro", "anio": 2025, "valor_musd": 695, "pagado_musd": 55, "pct": 7.9}, {"mina": "Cerro Vanguardia", "anio": 2024, "valor_musd": 418, "pagado_musd": 60, "pct": 14.4}, {"mina": "Cerro Vanguardia", "anio": 2025, "valor_musd": 616, "pagado_musd": 125, "pct": 20.3}, {"mina": "Lindero", "anio": 2022, "valor_musd": 213, "pagado_musd": 20, "pct": 9.5}, {"mina": "Lindero", "anio": 2023, "valor_musd": 197, "pagado_musd": 17, "pct": 8.7}, {"mina": "Lindero", "anio": 2024, "valor_musd": 232, "pagado_musd": 15, "pct": 6.6}, {"mina": "Lindero", "anio": 2025, "valor_musd": 301, "pagado_musd": 10, "pct": 3.3}, {"mina": "Veladero", "anio": 2022, "valor_musd": 702, "pagado_musd": 220, "pct": 31.3}, {"mina": "Veladero", "anio": 2023, "valor_musd": 804, "pagado_musd": 253, "pct": 31.5}, {"mina": "Veladero", "anio": 2024, "valor_musd": 1203, "pagado_musd": 212, "pct": 17.6}, {"mina": "Veladero", "anio": 2025, "valor_musd": 1583, "pagado_musd": 363, "pct": 22.9}], "litio_destinos": [{"anio": 2012, "total_musd": 58, "china": 20, "eeuu": 59, "japon": 14, "corea": 0}, {"anio": 2013, "total_musd": 61, "china": 31, "eeuu": 57, "japon": 0, "corea": 0}, {"anio": 2014, "total_musd": 80, "china": 52, "eeuu": 32, "japon": 7, "corea": 0}, {"anio": 2015, "total_musd": 91, "china": 28, "eeuu": 57, "japon": 7, "corea": 0}, {"anio": 2016, "total_musd": 192, "china": 15, "eeuu": 37, "japon": 35, "corea": 6}, {"anio": 2017, "total_musd": 224, "china": 20, "eeuu": 24, "japon": 38, "corea": 11}, {"anio": 2018, "total_musd": 275, "china": 38, "eeuu": 22, "japon": 15, "corea": 14}, {"anio": 2019, "total_musd": 195, "china": 27, "eeuu": 26, "japon": 27, "corea": 0}, {"anio": 2020, "total_musd": 129, "china": 42, "eeuu": 31, "japon": 6, "corea": 0}, {"anio": 2021, "total_musd": 208, "china": 42, "eeuu": 19, "japon": 16, "corea": 7}, {"anio": 2022, "total_musd": 695, "china": 41, "eeuu": 9, "japon": 31, "corea": 13}, {"anio": 2023, "total_musd": 849, "china": 43, "eeuu": 11, "japon": 25, "corea": 11}, {"anio": 2024, "total_musd": 645, "china": 67, "eeuu": 14, "japon": 4, "corea": 10}, {"anio": 2025, "total_musd": 915, "china": 75, "eeuu": 9, "japon": 0, "corea": 4}], "litio_eeuu": [{"anio": 2012, "argentina": 4428, "chile": 4219, "referencia": null}, {"anio": 2013, "argentina": 4538, "chile": 4413, "referencia": null}, {"anio": 2014, "argentina": 4641, "chile": 4599, "referencia": null}, {"anio": 2015, "argentina": 4929, "chile": 4449, "referencia": null}, {"anio": 2016, "argentina": 5284, "chile": 4589, "referencia": null}, {"anio": 2017, "argentina": 4950, "chile": 5095, "referencia": null}, {"anio": 2018, "argentina": 6350, "chile": 8496, "referencia": 14000}, {"anio": 2019, "argentina": 5605, "chile": 12804, "referencia": 11563}, {"anio": 2020, "argentina": 5434, "chile": 8519, "referencia": 7729}, {"anio": 2021, "argentina": 6056, "chile": 7008, "referencia": 15542}, {"anio": 2022, "argentina": 7106, "chile": 13585, "referencia": 69500}, {"anio": 2023, "argentina": 10920, "chile": 19625, "referencia": 39386}, {"anio": 2024, "argentina": 11587, "chile": 14229, "referencia": 12526}, {"anio": 2025, "argentina": 10864, "chile": 9551, "referencia": 9485}], "litio_operaciones": [{"mina": "Olaroz", "periodo": "07/2021 a 06/2022", "ingresos_musd": 292.8, "ebitda_musd": 220.4, "resultado_bruto_musd": null, "costos_financieros_musd": null, "resultado_neto_musd": null}, {"mina": "Olaroz", "periodo": "07/2022 a 06/2023", "ingresos_musd": 592.2, "ebitda_musd": 475.2, "resultado_bruto_musd": null, "costos_financieros_musd": null, "resultado_neto_musd": null}, {"mina": "Cauchari-Olaroz", "periodo": "01/2023 a 12/2023", "ingresos_musd": 34.521, "ebitda_musd": null, "resultado_bruto_musd": 6.722, "costos_financieros_musd": 0, "resultado_neto_musd": 129.543}, {"mina": "Cauchari-Olaroz", "periodo": "01/2024 a 12/2024", "ingresos_musd": 197.685, "ebitda_musd": null, "resultado_bruto_musd": 19.705, "costos_financieros_musd": -36.189, "resultado_neto_musd": -32.835}, {"mina": "Cauchari-Olaroz", "periodo": "01/2025 a 12/2025", "ingresos_musd": 271.467, "ebitda_musd": null, "resultado_bruto_musd": 32.954, "costos_financieros_musd": -138.595, "resultado_neto_musd": -38.761}], "olaroz_pagos": [{"anio": 2021, "musd": 5.2}, {"anio": 2022, "musd": 22.5}, {"anio": 2023, "musd": 74.2}, {"anio": 2024, "musd": 66.1}], "san_juan": [{"anio": 2003, "exportado_musd": 12, "puestos": 148}, {"anio": 2004, "exportado_musd": 16, "puestos": 366}, {"anio": 2005, "exportado_musd": 26, "puestos": 676}, {"anio": 2006, "exportado_musd": 363, "puestos": 964}, {"anio": 2007, "exportado_musd": 370, "puestos": 1181}, {"anio": 2008, "exportado_musd": 512, "puestos": 1420}, {"anio": 2009, "exportado_musd": 750, "puestos": 1633}, {"anio": 2010, "exportado_musd": 1654, "puestos": 1905}, {"anio": 2011, "exportado_musd": 1909, "puestos": 2174}, {"anio": 2012, "exportado_musd": 1752, "puestos": 2380}, {"anio": 2013, "exportado_musd": 1370, "puestos": 2502}, {"anio": 2014, "exportado_musd": 1286, "puestos": 2645}, {"anio": 2015, "exportado_musd": 1069, "puestos": 2691}, {"anio": 2016, "exportado_musd": 963, "puestos": 2451}, {"anio": 2017, "exportado_musd": 1116, "puestos": 2732}, {"anio": 2018, "exportado_musd": 896, "puestos": 2494}, {"anio": 2019, "exportado_musd": 890, "puestos": 2163}, {"anio": 2020, "exportado_musd": 819, "puestos": 2134}, {"anio": 2021, "exportado_musd": 857, "puestos": 2337}, {"anio": 2022, "exportado_musd": 865, "puestos": 2451}, {"anio": 2023, "exportado_musd": 880, "puestos": 2237}, {"anio": 2024, "exportado_musd": 1469, "puestos": 2111}, {"anio": 2025, "exportado_musd": 1759, "puestos": 2054}], "salarios": [{"anio": 2004, "veces": 5.7}, {"anio": 2005, "veces": 4.9}, {"anio": 2006, "veces": 3.8}, {"anio": 2007, "veces": 3.3}, {"anio": 2008, "veces": 2.9}, {"anio": 2009, "veces": 3.4}, {"anio": 2010, "veces": 3.6}, {"anio": 2011, "veces": 3.6}, {"anio": 2012, "veces": 3.5}, {"anio": 2013, "veces": 3.3}, {"anio": 2014, "veces": 3.6}, {"anio": 2015, "veces": 4.1}, {"anio": 2016, "veces": 4.4}, {"anio": 2017, "veces": 4.2}, {"anio": 2018, "veces": 4.3}, {"anio": 2019, "veces": 4.8}, {"anio": 2020, "veces": 5.6}, {"anio": 2021, "veces": 5.7}, {"anio": 2022, "veces": 5.8}, {"anio": 2023, "veces": 4.9}, {"anio": 2024, "veces": 5.2}, {"anio": 2025, "veces": 5.7}, {"anio": 2026, "veces": 5.3}], "rigi_calendario": [{"anio": 2024, "cobre": 109, "litio": 374, "oro_plata": 44}, {"anio": 2025, "cobre": 419, "litio": 948, "oro_plata": 105}, {"anio": 2026, "cobre": 962, "litio": 1358, "oro_plata": 259}, {"anio": 2027, "cobre": 2362, "litio": 1141, "oro_plata": 372}, {"anio": 2028, "cobre": 2999, "litio": 749, "oro_plata": 380}, {"anio": 2029, "cobre": 2843, "litio": 229, "oro_plata": 206}, {"anio": 2030, "cobre": 2223, "litio": 190, "oro_plata": 37}, {"anio": 2031, "cobre": 1144, "litio": 339, "oro_plata": 20}, {"anio": 2032, "cobre": 11, "litio": 384, "oro_plata": 21}, {"anio": 2033, "cobre": 16, "litio": 75, "oro_plata": 14}], "catamarca": [{"anio": 2007, "metaliferos": 1776, "litio": 138}, {"anio": 2008, "metaliferos": 1876, "litio": 143}, {"anio": 2009, "metaliferos": 1733, "litio": 150}, {"anio": 2010, "metaliferos": 1833, "litio": 161}, {"anio": 2011, "metaliferos": 1875, "litio": 164}, {"anio": 2012, "metaliferos": 1941, "litio": 192}, {"anio": 2013, "metaliferos": 1963, "litio": 217}, {"anio": 2014, "metaliferos": 1886, "litio": 224}, {"anio": 2015, "metaliferos": 1845, "litio": 233}, {"anio": 2016, "metaliferos": 1615, "litio": 236}, {"anio": 2017, "metaliferos": 1514, "litio": 288}, {"anio": 2018, "metaliferos": 1139, "litio": 368}, {"anio": 2019, "metaliferos": 636, "litio": 404}, {"anio": 2020, "metaliferos": 511, "litio": 455}, {"anio": 2021, "metaliferos": 782, "litio": 503}, {"anio": 2022, "metaliferos": 789, "litio": 867}, {"anio": 2023, "metaliferos": 801, "litio": 1431}, {"anio": 2024, "metaliferos": 864, "litio": 1471}, {"anio": 2025, "metaliferos": 788, "litio": 1546}], "oro_mapa": [{"mina": "Veladero", "provincia": "San Juan", "lat": -29.40026, "lon": -69.91594, "q2015": 602.0, "q2025": 460.0, "ultimo_anio": 2025}, {"mina": "Cerro Negro", "provincia": "Santa Cruz", "lat": -46.90743, "lon": -70.22152, "q2015": 507.4, "q2025": 202.0, "ultimo_anio": 2025}, {"mina": "Cerro Vanguardia", "provincia": "Santa Cruz", "lat": -48.39861, "lon": -68.29083, "q2015": null, "q2025": 179.0, "ultimo_anio": 2025}, {"mina": "Lindero", "provincia": "Salta", "lat": -25.09772, "lon": -67.75905, "q2015": null, "q2025": 87.5, "ultimo_anio": 2025}, {"mina": "Cerro Moro", "provincia": "Santa Cruz", "lat": -48.11, "lon": -66.65, "q2015": null, "q2025": 83.1, "ultimo_anio": 2025}, {"mina": "San José", "provincia": "Santa Cruz", "lat": -46.66848, "lon": -70.29747, "q2015": null, "q2025": 77.0, "ultimo_anio": 2025}, {"mina": "Gualcamayo", "provincia": "San Juan", "lat": -29.72, "lon": -68.629, "q2015": 180.7, "q2025": null, "ultimo_anio": 2022}, {"mina": "Bajo la Alumbrera", "provincia": "Catamarca", "lat": -27.19, "lon": -66.36, "q2015": 196.5, "q2025": null, "ultimo_anio": 2015}], "oro_cascada": [{"mina": "Resto de las minas", "q2015": 732, "q2025": 351}, {"mina": "Cerro Negro", "q2015": 507, "q2025": 202}, {"mina": "Lindero", "q2015": 0, "q2025": 88}, {"mina": "Veladero", "q2015": 602, "q2025": 460}, {"mina": "Bajo la Alumbrera", "q2015": 197, "q2025": 0}, {"mina": "Cerro Moro", "q2015": 0, "q2025": 83}, {"mina": "País", "q2015": 2038, "q2025": 1184}], "cerro_negro_promesa": [{"anio": 2015, "producido": 507.4, "prometido": null}, {"anio": 2016, "producido": 363.0, "prometido": null}, {"anio": 2017, "producido": 452.0, "prometido": null}, {"anio": 2018, "producido": 489.0, "prometido": null}, {"anio": 2019, "producido": null, "prometido": null}, {"anio": 2020, "producido": 216.0, "prometido": null}, {"anio": 2021, "producido": 270.0, "prometido": null}, {"anio": 2022, "producido": 278.0, "prometido": null}, {"anio": 2023, "producido": 269.0, "prometido": null}, {"anio": 2024, "producido": 238.0, "prometido": 350}, {"anio": 2025, "producido": 202.0, "prometido": 350}], "hechos": [{"mina": "Veladero", "fecha": "2005-10-11", "precision": "mes", "tipo": "Inicio", "descripcion": "Se inaugura la explotación de Veladero, en Iglesia, San Juan.", "fuente": "Página/12, 10-10-2005: https://www.pagina12.com.ar/diario/economia/2-57707-2005-10-10.html"}, {"mina": "Cerro Negro", "fecha": "2015-01-01", "precision": "año", "tipo": "Inicio", "descripcion": "Cerro Negro (Goldcorp, Santa Cruz) entra en producción comercial.", "fuente": "Goldcorp, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm"}, {"mina": "Veladero", "fecha": "2017-06-30", "precision": "día", "tipo": "Cambio de dueño", "descripcion": "La china Shandong Gold compra la mitad de Veladero a Barrick por 960 millones de dólares.", "fuente": "Barrick, comunicado del 30-6-2017: https://www.barrick.com/English/news/news-details/2017/Barrick-and-Shandong-Complete-Formation-of-Joint-Venture-at-Veladero-Mine/default.aspx"}, {"mina": "Bajo la Alumbrera", "fecha": "2018-01-01", "precision": "año", "tipo": "Cierre", "descripcion": "Bajo la Alumbrera, en Catamarca, deja de producir.", "fuente": "Secretaría de Minería: exportaciones de Catamarca (consulta P19)"}, {"mina": "Cerro Moro", "fecha": "2018-01-01", "precision": "año", "tipo": "Inicio", "descripcion": "Cerro Moro (Yamana Gold, Santa Cruz) empieza a producir.", "fuente": "Yamana Gold, MD&A 2019 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408920000016/ex992q42019mda.htm"}, {"mina": "Cerro Negro", "fecha": "2019-04-18", "precision": "día", "tipo": "Cambio de dueño", "descripcion": "Newmont compra Goldcorp y se queda con Cerro Negro.", "fuente": "Newmont, Full Year and Q4 2019 Regional Operating Statistics"}, {"mina": "Cerro Negro", "fecha": "2020-01-01", "precision": "año", "tipo": "Freno", "descripcion": "Newmont pone Cerro Negro un tiempo en cuidado y mantenimiento.", "fuente": "Newmont, Annual Report 2020"}, {"mina": "Lindero", "fecha": "2020-10-20", "precision": "día", "tipo": "Inicio", "descripcion": "Primer oro de Lindero (Fortuna, Salta).", "fuente": "Fortuna, comunicado del 20-10-2020: https://www.globalminingreview.com/mining/22102020/fortuna-announces-first-gold-pour-at-lindero-mine"}, {"mina": "Fenix", "fecha": "2022-07-01", "precision": "mes", "tipo": "Denuncia", "descripcion": "La Aduana denuncia a Livent, que exporta desde Fénix (Catamarca), por declarar el carbonato de litio a 5.100 dólares la tonelada en 403 operaciones de 2018 y 2019, y le reclama 8 millones de dólares. Un mes antes había fijado una referencia de 53.000.", "fuente": "Bloomberg Línea, 14-7-2022: https://www.bloomberglinea.com/2022/07/12/litio-en-argentina-bajo-sospecha-aduana-notifico-a-livent-con-multa-millonaria/"}, {"mina": "Cerro Negro", "fecha": "2023-06-01", "precision": "día", "tipo": "Promesa", "descripcion": "Newmont anuncia una inversión de 540 millones de dólares para extender la vida de la mina hasta 2034 y subir la producción a más de 350 mil onzas por año desde 2024.", "fuente": "Bloomberg Línea, 1-6-2023: https://www.bloomberglinea.com/english/worlds-biggest-gold-producer-to-invest-540m-in-argentinas-cerro-negro-mine/"}, {"mina": "Cerro Negro", "fecha": "2024-04-09", "precision": "día", "tipo": "Accidente", "descripcion": "Mueren dos trabajadores del equipo de Servicios Técnicos de Newmont. La mina queda suspendida unas seis semanas.", "fuente": "Newmont, comunicado del 10-4-2024: https://www.newmont.com/investors/news-release/news-details/2024/Cerro-Negro-Incident/default.aspx; Energiminas, 24-5-2024: https://energiminas.com/2024/05/24/newmont-reabre-mina-de-oro-cerro-negro-en-argentina/"}, {"mina": "Gualcamayo", "fecha": "2026-01-13", "precision": "día", "tipo": "RIGI", "descripcion": "El proyecto Carbonatos Profundos, para reactivar Gualcamayo, entra al RIGI.", "fuente": "Tablero RIGI, Ministerio de Economía (tabla rigi_proyecto)"}, {"mina": "Argentina", "fecha": "2026-02-04", "precision": "día", "tipo": "Acuerdo", "descripcion": "Argentina y Estados Unidos firman en Washington un acuerdo marco sobre minerales críticos.", "fuente": "Energiminas, 5-2-2026: https://energiminas.com/2026/02/05/minerales-criticos-argentina-y-estados-unidos-firman-un-acuerdo-para-consolidar-cadenas-de-valor-mas-solidas/"}, {"mina": "Veladero", "fecha": "2026-03-30", "precision": "día", "tipo": "RIGI", "descripcion": "La ampliación de las fases 8 y 9 de lixiviación de Veladero entra al RIGI.", "fuente": "Tablero RIGI, Ministerio de Economía (tabla rigi_proyecto)"}], "correcciones": [{"numero": 1, "fecha": "2026-10-13", "tipo": "Dato", "lo_que_se_dijo": "Por el secreto estadístico, la base de exportaciones del INDEC no sirve desde 2018.", "lo_correcto": "Desde 2018 se tapan algunos destinos, pero el INDEC agrega una fila confidencial con el resto. Lo que se pierde es parte del destino, no el total.", "como_se_detecto": "Volver a la fuente", "que_quedo": "Se usa el INDEC completo, con la fila confidencial."}, {"numero": 2, "fecha": "2026-10-13", "tipo": "Dato", "lo_que_se_dijo": "Desde 2018 el total exportado de cada producto en el INDEC sigue siendo exacto.", "lo_correcto": "Es cierto para el oro, no para el litio ni la plata. En 2022 el INDEC muestra 76 millones de dólares de litio y la Secretaría de Minería 207.", "como_se_detecto": "Cruce de fuentes", "que_quedo": "Control: el oro tiene que coincidir entre las dos fuentes todos los años; el litio, solo hasta 2017."}, {"numero": 3, "fecha": "2026-10-13", "tipo": "Método", "lo_que_se_dijo": "Que la Secretaría de Minería y el INDEC den lo mismo valida el dato por dos caminos.", "lo_correcto": "La Secretaría arma sus series con datos del INDEC: no son independientes. La validación independiente son los países compradores (UN Comtrade).", "como_se_detecto": "Volver a la fuente", "que_quedo": "Se cargaron los datos de los países compradores y quedaron como control."}, {"numero": 4, "fecha": "2026-10-13", "tipo": "Modelo de datos", "lo_que_se_dijo": "Los puestos de trabajo son números enteros.", "lo_correcto": "Hay 268 filas con medio puesto (11,5) en cuatro meses de 2009, 2012 y 2013.", "como_se_detecto": "Control automático", "que_quedo": "La columna pasó a admitir decimales."}, {"numero": 5, "fecha": "2026-10-13", "tipo": "Dato", "lo_que_se_dijo": "El litio exportado en 2022 fue de 207 millones de dólares.", "lo_correcto": "Fue de 695 millones. El archivo mensual de la Secretaría pone desde 2018 lo que está bajo secreto en un grupo \"Otro\", y parte del litio está ahí.", "como_se_detecto": "Cruce de fuentes", "que_quedo": "Para el litio se usan totales anuales. Quedó anotado que entre 2018 y 2023 no hay serie mensual confiable."}, {"numero": 6, "fecha": "2026-10-13", "tipo": "Contexto desactualizado", "lo_que_se_dijo": "Panorama de temas armado con notas de prensa de marzo a junio: la reforma de la Ley de Glaciares y la llegada del RIGI como debates abiertos.", "lo_correcto": "Las dos cosas ya estaban resueltas en octubre de 2026: la ley se reformó en abril y los grandes proyectos ya habían entrado al RIGI.", "como_se_detecto": "Francisco", "que_quedo": "El panorama se rehízo con las portadas de esa semana de cinco medios mineros."}, {"numero": 7, "fecha": "2026-10-13", "tipo": "Interpretación", "lo_que_se_dijo": "El índice oficial de producción de doré (de 156 a 35) mide cuánto cayó el oro.", "lo_correcto": "Ese índice cae mucho más que las otras dos medidas, que coinciden entre sí. Sirve para la dirección, no para el tamaño: la caída es de alrededor del 40%, no del 80%.", "como_se_detecto": "Cruce de fuentes", "que_quedo": "Para la magnitud se usan las dos medidas que coinciden; la tercera queda anotada."}, {"numero": 8, "fecha": "2026-10-13", "tipo": "Supuesto del control", "lo_que_se_dijo": "Las regalías de San Juan tienen que dar entre 1,5% y 3,5% de lo exportado.", "lo_correcto": "2022 da 3,6%. El renglón de regalías incluye las hidroeléctricas y se pasa a dólares con el promedio anual.", "como_se_detecto": "Control automático", "que_quedo": "El rango se amplió a 2% a 4% y quedó escrito por qué."}, {"numero": 9, "fecha": "2026-10-14", "tipo": "Interpretación", "lo_que_se_dijo": "La caída del oro del país se explica por minas que se agotan.", "lo_correcto": "Parte se explica por un cierre: Bajo la Alumbrera, en Catamarca, también producía oro y cerró en 2018. Y la mina que más cayó no es Veladero sino Cerro Negro, en Santa Cruz (−60% desde 2015).", "como_se_detecto": "Buscar más datos", "que_quedo": "Se armó la producción por mina a partir de los informes de 15 empresas."}, {"numero": 10, "fecha": "2026-10-14", "tipo": "Dato", "lo_que_se_dijo": "Cada pago de la base canadiense ESTMA aparece una vez.", "lo_correcto": "Algunos pagos aparecen dos veces, por ejemplo Pachón en 2025, que informan Glencore y su filial con los mismos montos.", "como_se_detecto": "Control automático", "que_quedo": "Se quitan los repetidos y quedan registrados en una tabla aparte."}, {"numero": 11, "fecha": "2026-10-14", "tipo": "Método", "lo_que_se_dijo": "Los pagos de Cerro Negro en ESTMA se pueden validar con los impuestos de su empresa en la Secretaría de Minería.", "lo_correcto": "Miden cosas distintas: la Secretaría incluye cargas sociales y no incluye regalías provinciales.", "como_se_detecto": "Volver a la fuente", "que_quedo": "No se usó como control."}, {"numero": 12, "fecha": "2026-10-14", "tipo": "Presentación", "lo_que_se_dijo": "El 2,6% del empleo de San Juan es la minería.", "lo_correcto": "El 2,6% es solo la minería de metales; con canteras es 3,6%.", "como_se_detecto": "Revisión en pantalla", "que_quedo": "Se corrigió el rótulo."}, {"numero": 13, "fecha": "2026-10-14", "tipo": "Interpretación", "lo_que_se_dijo": "Estados Unidos pagó por el litio argentino alrededor de la mitad que por el chileno entre 2018 y 2023.", "lo_correcto": "Fue entre 44% y 86% según el año; la mitad fue en 2019 y en 2022.", "como_se_detecto": "Rehacer la cuenta", "que_quedo": "Se corrigió en la página y en el video."}, {"numero": 14, "fecha": "2026-10-14", "tipo": "Causa sin respaldo", "lo_que_se_dijo": "Cerro Negro paró en 2020 por la pandemia.", "lo_correcto": "El informe de Newmont solo dice que la puso en cuidado y mantenimiento; no da la causa.", "como_se_detecto": "Volver a la fuente", "que_quedo": "Se dice lo que dice el informe."}, {"numero": 15, "fecha": "2026-10-14", "tipo": "Dato", "lo_que_se_dijo": "Las regalías de San Juan son el 3% del valor del mineral.", "lo_correcto": "Lo cobrado da cerca del 3% de lo exportado. La ley fija 3% del valor en boca de mina, que es otra base.", "como_se_detecto": "Volver a la fuente", "que_quedo": "Se distinguen las dos cosas."}, {"numero": 16, "fecha": "2026-10-14", "tipo": "Cuenta", "lo_que_se_dijo": "Las minas nuevas compensaron una quinta parte de lo que perdieron las demás.", "lo_correcto": "Es una sexta parte: 171 mil onzas contra 1.025 mil.", "como_se_detecto": "Rehacer la cuenta", "que_quedo": "Se corrigió el texto."}, {"numero": 17, "fecha": "2026-10-14", "tipo": "Dato", "lo_que_se_dijo": "El mapa oficial de provincias se puede dibujar tal cual viene.", "lo_correcto": "El archivo trae la Ciudad de Buenos Aires ampliada y dibujada sobre el mar, como un recuadro; aparecía como un círculo en el océano.", "como_se_detecto": "Revisión en pantalla", "que_quedo": "El script que achica el mapa la saca."}, {"numero": 18, "fecha": "2026-10-14", "tipo": "Originalidad", "lo_que_se_dijo": "\"El récord del oro es precio, no producción\" como hallazgo principal.", "lo_correcto": "Ya lo dicen la cámara minera y la Bolsa de Comercio de Rosario. Lo que nadie publica es cuánto paga cada mina al Estado.", "como_se_detecto": "Francisco", "que_quedo": "La nota se reordena para abrir con lo propio."}, {"numero": 19, "fecha": "2026-10-14", "tipo": "Contexto omitido", "lo_que_se_dijo": "Cerro Negro produce menos porque su mineral es más pobre.", "lo_correcto": "Es parte de la historia. En 2023 Newmont anunció 540 millones de dólares y más de 350 mil onzas por año desde 2024, y produjo 238 mil y 202 mil. En abril de 2024 murieron dos trabajadores y la mina estuvo parada seis semanas.", "como_se_detecto": "Francisco", "que_quedo": "Se suma a la base y a la nota."}], "litio_prensa": [{"dato": "Exportado enero a agosto de 2026 (millones de USD)", "publicado": 1467, "mis_datos": 1467}, {"dato": "Variación contra enero a agosto de 2025 (%)", "publicado": 190.5, "mis_datos": 190.5}, {"dato": "Exportado en 2025 (millones de USD)", "publicado": 914, "mis_datos": 915}, {"dato": "China, parte de lo exportado en 2025 (%)", "publicado": 81.1, "mis_datos": 74.9}], "sj_regalias": [{"anio": 2017, "regalias_millones_pesos": 621, "pesos_por_usd": 16.7, "regalias_musd": 37.1, "exportado_san_juan_musd": 1116, "pct_de_lo_exportado": 3.3}, {"anio": 2018, "regalias_millones_pesos": 816, "pesos_por_usd": 28.1, "regalias_musd": 29.1, "exportado_san_juan_musd": 896, "pct_de_lo_exportado": 3.2}, {"anio": 2019, "regalias_millones_pesos": 1469, "pesos_por_usd": 48.2, "regalias_musd": 30.5, "exportado_san_juan_musd": 890, "pct_de_lo_exportado": 3.4}, {"anio": 2020, "regalias_millones_pesos": 1903, "pesos_por_usd": 70.6, "regalias_musd": 26.9, "exportado_san_juan_musd": 819, "pct_de_lo_exportado": 3.3}, {"anio": 2021, "regalias_millones_pesos": 2737, "pesos_por_usd": 95.1, "regalias_musd": 28.8, "exportado_san_juan_musd": 857, "pct_de_lo_exportado": 3.4}, {"anio": 2022, "regalias_millones_pesos": 4064, "pesos_por_usd": 130.5, "regalias_musd": 31.1, "exportado_san_juan_musd": 865, "pct_de_lo_exportado": 3.6}, {"anio": 2023, "regalias_millones_pesos": 6963, "pesos_por_usd": 296.0, "regalias_musd": 23.5, "exportado_san_juan_musd": 880, "pct_de_lo_exportado": 2.7}, {"anio": 2024, "regalias_millones_pesos": 41599, "pesos_por_usd": 935.2, "regalias_musd": 44.5, "exportado_san_juan_musd": 1469, "pct_de_lo_exportado": 3.0}, {"anio": 2025, "regalias_millones_pesos": 61699, "pesos_por_usd": 1263.8, "regalias_musd": 48.8, "exportado_san_juan_musd": 1759, "pct_de_lo_exportado": 2.8}], "sj_empleo_cobre": [{"serie": "1320 Extracción de minerales metalíferos no ferros (enero)", "anio": 2023, "puestos": 2316}, {"serie": "1320 Extracción de minerales metalíferos no ferros (enero)", "anio": 2024, "puestos": 2298}, {"serie": "1320 Extracción de minerales metalíferos no ferros (enero)", "anio": 2025, "puestos": 2034}, {"serie": "1320 Extracción de minerales metalíferos no ferros (enero)", "anio": 2026, "puestos": 2264}, {"serie": "1429 Explotación de minas y canteras n.c.p. (enero)", "anio": 2023, "puestos": 509}, {"serie": "1429 Explotación de minas y canteras n.c.p. (enero)", "anio": 2024, "puestos": 572}, {"serie": "1429 Explotación de minas y canteras n.c.p. (enero)", "anio": 2025, "puestos": 569}, {"serie": "1429 Explotación de minas y canteras n.c.p. (enero)", "anio": 2026, "puestos": 703}, {"serie": "4519 Movimiento de suelos y preparación de terreno (enero)", "anio": 2023, "puestos": 1129}, {"serie": "4519 Movimiento de suelos y preparación de terreno (enero)", "anio": 2024, "puestos": 1020}, {"serie": "4519 Movimiento de suelos y preparación de terreno (enero)", "anio": 2025, "puestos": 1055}, {"serie": "4519 Movimiento de suelos y preparación de terreno (enero)", "anio": 2026, "puestos": 1292}, {"serie": "4520 Construcción de edificios y sus partes y obra (enero)", "anio": 2023, "puestos": 12577}, {"serie": "4520 Construcción de edificios y sus partes y obra (enero)", "anio": 2024, "puestos": 7456}, {"serie": "4520 Construcción de edificios y sus partes y obra (enero)", "anio": 2025, "puestos": 6929}, {"serie": "4520 Construcción de edificios y sus partes y obra (enero)", "anio": 2026, "puestos": 7626}, {"serie": "7499 Servicios empresariales n.c.p. (enero)", "anio": 2023, "puestos": 2286}, {"serie": "7499 Servicios empresariales n.c.p. (enero)", "anio": 2024, "puestos": 2756}, {"serie": "7499 Servicios empresariales n.c.p. (enero)", "anio": 2025, "puestos": 2745}, {"serie": "7499 Servicios empresariales n.c.p. (enero)", "anio": 2026, "puestos": 3011}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2019, "puestos": 3262}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2020, "puestos": 3316}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2021, "puestos": 3647}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2022, "puestos": 4233}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2023, "puestos": 3724}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2024, "puestos": 3666}, {"serie": "Iglesia, todos los sectores (promedio del año)", "anio": 2025, "puestos": 3634}], "cifras": {"puestos_metal_sj_2026": 2264, "puestos_privados_sj_2026": 85493, "rigi_empleos_sj": 44639, "rigi_inversion_sj": 13510, "expo_mineria_2025": 6074, "controles": 63, "preguntas": 34}, "mapa": [{"nombre": "Buenos Aires", "anillos": [[[-58.34, -34.04], [-58.65, -34.04], [-58.99, -33.85], [-59.24, -33.81], [-59.25, -33.72], [-59.45, -33.72], [-59.52, -33.63], [-59.61, -33.7], [-60.26, -33.26], [-60.46, -33.63], [-60.89, -33.57], [-61.72, -34.39], [-63.39, -34.39], [-63.38, -40.71], [-62.99, -40.8], [-62.79, -41.02], [-62.71, -41.04], [-62.31, -40.87], [-62.17, -40.63], [-62.17, -40.58], [-62.42, -40.46], [-62.49, -40.3], [-62.33, -40.16], [-62.32, -39.87], [-62.12, -39.85], [-62.05, -39.45], [-62.27, -39.3], [-62.09, -39.39], [-62.01, -39.37], [-62.31, -39.27], [-62.24, -39.25], [-62.34, -39.16], [-62.32, -38.89], [-62.4, -38.81], [-62.21, -38.8], [-62.05, -38.93], [-61.55, -39.0], [-60.86, -38.98], [-59.85, -38.84], [-58.46, -38.52], [-57.86, -38.3], [-57.54, -38.1], [-57.49, -37.83], [-57.13, -37.49], [-56.67, -36.88], [-56.7, -36.41], [-56.78, -36.29], [-56.91, -36.34], [-57.1, -36.28], [-57.35, -36.03], [-57.36, -35.75], [-57.13, -35.45], [-57.34, -35.16], [-57.87, -34.83], [-58.2, -34.74], [-58.34, -34.63], [-58.46, -34.71], [-58.53, -34.65], [-58.46, -34.53], [-58.51, -34.45], [-58.35, -34.22], [-58.34, -34.04]], [[-62.0, -39.09], [-62.06, -39.16], [-61.87, -39.24], [-61.88, -39.13], [-62.0, -39.09]], [[-62.04, -39.0], [-62.12, -39.01], [-62.04, -39.04], [-62.04, -39.0]]]}, {"nombre": "San Luis", "anillos": [[[-66.66, -31.92], [-67.14, -31.83], [-67.38, -31.87], [-67.38, -32.13], [-67.38, -32.24], [-67.27, -32.34], [-67.32, -32.39], [-67.3, -32.54], [-67.17, -32.76], [-67.23, -32.9], [-67.15, -33.44], [-66.87, -33.83], [-66.67, -33.96], [-66.81, -34.35], [-66.76, -34.57], [-66.57, -34.83], [-66.48, -35.14], [-66.64, -36.0], [-65.11, -36.0], [-65.14, -33.19], [-65.0, -33.0], [-64.91, -32.69], [-64.92, -32.33], [-65.21, -32.33], [-65.25, -32.09], [-65.63, -31.9], [-65.98, -31.89], [-66.08, -31.97], [-66.3, -31.93], [-66.37, -32.0], [-66.66, -31.92]]]}, {"nombre": "Santa Fe", "anillos": [[[-58.88, -28.07], [-58.88, -28.0], [-61.71, -28.0], [-62.13, -30.48], [-61.84, -30.74], [-62.12, -31.61], [-62.24, -31.7], [-62.17, -31.99], [-62.2, -32.11], [-61.93, -32.46], [-61.89, -32.61], [-61.95, -32.68], [-61.8, -32.77], [-61.79, -33.01], [-62.88, -34.39], [-61.72, -34.39], [-60.89, -33.57], [-60.46, -33.63], [-60.26, -33.26], [-60.3, -33.18], [-60.49, -33.13], [-60.68, -32.9], [-60.78, -32.51], [-60.68, -32.32], [-60.66, -32.07], [-60.72, -31.96], [-60.66, -31.92], [-60.64, -31.74], [-60.47, -31.7], [-60.14, -31.44], [-60.11, -31.29], [-60.0, -31.24], [-59.63, -30.71], [-59.71, -30.27], [-59.64, -30.24], [-59.57, -30.0], [-59.66, -29.83], [-59.6, -29.39], [-59.52, -29.34], [-59.51, -29.25], [-59.2, -29.03], [-59.05, -28.49], [-59.11, -28.22], [-59.07, -28.14], [-58.95, -28.13], [-58.88, -28.07]]]}, {"nombre": "La Rioja", "anillos": [[[-65.42, -30.12], [-65.75, -29.27], [-65.82, -29.27], [-65.82, -29.18], [-66.1, -28.94], [-66.4, -28.86], [-66.35, -28.72], [-66.5, -28.62], [-66.57, -28.29], [-67.02, -28.25], [-67.16, -28.38], [-67.69, -28.31], [-67.85, -28.37], [-67.92, -28.11], [-68.11, -28.17], [-68.14, -28.1], [-68.27, -28.1], [-68.29, -28.02], [-68.46, -28.01], [-68.44, -27.87], [-68.51, -27.85], [-68.55, -27.71], [-68.58, -27.82], [-68.8, -27.76], [-69.09, -27.8], [-69.34, -28.16], [-69.39, -28.22], [-69.45, -28.18], [-69.52, -28.33], [-69.63, -28.38], [-69.42, -28.45], [-69.32, -28.41], [-69.16, -28.76], [-68.91, -28.86], [-68.96, -28.96], [-68.91, -29.13], [-69.0, -29.18], [-68.96, -29.29], [-69.02, -29.64], [-68.44, -29.65], [-68.2, -29.78], [-68.16, -29.88], [-68.05, -29.91], [-67.59, -30.3], [-67.49, -30.54], [-67.08, -30.92], [-67.1, -31.38], [-66.95, -31.63], [-66.87, -31.63], [-66.8, -31.81], [-66.66, -31.92], [-66.37, -32.0], [-66.3, -31.93], [-66.08, -31.97], [-65.98, -31.89], [-65.77, -31.89], [-65.77, -31.04], [-65.42, -30.12]]]}, {"nombre": "Catamarca", "anillos": [[[-66.1, -26.22], [-66.17, -26.13], [-66.23, -26.15], [-66.38, -26.42], [-66.54, -26.35], [-66.59, -26.15], [-66.85, -25.97], [-66.84, -25.71], [-66.65, -25.71], [-66.56, -25.62], [-66.52, -25.44], [-66.6, -25.36], [-66.56, -25.3], [-68.51, -25.17], [-68.52, -25.37], [-68.59, -25.45], [-68.38, -26.18], [-68.56, -26.29], [-68.59, -26.49], [-68.26, -26.92], [-68.3, -27.04], [-68.56, -27.12], [-68.58, -27.18], [-68.67, -27.1], [-68.79, -27.1], [-68.89, -27.4], [-68.98, -27.43], [-68.94, -27.53], [-69.04, -27.59], [-69.09, -27.8], [-68.8, -27.76], [-68.58, -27.82], [-68.55, -27.71], [-68.51, -27.85], [-68.44, -27.87], [-68.46, -28.01], [-68.29, -28.02], [-68.27, -28.1], [-68.14, -28.1], [-68.11, -28.17], [-67.92, -28.11], [-67.85, -28.37], [-67.69, -28.31], [-67.16, -28.38], [-67.02, -28.25], [-66.57, -28.29], [-66.5, -28.62], [-66.35, -28.72], [-66.4, -28.86], [-66.1, -28.94], [-65.82, -29.18], [-65.82, -29.27], [-65.75, -29.27], [-65.42, -30.12], [-65.16, -30.05], [-64.94, -29.85], [-64.96, -29.6], [-64.82, -29.57], [-64.79, -29.4], [-64.84, -29.32], [-64.78, -29.27], [-64.85, -29.2], [-64.9, -28.84], [-65.19, -28.62], [-65.13, -28.61], [-65.1, -28.47], [-65.17, -27.95], [-65.36, -27.85], [-65.57, -28.01], [-65.67, -27.97], [-65.71, -27.81], [-65.75, -27.77], [-65.83, -27.84], [-65.93, -27.65], [-65.97, -27.33], [-66.14, -27.26], [-65.86, -26.93], [-65.9, -26.86], [-65.83, -26.75], [-66.04, -26.6], [-66.17, -26.63], [-66.1, -26.22]]]}, {"nombre": "Tucumán", "anillos": [[[-64.49, -26.22], [-64.78, -26.22], [-64.95, -26.31], [-65.27, -26.17], [-65.36, -26.06], [-65.69, -26.12], [-65.72, -26.35], [-66.1, -26.22], [-66.17, -26.63], [-66.04, -26.6], [-65.83, -26.75], [-65.9, -26.86], [-65.86, -26.93], [-66.14, -27.26], [-65.97, -27.33], [-65.93, -27.65], [-65.83, -27.84], [-65.75, -27.77], [-65.71, -27.81], [-65.67, -27.97], [-65.57, -28.01], [-65.36, -27.85], [-65.17, -27.95], [-65.16, -27.88], [-65.04, -27.88], [-64.97, -27.35], [-64.85, -27.32], [-64.71, -26.82], [-64.62, -26.8], [-64.59, -26.66], [-64.5, -26.67], [-64.49, -26.22]]]}, {"nombre": "Chaco", "anillos": [[[-58.38, -26.88], [-58.99, -26.38], [-59.14, -26.3], [-59.36, -26.34], [-59.43, -26.15], [-59.66, -26.13], [-59.67, -26.0], [-59.76, -25.92], [-60.03, -25.69], [-60.19, -25.64], [-60.22, -25.49], [-60.35, -25.32], [-60.53, -25.17], [-60.65, -25.17], [-60.93, -25.0], [-61.14, -24.8], [-61.2, -24.66], [-61.45, -24.61], [-61.77, -24.31], [-62.14, -24.22], [-62.33, -24.08], [-62.34, -24.39], [-63.42, -25.65], [-61.71, -25.65], [-61.71, -28.0], [-58.88, -28.0], [-58.88, -28.07], [-58.81, -27.78], [-58.88, -27.5], [-58.78, -27.38], [-58.62, -27.33], [-58.59, -27.23], [-58.65, -27.13], [-58.55, -27.11], [-58.48, -26.93], [-58.38, -26.88]]]}, {"nombre": "Formosa", "anillos": [[[-58.38, -26.88], [-58.25, -26.75], [-58.26, -26.65], [-58.19, -26.65], [-58.22, -26.4], [-58.1, -26.22], [-58.16, -26.18], [-57.86, -26.01], [-57.89, -25.95], [-57.8, -25.82], [-57.83, -25.76], [-57.57, -25.54], [-57.56, -25.45], [-57.78, -25.15], [-58.24, -24.93], [-58.34, -25.0], [-58.47, -24.86], [-58.67, -24.83], [-59.12, -24.62], [-59.48, -24.33], [-60.04, -24.01], [-60.28, -24.04], [-60.99, -23.81], [-61.13, -23.58], [-61.49, -23.42], [-61.57, -23.3], [-61.99, -23.02], [-62.2, -22.71], [-62.19, -22.62], [-62.26, -22.6], [-62.25, -22.52], [-62.34, -22.46], [-62.34, -24.11], [-61.77, -24.31], [-61.45, -24.61], [-61.2, -24.66], [-61.14, -24.8], [-60.93, -25.0], [-60.65, -25.17], [-60.53, -25.17], [-60.35, -25.32], [-60.22, -25.49], [-60.19, -25.64], [-60.03, -25.69], [-59.76, -25.92], [-59.67, -26.0], [-59.66, -26.13], [-59.43, -26.15], [-59.36, -26.34], [-59.14, -26.3], [-58.99, -26.38], [-58.38, -26.88]]]}, {"nombre": "Mendoza", "anillos": [[[-70.13, -32.57], [-70.15, -32.73], [-69.99, -32.9], [-70.09, -33.05], [-70.04, -33.27], [-70.0, -33.32], [-69.84, -33.27], [-69.77, -33.34], [-69.87, -33.54], [-69.9, -33.78], [-69.86, -33.89], [-69.91, -33.96], [-69.82, -34.02], [-69.87, -34.13], [-69.8, -34.21], [-69.91, -34.29], [-69.97, -34.25], [-70.03, -34.29], [-70.01, -34.41], [-70.31, -34.75], [-70.25, -34.79], [-70.38, -35.17], [-70.54, -35.2], [-70.58, -35.27], [-70.42, -35.35], [-70.45, -35.45], [-70.38, -35.51], [-70.42, -35.64], [-70.32, -35.82], [-70.43, -35.9], [-70.37, -35.92], [-70.43, -36.1], [-70.37, -36.28], [-70.34, -36.34], [-70.23, -36.32], [-70.12, -36.57], [-69.92, -36.79], [-69.75, -36.89], [-69.78, -36.99], [-69.71, -37.1], [-69.53, -37.17], [-69.27, -37.15], [-69.06, -37.22], [-69.03, -37.36], [-68.77, -37.37], [-68.7, -37.44], [-68.51, -37.45], [-68.44, -37.54], [-68.25, -37.57], [-68.25, -36.17], [-68.3, -36.17], [-68.3, -36.0], [-66.62, -35.96], [-66.48, -35.14], [-66.57, -34.83], [-66.76, -34.57], [-66.81, -34.35], [-66.67, -33.96], [-66.87, -33.83], [-67.14, -33.46], [-67.23, -32.9], [-67.17, -32.75], [-67.33, -32.35], [-67.52, -32.23], [-67.84, -32.22], [-67.96, -32.09], [-68.06, -32.08], [-68.46, -32.14], [-68.46, -32.24], [-68.67, -32.34], [-68.92, -32.34], [-68.92, -32.11], [-69.18, -32.0], [-69.31, -32.09], [-69.42, -32.07], [-69.6, -32.15], [-69.63, -32.26], [-69.72, -32.32], [-69.71, -32.5], [-69.78, -32.54], [-70.0, -32.53], [-70.08, -32.63], [-70.13, -32.57]]]}, {"nombre": "Entre Ríos", "anillos": [[[-57.81, -30.73], [-58.03, -30.59], [-58.08, -30.42], [-58.22, -30.28], [-58.58, -30.16], [-58.88, -30.25], [-59.06, -30.23], [-59.23, -30.36], [-59.56, -30.34], [-59.59, -30.43], [-59.67, -30.34], [-59.7, -30.44], [-59.63, -30.71], [-59.73, -30.88], [-60.0, -31.24], [-60.11, -31.29], [-60.15, -31.45], [-60.68, -31.81], [-60.65, -31.9], [-60.72, -31.98], [-60.66, -32.07], [-60.68, -32.32], [-60.78, -32.51], [-60.68, -32.9], [-60.51, -33.11], [-60.3, -33.18], [-60.04, -33.45], [-59.66, -33.62], [-59.61, -33.7], [-59.52, -33.63], [-59.45, -33.72], [-59.25, -33.72], [-59.24, -33.81], [-58.99, -33.85], [-58.65, -34.04], [-58.34, -34.04], [-58.49, -33.58], [-58.37, -33.13], [-58.08, -33.0], [-58.2, -32.46], [-58.1, -32.25], [-58.18, -32.17], [-58.14, -32.0], [-58.21, -31.87], [-58.08, -31.81], [-58.01, -31.69], [-57.98, -31.58], [-58.08, -31.46], [-57.98, -31.39], [-57.91, -31.21], [-57.86, -31.04], [-57.91, -30.92], [-57.82, -30.9], [-57.81, -30.73]]]}, {"nombre": "Jujuy", "anillos": [[[-65.19, -22.09], [-65.75, -22.11], [-65.92, -21.93], [-66.05, -21.92], [-66.08, -21.83], [-66.24, -21.79], [-66.29, -22.09], [-66.74, -22.24], [-66.78, -22.44], [-67.03, -22.54], [-67.01, -22.65], [-67.18, -22.81], [-66.99, -23.0], [-67.21, -23.69], [-66.84, -24.07], [-66.48, -24.21], [-66.35, -24.02], [-66.37, -23.69], [-66.17, -23.41], [-65.99, -23.51], [-65.99, -23.98], [-65.75, -24.06], [-65.65, -24.38], [-65.54, -24.45], [-65.32, -24.5], [-65.19, -24.46], [-64.93, -24.6], [-64.84, -24.47], [-64.65, -24.61], [-64.42, -24.4], [-64.29, -24.41], [-64.15, -24.14], [-64.16, -23.52], [-64.35, -23.52], [-64.45, -23.64], [-64.53, -23.52], [-64.68, -23.46], [-64.87, -23.48], [-64.91, -23.31], [-65.07, -23.21], [-65.07, -23.05], [-65.25, -22.93], [-65.27, -22.65], [-65.35, -22.6], [-65.19, -22.09]]]}, {"nombre": "Santiago del Estero", "anillos": [[[-61.71, -28.0], [-61.71, -25.65], [-63.42, -25.65], [-63.48, -25.71], [-64.01, -25.67], [-64.03, -25.75], [-64.27, -25.7], [-64.5, -26.24], [-64.5, -26.67], [-64.59, -26.66], [-64.62, -26.8], [-64.71, -26.82], [-64.85, -27.32], [-64.97, -27.35], [-65.04, -27.88], [-65.18, -27.92], [-65.1, -28.47], [-65.13, -28.61], [-65.19, -28.62], [-64.9, -28.84], [-64.85, -29.2], [-64.78, -29.27], [-64.84, -29.32], [-64.79, -29.4], [-64.82, -29.57], [-64.28, -29.5], [-63.98, -29.55], [-63.96, -29.62], [-63.81, -29.58], [-63.72, -29.67], [-63.47, -29.66], [-63.46, -29.76], [-62.81, -29.83], [-62.79, -29.96], [-62.56, -30.06], [-62.59, -30.26], [-62.52, -30.34], [-62.17, -30.35], [-62.13, -30.48], [-61.71, -28.0]]]}, {"nombre": "Corrientes", "anillos": [[[-56.02, -27.32], [-56.28, -27.41], [-56.39, -27.61], [-56.6, -27.43], [-56.72, -27.46], [-56.69, -27.58], [-56.85, -27.61], [-56.98, -27.49], [-57.33, -27.41], [-57.51, -27.44], [-57.93, -27.26], [-58.5, -27.27], [-58.78, -27.38], [-58.88, -27.5], [-58.81, -27.78], [-58.86, -28.05], [-58.95, -28.13], [-59.07, -28.14], [-59.11, -28.22], [-59.05, -28.49], [-59.2, -29.03], [-59.51, -29.25], [-59.52, -29.34], [-59.6, -29.39], [-59.66, -29.83], [-59.57, -30.0], [-59.64, -30.24], [-59.71, -30.27], [-59.62, -30.42], [-59.56, -30.34], [-59.23, -30.36], [-59.06, -30.23], [-58.88, -30.25], [-58.58, -30.16], [-58.22, -30.28], [-58.08, -30.42], [-58.03, -30.59], [-57.81, -30.73], [-57.89, -30.51], [-57.65, -30.35], [-57.64, -30.18], [-57.47, -30.12], [-57.34, -29.99], [-57.29, -29.83], [-56.97, -29.64], [-56.7, -29.36], [-56.59, -29.12], [-56.43, -29.08], [-56.29, -28.8], [-56.01, -28.61], [-56.01, -28.51], [-55.88, -28.48], [-55.88, -28.36], [-55.69, -28.42], [-55.67, -28.33], [-55.78, -28.25], [-55.62, -28.14], [-55.82, -27.95], [-55.83, -27.79], [-56.05, -27.45], [-56.02, -27.32]], [[-56.91, -27.42], [-57.03, -27.48], [-56.84, -27.6], [-56.74, -27.55], [-56.73, -27.5], [-56.91, -27.42]], [[-56.71, -27.56], [-56.72, -27.52], [-56.77, -27.59], [-56.71, -27.56]]]}, {"nombre": "Misiones", "anillos": [[[-55.62, -28.14], [-55.45, -28.1], [-55.38, -27.98], [-55.2, -27.86], [-55.03, -27.86], [-55.08, -27.79], [-54.94, -27.77], [-54.81, -27.53], [-54.68, -27.57], [-54.58, -27.45], [-54.52, -27.5], [-54.42, -27.41], [-54.28, -27.45], [-54.17, -27.25], [-54.08, -27.3], [-53.95, -27.15], [-53.8, -27.15], [-53.8, -27.04], [-53.66, -26.86], [-53.76, -26.64], [-53.64, -26.22], [-53.84, -25.97], [-53.82, -25.8], [-53.89, -25.62], [-53.96, -25.64], [-54.07, -25.56], [-54.1, -25.61], [-54.1, -25.49], [-54.21, -25.54], [-54.19, -25.59], [-54.39, -25.6], [-54.42, -25.69], [-54.59, -25.59], [-54.58, -25.67], [-54.66, -25.68], [-54.59, -25.82], [-54.61, -25.96], [-54.68, -25.99], [-54.62, -26.21], [-54.8, -26.54], [-54.81, -26.67], [-54.94, -26.68], [-54.96, -26.78], [-55.14, -26.87], [-55.14, -26.95], [-55.37, -26.96], [-55.45, -27.1], [-55.56, -27.11], [-55.62, -27.19], [-55.59, -27.33], [-55.73, -27.44], [-55.9, -27.34], [-56.04, -27.34], [-56.05, -27.45], [-55.83, -27.79], [-55.82, -27.95], [-55.62, -28.14]]]}, {"nombre": "Salta", "anillos": [[[-62.34, -22.46], [-62.79, -22.16], [-62.81, -22.0], [-63.93, -22.0], [-64.24, -22.56], [-64.34, -22.87], [-64.34, -22.74], [-64.43, -22.65], [-64.41, -22.54], [-64.53, -22.44], [-64.54, -22.29], [-64.62, -22.21], [-64.99, -22.08], [-65.19, -22.09], [-65.35, -22.6], [-65.27, -22.65], [-65.25, -22.93], [-65.07, -23.05], [-65.07, -23.21], [-64.91, -23.31], [-64.87, -23.48], [-64.68, -23.46], [-64.53, -23.52], [-64.45, -23.64], [-64.35, -23.52], [-64.16, -23.52], [-64.15, -24.14], [-64.29, -24.41], [-64.42, -24.4], [-64.65, -24.61], [-64.84, -24.47], [-64.93, -24.6], [-65.19, -24.46], [-65.32, -24.5], [-65.54, -24.45], [-65.65, -24.38], [-65.75, -24.06], [-65.99, -23.98], [-65.99, -23.51], [-66.17, -23.41], [-66.37, -23.69], [-66.35, -24.02], [-66.48, -24.21], [-66.84, -24.07], [-67.21, -23.69], [-67.32, -24.03], [-68.39, -24.49], [-68.57, -24.79], [-68.43, -24.91], [-68.34, -25.11], [-68.51, -25.17], [-66.56, -25.3], [-66.6, -25.36], [-66.52, -25.44], [-66.56, -25.62], [-66.65, -25.71], [-66.84, -25.71], [-66.85, -25.97], [-66.59, -26.15], [-66.54, -26.35], [-66.38, -26.42], [-66.21, -26.13], [-66.07, -26.24], [-65.72, -26.35], [-65.69, -26.12], [-65.36, -26.06], [-65.27, -26.17], [-64.95, -26.31], [-64.78, -26.22], [-64.49, -26.22], [-64.27, -25.7], [-64.03, -25.75], [-64.01, -25.67], [-63.48, -25.71], [-62.34, -24.39], [-62.34, -22.46]]]}, {"nombre": "Córdoba", "anillos": [[[-62.13, -30.48], [-62.17, -30.35], [-62.52, -30.34], [-62.59, -30.26], [-62.56, -30.06], [-62.79, -29.96], [-62.81, -29.83], [-63.46, -29.76], [-63.47, -29.66], [-63.72, -29.67], [-63.81, -29.58], [-63.96, -29.62], [-63.98, -29.55], [-64.28, -29.5], [-64.96, -29.6], [-64.94, -29.85], [-65.16, -30.05], [-65.42, -30.12], [-65.77, -31.04], [-65.77, -31.89], [-65.63, -31.9], [-65.25, -32.09], [-65.21, -32.33], [-64.92, -32.33], [-64.91, -32.69], [-65.0, -33.0], [-65.14, -33.19], [-65.11, -35.02], [-63.39, -35.0], [-63.39, -34.39], [-62.88, -34.39], [-61.79, -33.01], [-61.8, -32.77], [-61.95, -32.68], [-61.89, -32.61], [-61.93, -32.46], [-62.2, -32.11], [-62.17, -31.99], [-62.24, -31.7], [-62.12, -31.61], [-61.84, -30.74], [-62.13, -30.48]]]}, {"nombre": "La Pampa", "anillos": [[[-63.38, -39.33], [-63.39, -35.0], [-65.11, -35.02], [-65.11, -36.0], [-68.3, -36.0], [-68.3, -36.17], [-68.25, -36.17], [-68.25, -37.57], [-67.79, -37.65], [-67.73, -37.85], [-67.9, -38.02], [-67.75, -38.06], [-67.66, -38.2], [-67.53, -38.26], [-67.19, -38.22], [-67.09, -38.4], [-66.63, -38.54], [-66.54, -38.72], [-66.08, -38.73], [-65.69, -38.83], [-65.58, -38.77], [-65.38, -38.86], [-65.11, -38.8], [-64.37, -38.88], [-63.38, -39.33]]]}, {"nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur", "anillos": [[[-65.14, -54.65], [-65.81, -54.65], [-66.46, -54.48], [-66.75, -54.26], [-67.45, -53.98], [-67.57, -53.89], [-67.55, -53.84], [-67.94, -53.63], [-68.14, -53.33], [-68.55, -53.25], [-68.54, -53.15], [-68.41, -53.05], [-68.29, -53.01], [-68.25, -53.06], [-68.29, -52.95], [-68.61, -52.66], [-68.61, -54.89], [-68.26, -54.84], [-68.31, -54.81], [-68.26, -54.8], [-67.69, -54.89], [-67.15, -54.89], [-66.45, -55.06], [-65.97, -54.96], [-65.99, -54.9], [-65.74, -54.91], [-65.72, -54.97], [-65.48, -54.89], [-65.38, -54.94], [-65.14, -54.65]], [[-58.47, -51.31], [-58.58, -51.3], [-58.62, -51.35], [-58.97, -51.24], [-58.87, -51.38], [-59.01, -51.39], [-58.96, -51.44], [-59.14, -51.44], [-58.95, -51.52], [-59.06, -51.52], [-59.04, -51.6], [-59.12, -51.51], [-59.18, -51.58], [-59.02, -51.67], [-58.98, -51.8], [-59.05, -51.83], [-59.09, -51.69], [-59.39, -51.84], [-59.5, -51.84], [-59.46, -51.89], [-59.53, -51.9], [-59.47, -51.93], [-59.59, -51.9], [-59.56, -52.01], [-59.65, -52.01], [-59.56, -52.08], [-59.73, -52.13], [-59.48, -52.31], [-59.31, -52.35], [-59.38, -52.32], [-59.36, -52.22], [-59.47, -52.16], [-59.3, -52.14], [-59.21, -52.22], [-59.04, -52.25], [-59.1, -52.2], [-59.03, -52.16], [-59.15, -52.16], [-59.07, -52.1], [-59.27, -52.0], [-59.02, -52.03], [-58.93, -52.11], [-58.75, -52.04], [-58.65, -52.14], [-58.61, -51.98], [-58.89, -51.93], [-58.78, -51.94], [-58.99, -51.86], [-58.96, -51.8], [-58.76, -51.9], [-58.45, -51.93], [-58.17, -51.82], [-58.36, -51.82], [-58.12, -51.8], [-58.23, -51.76], [-57.74, -51.69], [-57.89, -51.69], [-57.77, -51.62], [-58.16, -51.55], [-58.04, -51.5], [-57.76, -51.54], [-57.87, -51.51], [-57.76, -51.5], [-57.94, -51.36], [-58.28, -51.39], [-58.37, -51.48], [-58.2, -51.52], [-58.25, -51.55], [-58.19, -51.61], [-58.25, -51.59], [-58.22, -51.65], [-58.28, -51.55], [-58.42, -51.56], [-58.42, -51.48], [-58.54, -51.49], [-58.53, -51.4], [-58.45, -51.46], [-58.31, -51.42], [-58.47, -51.31]], [[-59.2, -51.4], [-59.39, -51.33], [-59.48, -51.4], [-59.38, -51.43], [-59.52, -51.48], [-59.59, -51.45], [-59.49, -51.4], [-59.79, -51.46], [-59.75, -51.41], [-60.04, -51.39], [-60.09, -51.45], [-59.98, -51.47], [-60.12, -51.5], [-60.66, -51.36], [-60.6, -51.44], [-60.38, -51.49], [-60.51, -51.53], [-60.04, -51.7], [-60.65, -51.67], [-60.57, -51.8], [-60.25, -51.7], [-60.18, -51.71], [-60.2, -51.78], [-60.32, -51.76], [-60.3, -51.83], [-60.35, -51.86], [-60.39, -51.77], [-60.45, -51.78], [-60.51, -51.94], [-60.64, -51.92], [-60.42, -51.93], [-60.45, -51.97], [-60.67, -51.97], [-60.68, -52.03], [-60.7, -51.96], [-60.84, -51.95], [-60.75, -52.02], [-60.88, -52.07], [-61.03, -52.01], [-61.05, -52.05], [-60.8, -52.19], [-60.73, -52.18], [-60.85, -52.11], [-60.69, -52.12], [-60.74, -52.15], [-60.64, -52.2], [-60.7, -52.21], [-60.65, -52.26], [-60.5, -52.19], [-60.57, -52.13], [-60.38, -52.18], [-60.49, -52.12], [-60.35, -52.16], [-60.24, -51.99], [-59.86, -51.96], [-59.59, -51.66], [-59.39, -51.6], [-59.34, -51.5], [-59.23, -51.46], [-59.28, -51.43], [-59.2, -51.4]], [[-63.81, -54.73], [-64.13, -54.77], [-64.35, -54.73], [-64.36, -54.8], [-64.55, -54.73], [-64.51, -54.8], [-64.75, -54.83], [-64.61, -54.91], [-64.29, -54.79], [-64.22, -54.86], [-63.85, -54.79], [-63.81, -54.73]], [[-60.86, -51.79], [-60.99, -51.87], [-61.03, -51.86], [-60.94, -51.8], [-61.03, -51.78], [-61.16, -51.85], [-61.0, -51.99], [-60.87, -51.91], [-60.86, -51.79]], [[-60.05, -51.34], [-60.32, -51.26], [-60.12, -51.36], [-60.17, -51.4], [-60.23, -51.34], [-60.29, -51.37], [-60.26, -51.41], [-60.05, -51.34]], [[-59.44, -51.33], [-59.5, -51.27], [-59.83, -51.27], [-59.44, -51.33]], [[-58.41, -52.0], [-58.55, -52.02], [-58.43, -52.1], [-58.41, -52.0]], [[-59.69, -52.22], [-59.7, -52.17], [-59.81, -52.17], [-59.74, -52.21], [-59.75, -52.3], [-59.69, -52.22]], [[-61.2, -51.82], [-61.35, -51.84], [-61.24, -51.88], [-61.2, -51.82]], [[-59.9, -51.31], [-60.05, -51.31], [-59.93, -51.36], [-59.9, -51.31]], [[-59.68, -52.3], [-59.82, -52.36], [-59.76, -52.38], [-59.68, -52.3]], [[-58.83, -52.15], [-58.85, -52.21], [-59.0, -52.23], [-58.87, -52.23], [-58.83, -52.15]], [[-61.21, -51.69], [-61.33, -51.7], [-61.31, -51.75], [-61.21, -51.69]], [[-59.7, -51.36], [-59.75, -51.32], [-59.82, -51.36], [-59.7, -51.36]]]}, {"nombre": "Santa Cruz", "anillos": [[[-67.6, -46.0], [-71.65, -46.0], [-71.72, -46.09], [-71.89, -46.13], [-71.73, -46.27], [-71.76, -46.35], [-71.64, -46.68], [-71.96, -46.82], [-71.96, -46.97], [-71.88, -47.01], [-71.95, -47.09], [-71.86, -47.13], [-71.87, -47.22], [-72.0, -47.21], [-72.05, -47.34], [-72.34, -47.45], [-72.31, -47.6], [-72.52, -47.75], [-72.47, -47.82], [-72.53, -47.94], [-72.43, -47.97], [-72.44, -48.06], [-72.31, -48.14], [-72.24, -48.35], [-72.38, -48.35], [-72.35, -48.39], [-72.44, -48.51], [-72.59, -48.49], [-72.53, -48.8], [-72.79, -48.96], [-72.95, -48.95], [-73.15, -49.19], [-73.13, -49.27], [-73.05, -49.27], [-73.47, -49.2], [-73.49, -49.24], [-73.41, -49.32], [-73.46, -49.48], [-73.55, -49.54], [-73.46, -49.62], [-73.51, -49.7], [-73.44, -49.76], [-73.55, -49.92], [-73.51, -49.96], [-73.57, -50.02], [-73.48, -50.05], [-73.57, -50.27], [-73.49, -50.32], [-73.43, -50.48], [-73.17, -50.68], [-73.28, -50.74], [-73.27, -50.82], [-72.73, -50.61], [-72.6, -50.68], [-72.49, -50.6], [-72.29, -50.66], [-72.35, -50.75], [-72.25, -50.88], [-72.27, -51.04], [-72.37, -51.02], [-72.41, -51.11], [-72.26, -51.27], [-72.36, -51.32], [-72.32, -51.48], [-72.44, -51.59], [-72.34, -51.58], [-72.3, -51.7], [-71.96, -51.87], [-72.0, -51.98], [-70.0, -52.0], [-69.49, -52.15], [-69.19, -52.15], [-68.84, -52.28], [-68.42, -52.33], [-68.41, -52.38], [-68.35, -52.32], [-68.71, -51.98], [-68.96, -51.63], [-69.55, -51.62], [-69.34, -51.55], [-69.13, -51.6], [-68.95, -51.55], [-69.17, -50.98], [-69.46, -51.1], [-69.13, -50.9], [-69.08, -50.56], [-68.88, -50.34], [-68.35, -50.15], [-68.58, -49.96], [-68.82, -49.97], [-68.57, -49.94], [-68.61, -49.81], [-68.35, -50.12], [-67.92, -50.01], [-67.73, -49.79], [-67.6, -49.3], [-67.67, -49.26], [-67.71, -49.39], [-67.83, -49.39], [-67.62, -49.19], [-67.55, -49.01], [-67.22, -48.84], [-67.13, -48.69], [-66.87, -48.59], [-66.75, -48.47], [-66.34, -48.36], [-66.34, -48.28], [-66.12, -48.12], [-65.92, -48.11], [-65.97, -48.05], [-65.94, -47.95], [-65.76, -47.92], [-65.84, -47.89], [-65.91, -47.76], [-66.23, -47.84], [-66.03, -47.74], [-65.85, -47.75], [-65.74, -47.51], [-65.74, -47.2], [-65.87, -47.09], [-66.79, -47.0], [-67.12, -46.71], [-67.44, -46.54], [-67.61, -46.24], [-67.6, -46.0]]]}, {"nombre": "Chubut", "anillos": [[[-65.07, -42.0], [-71.77, -42.0], [-71.72, -42.06], [-71.78, -42.15], [-71.92, -42.19], [-72.05, -42.11], [-72.17, -42.14], [-72.13, -42.38], [-72.03, -42.41], [-72.01, -42.49], [-72.17, -42.67], [-72.14, -42.9], [-71.73, -43.2], [-71.73, -43.31], [-71.91, -43.32], [-71.93, -43.46], [-71.85, -43.48], [-71.88, -43.55], [-71.58, -43.65], [-71.75, -43.79], [-71.65, -43.95], [-71.77, -44.11], [-71.85, -44.11], [-71.79, -44.22], [-71.82, -44.41], [-71.39, -44.39], [-71.17, -44.44], [-71.09, -44.53], [-71.23, -44.64], [-71.2, -44.72], [-71.26, -44.8], [-71.47, -44.74], [-71.93, -44.8], [-72.07, -44.76], [-72.03, -44.9], [-71.56, -44.98], [-71.32, -45.3], [-71.53, -45.39], [-71.47, -45.5], [-71.76, -45.56], [-71.77, -45.85], [-71.65, -45.89], [-71.65, -46.0], [-67.6, -46.0], [-67.37, -45.78], [-67.34, -45.62], [-66.97, -45.27], [-66.52, -45.22], [-66.59, -45.14], [-66.47, -45.16], [-66.53, -45.14], [-66.51, -45.1], [-66.2, -44.98], [-65.93, -45.05], [-65.87, -45.0], [-65.61, -45.03], [-65.53, -44.92], [-65.73, -44.85], [-65.68, -44.71], [-65.38, -44.58], [-65.22, -44.36], [-65.31, -44.22], [-65.22, -44.04], [-65.35, -43.78], [-65.33, -43.66], [-65.05, -43.4], [-64.98, -43.25], [-64.31, -42.98], [-65.01, -42.78], [-64.99, -42.65], [-64.63, -42.5], [-64.35, -42.53], [-64.21, -42.62], [-64.25, -42.77], [-64.11, -42.88], [-63.65, -42.78], [-63.58, -42.61], [-63.61, -42.3], [-63.76, -42.08], [-64.37, -42.24], [-64.06, -42.28], [-64.06, -42.38], [-64.13, -42.43], [-64.48, -42.44], [-64.62, -42.39], [-64.47, -42.24], [-64.89, -42.18], [-65.07, -42.0]]]}, {"nombre": "San Juan", "anillos": [[[-66.66, -31.92], [-66.8, -31.81], [-66.87, -31.63], [-66.95, -31.63], [-67.1, -31.38], [-67.08, -30.92], [-67.49, -30.54], [-67.59, -30.3], [-68.05, -29.91], [-68.16, -29.88], [-68.2, -29.78], [-68.44, -29.65], [-68.89, -29.6], [-69.01, -29.65], [-68.96, -29.29], [-69.0, -29.18], [-68.91, -29.13], [-68.96, -28.96], [-68.91, -28.86], [-69.16, -28.76], [-69.32, -28.41], [-69.42, -28.45], [-69.64, -28.39], [-69.79, -29.13], [-69.95, -29.19], [-70.02, -29.33], [-69.88, -29.73], [-69.96, -30.09], [-69.81, -30.16], [-69.96, -30.39], [-70.15, -30.35], [-70.12, -30.43], [-70.19, -30.49], [-70.32, -30.93], [-70.27, -31.04], [-70.4, -31.17], [-70.46, -31.08], [-70.5, -31.12], [-70.57, -31.48], [-70.46, -31.84], [-70.21, -31.96], [-70.29, -32.05], [-70.39, -32.04], [-70.3, -32.14], [-70.32, -32.27], [-70.22, -32.32], [-70.24, -32.43], [-70.15, -32.47], [-70.09, -32.62], [-70.0, -32.53], [-69.85, -32.57], [-69.71, -32.5], [-69.72, -32.32], [-69.63, -32.26], [-69.6, -32.15], [-69.42, -32.07], [-69.31, -32.09], [-69.18, -32.0], [-68.92, -32.11], [-68.92, -32.34], [-68.67, -32.34], [-68.46, -32.24], [-68.46, -32.14], [-68.06, -32.08], [-67.96, -32.09], [-67.84, -32.22], [-67.52, -32.23], [-67.47, -32.31], [-67.26, -32.38], [-67.38, -32.21], [-67.38, -31.87], [-67.14, -31.83], [-66.66, -31.92]]]}, {"nombre": "Río Negro", "anillos": [[[-63.38, -39.33], [-64.37, -38.88], [-65.11, -38.8], [-65.38, -38.86], [-65.58, -38.77], [-65.69, -38.83], [-66.08, -38.73], [-66.54, -38.72], [-66.63, -38.54], [-67.09, -38.4], [-67.19, -38.22], [-67.55, -38.26], [-67.75, -38.06], [-67.86, -38.05], [-67.9, -37.98], [-67.72, -37.81], [-67.79, -37.65], [-68.25, -37.57], [-68.26, -38.68], [-68.12, -38.75], [-68.0, -38.98], [-68.3, -38.98], [-68.56, -39.08], [-69.0, -39.52], [-69.28, -39.6], [-69.51, -39.82], [-69.93, -39.94], [-70.01, -40.05], [-69.95, -40.18], [-70.06, -40.25], [-70.06, -40.37], [-70.17, -40.43], [-70.17, -40.48], [-70.54, -40.5], [-70.65, -40.59], [-70.98, -40.65], [-71.12, -40.76], [-71.04, -40.96], [-71.14, -41.06], [-71.31, -41.1], [-71.56, -41.02], [-71.86, -41.03], [-71.82, -41.06], [-71.91, -41.36], [-71.83, -41.48], [-71.89, -41.61], [-71.75, -41.82], [-71.79, -41.96], [-65.07, -42.0], [-64.99, -41.52], [-65.14, -41.23], [-65.16, -40.95], [-65.05, -40.78], [-64.9, -40.76], [-64.95, -40.71], [-64.73, -40.79], [-64.87, -40.83], [-64.54, -40.86], [-63.79, -41.16], [-63.1, -41.15], [-62.79, -41.02], [-62.96, -40.82], [-63.19, -40.72], [-63.38, -40.71], [-63.38, -39.33]]]}, {"nombre": "Neuquén", "anillos": [[[-70.42, -36.11], [-70.49, -36.18], [-70.57, -36.13], [-70.71, -36.27], [-70.71, -36.43], [-70.89, -36.4], [-70.96, -36.5], [-71.04, -36.48], [-71.01, -36.68], [-71.11, -36.68], [-71.18, -36.84], [-71.09, -36.94], [-71.2, -36.97], [-71.09, -37.11], [-71.22, -37.27], [-71.12, -37.49], [-71.21, -37.69], [-71.11, -37.95], [-70.98, -38.1], [-71.04, -38.13], [-70.98, -38.43], [-70.83, -38.59], [-70.93, -38.76], [-71.09, -38.75], [-71.44, -38.94], [-71.37, -39.28], [-71.53, -39.52], [-71.47, -39.59], [-71.58, -39.64], [-71.7, -39.59], [-71.69, -39.84], [-71.59, -39.91], [-71.69, -40.03], [-71.67, -40.1], [-71.83, -40.11], [-71.82, -40.23], [-71.66, -40.36], [-71.74, -40.44], [-71.82, -40.42], [-71.84, -40.63], [-71.96, -40.74], [-71.86, -41.03], [-71.56, -41.02], [-71.31, -41.1], [-71.14, -41.06], [-71.04, -40.96], [-71.12, -40.76], [-70.98, -40.65], [-70.65, -40.59], [-70.54, -40.5], [-70.17, -40.48], [-70.17, -40.43], [-70.06, -40.37], [-70.06, -40.25], [-69.95, -40.18], [-70.01, -40.05], [-69.93, -39.94], [-69.51, -39.82], [-69.28, -39.6], [-69.0, -39.52], [-68.56, -39.08], [-68.3, -38.98], [-68.0, -38.98], [-68.12, -38.75], [-68.26, -38.68], [-68.25, -37.57], [-68.44, -37.54], [-68.51, -37.45], [-68.7, -37.44], [-68.77, -37.37], [-69.03, -37.36], [-69.06, -37.22], [-69.27, -37.15], [-69.53, -37.17], [-69.71, -37.1], [-69.78, -36.99], [-69.75, -36.89], [-69.92, -36.79], [-70.12, -36.57], [-70.23, -36.32], [-70.34, -36.34], [-70.42, -36.11]]]}]};
+
+// ---------- utilidades ----------
+const fmt = (v, d = 0) => v == null ? "–" : Number(v).toLocaleString("es-AR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const css = (nombre) => getComputedStyle(document.documentElement).getPropertyValue(nombre).trim();
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs = {}, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (padre) padre.appendChild(e);
+  return e;
+}
+function html(tag, clase, texto) {
+  const e = document.createElement(tag);
+  if (clase) e.className = clase;
+  if (texto != null) e.textContent = texto;
+  return e;
+}
+// Ancho del dibujo: el del lugar donde va, entre 320 y 700 píxeles. Así los
+// textos se ven a su tamaño real también en un celular.
+const anchoDe = lienzo => Math.round(Math.min(700, Math.max(320, lienzo.clientWidth || 700)));
+function escalaLineal(d0, d1, r0, r1) { return v => r0 + (v - d0) / (d1 - d0 || 1) * (r1 - r0); }
+function ticks(max, n = 4) {
+  const paso0 = max / n, mag = Math.pow(10, Math.floor(Math.log10(paso0)));
+  const paso = [1, 2, 2.5, 5, 10].map(m => m * mag).find(p => p >= paso0);
+  const t = []; let v = 0; do { t.push(+v.toFixed(6)); v += paso; } while (t[t.length - 1] < max - 1e-9);
+  return t;
+}
+
+// Arma el marco común: título, subtítulo, leyenda, lienzo y tabla de datos.
+function marco(id, { titulo, subtitulo, leyenda, fuente, columnas, filas, tipoLeyenda = "linea" }) {
+  const fig = document.getElementById(id);
+  fig.appendChild(html("p", "titulo", titulo));
+  if (subtitulo) fig.appendChild(html("p", "subtitulo", subtitulo));
+  if (leyenda && leyenda.length > 1) {
+    const ley = html("div", "leyenda");
+    leyenda.forEach(s => {
+      const span = document.createElement("span");
+      const i = document.createElement("i");
+      if (tipoLeyenda === "caja") { i.className = "caja"; i.style.background = `var(${s.color})`; }
+      else { i.style.borderColor = `var(${s.color})`; if (s.punteada) i.style.borderTopStyle = "dashed"; }
+      span.appendChild(i); span.appendChild(document.createTextNode(s.nombre));
+      ley.appendChild(span);
+    });
+    fig.appendChild(ley);
+  }
+  const lienzo = html("div", "lienzo");
+  fig.appendChild(lienzo);
+  const tip = html("div", "tooltip");
+  lienzo.appendChild(tip);
+  if (fuente) fig.appendChild(html("figcaption", null, fuente));
+  if (columnas) {
+    const det = html("details", "tabla");
+    det.appendChild(html("summary", null, "Ver los datos"));
+    const scroll = html("div", "tabla-scroll");
+    const t = document.createElement("table");
+    const tr = document.createElement("tr");
+    columnas.forEach(c => tr.appendChild(html("th", null, c)));
+    t.appendChild(tr);
+    filas.forEach(f => { const r = document.createElement("tr"); f.forEach(c => r.appendChild(html("td", null, c))); t.appendChild(r); });
+    scroll.appendChild(t); det.appendChild(scroll); fig.appendChild(det);
+  }
+  return { lienzo, tip };
+}
+
+function mostrarTip(tip, lienzo, x, y, encabezado, filas) {
+  tip.replaceChildren();
+  tip.appendChild(html("div", "encabezado", encabezado));
+  filas.forEach(f => {
+    const fila = html("div", "fila");
+    const i = document.createElement("i");
+    if (f.color) i.style.borderColor = `var(${f.color})`;
+    fila.appendChild(i);
+    fila.appendChild(html("b", null, f.valor));
+    fila.appendChild(html("span", null, f.nombre));
+    tip.appendChild(fila);
+  });
+  const ancho = lienzo.clientWidth;
+  tip.style.left = Math.min(Math.max(x + 12, 0), ancho - 170) + "px";
+  tip.style.top = Math.max(y - 20, 0) + "px";
+  tip.style.opacity = 1;
+}
+
+// ---------- gráfico de líneas ----------
+function lineas(id, cfg) {
+  const { datos, x, series, yFmt = v => fmt(v), alto = 260 } = cfg;
+  const { lienzo, tip } = marco(id, { ...cfg, leyenda: series });
+  const W = anchoDe(lienzo), H = alto, m = { t: 12, r: cfg.margenDerecho ?? 92, b: 26, l: 46 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": cfg.titulo }, null);
+  lienzo.insertBefore(svg, tip);
+  const xs = datos.map(d => d[x]);
+  const max = Math.max(...datos.flatMap(d => series.map(s => d[s.clave] ?? 0))) * 1.05;
+  const yt = ticks(max);
+  const X = escalaLineal(xs[0], xs[xs.length - 1], m.l, W - m.r);
+  const Y = escalaLineal(0, yt[yt.length - 1], H - m.b, m.t);
+  const eje = el("g", { class: "eje" }, svg);
+  yt.forEach(v => {
+    el("line", { class: "grilla", x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v) }, eje);
+    el("text", { x: m.l - 6, y: Y(v) + 4, "text-anchor": "end" }, eje).textContent = yFmt(v);
+  });
+  const paso = Math.ceil(xs.length / (W < 500 ? 4 : 8));
+  xs.forEach((v, i) => { const ultimo = i === xs.length - 1; if ((i % paso === 0 && (xs.length - 1 - i >= paso / 2 + 0.5 || ultimo)) || ultimo) el("text", { x: X(v), y: H - 6, "text-anchor": "middle" }, eje).textContent = v; });
+  if (cfg.referencia != null) el("line", { x1: m.l, x2: W - m.r, y1: Y(cfg.referencia), y2: Y(cfg.referencia), stroke: css("--text-muted"), "stroke-dasharray": "3 3" }, svg);
+  // Marcas verticales para hechos puntuales (x puede tener decimales: 2024.27 es abril de 2024).
+  (cfg.marcas || []).forEach(mk => {
+    el("line", { x1: X(mk.x), x2: X(mk.x), y1: m.t, y2: H - m.b, stroke: css("--text-muted"), "stroke-dasharray": "2 3" }, svg);
+    el("text", { x: X(mk.x) + (mk.izquierda ? -5 : 5), y: m.t + 10, "text-anchor": mk.izquierda ? "end" : "start", class: "marca" }, svg).textContent = mk.texto;
+  });
+  // Una línea por serie; los años sin dato cortan la línea.
+  const etiquetas = [];
+  series.forEach(s => {
+    let d = "", abierto = false;
+    datos.forEach(p => {
+      const v = p[s.clave];
+      if (v == null) { abierto = false; return; }
+      d += (abierto ? "L" : "M") + X(p[x]) + "," + Y(v); abierto = true;
+    });
+    el("path", { d, fill: "none", stroke: `var(${s.color})`, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round",
+                 ...(s.punteada ? { "stroke-dasharray": "5 4" } : {}) }, svg);
+    const ult = [...datos].reverse().find(p => p[s.clave] != null);
+    if (ult) {
+      el("circle", { cx: X(ult[x]), cy: Y(ult[s.clave]), r: 4, fill: `var(${s.color})`, stroke: "var(--surface-1)", "stroke-width": 2 }, svg);
+      etiquetas.push({ y: Y(ult[s.clave]), x: X(ult[x]), texto: s.nombre });
+    }
+  });
+  // Etiquetas directas al final de cada línea, separadas para que no se pisen.
+  etiquetas.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < etiquetas.length; i++) if (etiquetas[i].y - etiquetas[i - 1].y < 14) etiquetas[i].y = etiquetas[i - 1].y + 14;
+  etiquetas.forEach(e => { el("text", { class: "etiqueta", x: e.x + 8, y: e.y + 4 }, svg).textContent = e.texto; });
+  // Capa de lectura: línea vertical y tooltip con todas las series del año.
+  const guia = el("line", { y1: m.t, y2: H - m.b, stroke: css("--text-muted"), "stroke-width": 1, opacity: 0 }, svg);
+  const zona = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent", tabindex: 0 }, svg);
+  function mover(evt) {
+    const r = svg.getBoundingClientRect();
+    const px = (evt.clientX - r.left) * W / r.width;
+    let i = 0, mejor = Infinity;
+    xs.forEach((v, k) => { const dd = Math.abs(X(v) - px); if (dd < mejor) { mejor = dd; i = k; } });
+    const p = datos[i];
+    guia.setAttribute("x1", X(p[x])); guia.setAttribute("x2", X(p[x])); guia.setAttribute("opacity", .6);
+    mostrarTip(tip, lienzo, X(p[x]) * r.width / W, evt.clientY - r.top, String(p[x]),
+      series.map(s => ({ color: s.color, nombre: s.nombre, valor: p[s.clave] == null ? "sin dato" : yFmt(p[s.clave]) })));
+  }
+  zona.addEventListener("pointermove", mover);
+  zona.addEventListener("pointerleave", () => { tip.style.opacity = 0; guia.setAttribute("opacity", 0); });
+}
+
+// ---------- barras (simples o apiladas) ----------
+function barras(id, cfg) {
+  const { datos, x, series, yFmt = v => fmt(v), alto = 240, porcentaje = false } = cfg;
+  const { lienzo, tip } = marco(id, { ...cfg, leyenda: series, tipoLeyenda: "caja" });
+  const W = anchoDe(lienzo), H = alto, m = { t: 12, r: 12, b: 26, l: 46 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": cfg.titulo });
+  lienzo.insertBefore(svg, tip);
+  const totales = datos.map(d => series.reduce((a, s) => a + (d[s.clave] ?? 0), 0));
+  const max = porcentaje ? 100 : Math.max(...totales) * 1.05;
+  const yt = porcentaje ? [0, 25, 50, 75, 100] : ticks(max);
+  const Y = escalaLineal(0, yt[yt.length - 1], H - m.b, m.t);
+  const banda = (W - m.l - m.r) / datos.length, ancho = Math.min(banda * 0.7, 46);
+  const eje = el("g", { class: "eje" }, svg);
+  yt.forEach(v => {
+    el("line", { class: "grilla", x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v) }, eje);
+    el("text", { x: m.l - 6, y: Y(v) + 4, "text-anchor": "end" }, eje).textContent = porcentaje ? v + "%" : yFmt(v);
+  });
+  const paso = Math.ceil(datos.length / (W < 500 ? 5 : 10));
+  datos.forEach((d, i) => {
+    const cx = m.l + banda * i + banda / 2;
+    const ultimo = i === datos.length - 1; if ((i % paso === 0 && (datos.length - 1 - i >= paso / 2 + 0.5)) || ultimo) el("text", { x: cx, y: H - 6, "text-anchor": "middle" }, eje).textContent = d[x];
+    let base = 0;
+    const g = el("g", { tabindex: 0 }, svg);
+    series.forEach((s, k) => {
+      const v = d[s.clave] ?? 0; if (v <= 0) return;
+      const y0 = Y(base), y1 = Y(base + v);
+      const alto = Math.max(y0 - y1 - 2, 1);
+      const arriba = k === series.length - 1 || series.slice(k + 1).every(t => !(d[t.clave] > 0));
+      el("rect", { x: cx - ancho / 2, y: y1, width: ancho, height: alto, rx: arriba ? 4 : 0, fill: `var(${s.color})` }, g);
+      base += v;
+    });
+    const hit = el("rect", { x: cx - banda / 2, y: m.t, width: banda, height: H - m.t - m.b, fill: "transparent" }, g);
+    const mostrar = evt => {
+      const r = svg.getBoundingClientRect();
+      mostrarTip(tip, lienzo, cx * r.width / W, (evt.clientY ?? r.top + 40) - r.top, String(d[x]),
+        series.slice().reverse().map(s => ({ color: s.color, nombre: s.nombre, valor: porcentaje ? fmt(d[s.clave]) + "%" : yFmt(d[s.clave]) })));
+      g.style.opacity = .85;
+    };
+    hit.addEventListener("pointermove", mostrar);
+    g.addEventListener("focus", mostrar);
+    hit.addEventListener("pointerleave", () => { tip.style.opacity = 0; g.style.opacity = 1; });
+  });
+}
+
+function tabla(id, columnas, filas) {
+  const t = document.getElementById(id);
+  const tr = document.createElement("tr");
+  columnas.forEach(c => tr.appendChild(html("th", null, c)));
+  t.appendChild(tr);
+  filas.forEach(f => { const r = document.createElement("tr"); f.forEach(c => r.appendChild(html("td", null, c))); t.appendChild(r); });
+}
+
+// ---------- mapa de puntos ----------
+// Provincias en gris y un círculo por punto, con área proporcional al valor.
+// Si el punto trae un valor anterior, se dibuja detrás como contorno punteado.
+function mapa(id, cfg) {
+  const { provincias, puntos, destacar = [], valorFmt = v => fmt(v), recorte } = cfg;
+  const { lienzo, tip } = marco(id, cfg);
+  const [lon0, lon1, lat0, lat1] = recorte || [-74, -53, -55.2, -21.7];
+  const kx = Math.cos(38 * Math.PI / 180);           // corrige el estiramiento en latitudes medias
+  const W = 420, escala = W / ((lon1 - lon0) * kx), H = Math.round((lat1 - lat0) * escala);
+  const P = (lon, lat) => [(lon - lon0) * kx * escala, (lat1 - lat) * escala];
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": cfg.titulo, class: "mapa" });
+  lienzo.insertBefore(svg, tip);
+  provincias.forEach(pr => {
+    const d = pr.anillos.map(a => "M" + a.map(([x, y]) => P(x, y).map(n => n.toFixed(1)).join(",")).join("L") + "Z").join("");
+    el("path", { d, class: destacar.includes(pr.nombre) ? "provincia destacada" : "provincia" }, svg);
+  });
+  const max = Math.max(...puntos.flatMap(p => [p.valor ?? 0, p.anterior ?? 0]));
+  const R = v => Math.sqrt(v / max) * (cfg.radioMax || 26);
+  [...puntos].sort((a, b) => (b.valor ?? 0) - (a.valor ?? 0)).forEach(p => {
+    const [x, y] = P(p.lon, p.lat);
+    const g = el("g", { tabindex: 0 }, svg);
+    if (p.anterior) el("circle", { cx: x, cy: y, r: R(p.anterior), class: "anterior" }, g);
+    if (p.valor) el("circle", { cx: x, cy: y, r: R(p.valor), fill: `var(${p.color || "--series-1"})`, "fill-opacity": .85, stroke: "var(--surface-1)", "stroke-width": 1.5 }, g);
+    else el("circle", { cx: x, cy: y, r: 3.5, fill: "var(--surface-1)", stroke: "var(--text-muted)", "stroke-width": 1.5 }, g);
+    // Etiqueta con línea guía hacia el costado indicado.
+    const [lx, ly] = [x + (p.dx ?? 40), y + (p.dy ?? 0)];
+    el("line", { x1: x, y1: y, x2: lx, y2: ly, class: "guia" }, g);
+    const anclaje = (p.dx ?? 40) < 0 ? "end" : "start", sep = anclaje === "end" ? -4 : 4;
+    el("text", { x: lx + sep, y: ly - 2, "text-anchor": anclaje, class: "etiqueta-mapa" }, g).textContent = p.nombre;
+    el("text", { x: lx + sep, y: ly + 12, "text-anchor": anclaje, class: "etiqueta-mapa-valor" }, g).textContent = p.leyenda;
+    const mostrar = () => {
+      const r = svg.getBoundingClientRect();
+      mostrarTip(tip, lienzo, x * r.width / W, y * r.height / H, p.nombre,
+        (p.tip || []).map(t => ({ nombre: t.nombre, valor: t.valor, color: t.color })));
+    };
+    g.addEventListener("pointerenter", mostrar); g.addEventListener("focus", mostrar);
+    g.addEventListener("pointerleave", () => { tip.style.opacity = 0; });
+    g.addEventListener("blur", () => { tip.style.opacity = 0; });
+  });
+  return svg;
+}
+
+// ---------- cascada (horizontal) ----------
+// Arranca en un total, suma y resta cada paso, y termina en el otro total.
+function cascada(id, cfg) {
+  const { inicio, fin, pasos, valorFmt = v => fmt(v) } = cfg;
+  const series = [
+    { nombre: "Total", color: "--otros" },
+    { nombre: "Bajó", color: "--series-2" },
+    { nombre: "Subió", color: "--series-3" },
+  ];
+  const { lienzo, tip } = marco(id, { ...cfg, leyenda: series, tipoLeyenda: "caja" });
+  const filas = [{ ...inicio, total: true }, ...pasos, { ...fin, total: true }];
+  const alto = 34, W = anchoDe(lienzo), m = { t: 6, r: 50, b: 6, l: W < 500 ? 122 : 150 };
+  const H = m.t + m.b + filas.length * alto;
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": cfg.titulo });
+  lienzo.insertBefore(svg, tip);
+  // La escala cubre todos los acumulados, incluso si el total termina en negativo.
+  let acc = inicio.valor; const recorridos = [0, inicio.valor, fin.valor];
+  pasos.forEach(s => { acc += s.valor; recorridos.push(acc); });
+  const minimo = Math.min(...recorridos), maximo = Math.max(...recorridos);
+  const X = escalaLineal(minimo, maximo + (maximo - minimo) * 0.02, m.l, W - m.r);
+  let acumulado = inicio.valor;
+  filas.forEach((f, i) => {
+    const y = m.t + i * alto, g = el("g", { tabindex: 0 }, svg);
+    let a, b, color;
+    if (f.total) { a = 0; b = f.valor; color = f.valor < 0 ? "--series-2" : "--otros"; }
+    else { a = acumulado; b = acumulado + f.valor; acumulado = b; color = f.valor < 0 ? "--series-2" : "--series-3"; }
+    const x0 = X(Math.min(a, b)), x1 = X(Math.max(a, b));
+    el("rect", { x: x0, y: y + 7, width: Math.max(x1 - x0, 2), height: alto - 14, rx: 4, fill: `var(${color})` }, g);
+    // Conector punteado con la fila siguiente.
+    if (i < filas.length - 1) el("line", { x1: X(f.total ? f.valor : b), x2: X(f.total ? f.valor : b), y1: y + alto - 7, y2: y + alto + 7, class: "conector" }, svg);
+    el("text", { x: m.l - 10, y: y + alto / 2 + 4, "text-anchor": "end", class: f.total ? "rotulo-fila fuerte" : "rotulo-fila" }, g).textContent = f.nombre;
+    const signo = f.total ? (f.valor < 0 ? "−" : "") : f.valor > 0 ? "+" : "−";
+    el("text", { x: x1 + 6, y: y + alto / 2 + 4, class: "valor-fila" }, g).textContent = signo + valorFmt(Math.abs(f.valor));
+    const hit = el("rect", { x: 0, y, width: W, height: alto, fill: "transparent" }, g);
+    const mostrar = () => {
+      const r = svg.getBoundingClientRect();
+      mostrarTip(tip, lienzo, x1 * r.width / W, (y + alto) * r.height / H, f.nombre,
+        [{ color, nombre: f.detalle || (f.total ? "total" : "cambio"), valor: signo + valorFmt(Math.abs(f.valor)) }]);
+    };
+    hit.addEventListener("pointerenter", mostrar); g.addEventListener("focus", mostrar);
+    hit.addEventListener("pointerleave", () => { tip.style.opacity = 0; });
+  });
+}
+
+// ---------- de cada 100 ----------
+// Una cuadrícula de 10 x 10 por elemento: los cuadrados pintados son la parte.
+function deCada100(id, cfg) {
+  const { items, color = "--series-1" } = cfg;
+  const fig = document.getElementById(id);
+  fig.appendChild(html("p", "titulo", cfg.titulo));
+  if (cfg.subtitulo) fig.appendChild(html("p", "subtitulo", cfg.subtitulo));
+  const grilla = html("div", "cien-grilla");
+  items.forEach(it => {
+    const caja = html("div", "cien");
+    const n = Math.round(it.valor);
+    const svg = el("svg", { viewBox: "0 0 100 100", role: "img", "aria-label": `${it.nombre}: ${n} de cada 100` });
+    for (let k = 0; k < 100; k++) {
+      // Se llena de abajo hacia arriba, fila por fila.
+      const fila = 9 - Math.floor(k / 10), col = k % 10;
+      el("rect", { x: col * 10 + 1, y: fila * 10 + 1, width: 8, height: 8, rx: 1.5, fill: k < n ? `var(${color})` : "var(--grid)" }, svg);
+    }
+    caja.appendChild(svg);
+    caja.appendChild(html("div", "cien-numero", String(n)));
+    caja.appendChild(html("div", "cien-nombre", it.nombre));
+    if (it.nota) caja.appendChild(html("div", "cien-nota", it.nota));
+    grilla.appendChild(caja);
+  });
+  fig.appendChild(grilla);
+  if (cfg.fuente) fig.appendChild(html("figcaption", null, cfg.fuente));
+}
+
+// ---------- antes y después ----------
+// Una fila por indicador, con dos barras escaladas dentro de la fila.
+function antesDespues(id, cfg) {
+  const { filas, antes, despues } = cfg;
+  const fig = document.getElementById(id);
+  fig.appendChild(html("p", "titulo", cfg.titulo));
+  if (cfg.subtitulo) fig.appendChild(html("p", "subtitulo", cfg.subtitulo));
+  const caja = html("div", "ad");
+  filas.forEach(f => {
+    const fila = html("div", "ad-fila");
+    fila.appendChild(html("div", "ad-nombre", f.nombre));
+    const max = Math.max(f.antes, f.despues);
+    [[antes, f.antes, "--otros"], [despues, f.despues, f.color || "--series-2"]].forEach(([anio, v, color]) => {
+      const linea = html("div", "ad-barra");
+      linea.appendChild(html("span", "ad-anio", anio));
+      const pista = html("div", "ad-pista");
+      const b = html("div", "ad-relleno");
+      b.style.width = (100 * v / max) + "%"; b.style.background = `var(${color})`;
+      pista.appendChild(b); linea.appendChild(pista);
+      linea.appendChild(html("span", "ad-valor", f.fmt ? f.fmt(v) : fmt(v)));
+      fila.appendChild(linea);
+    });
+    const cambio = 100 * (f.despues - f.antes) / f.antes;
+    fila.appendChild(html("div", "ad-cambio", cfg.cambio ? cfg.cambio(f.antes, f.despues) : (cambio > 0 ? "+" : "−") + fmt(Math.abs(cambio)) + "%"));
+    caja.appendChild(fila);
+  });
+  fig.appendChild(caja);
+  if (cfg.fuente) fig.appendChild(html("figcaption", null, cfg.fuente));
+}
+
+// ---------- línea de tiempo ----------
+function lineaDeTiempo(id, eventos) {
+  const lista = document.getElementById(id);
+  eventos.forEach(e => {
+    const li = html("li", e.clase || null);
+    li.appendChild(html("span", "lt-fecha", e.fecha));
+    li.appendChild(html("span", "lt-texto", e.texto));
+    lista.appendChild(li);
+  });
+}
+
+// ---------- barras horizontales ----------
+// Una fila por categoría: nombre, barra y valor. Para rankings con nombres largos.
+function barrasHorizontales(id, cfg) {
+  const { filas, color = "--series-1", valorFmt = v => fmt(v) } = cfg;
+  const fig = document.getElementById(id);
+  fig.appendChild(html("p", "titulo", cfg.titulo));
+  if (cfg.subtitulo) fig.appendChild(html("p", "subtitulo", cfg.subtitulo));
+  const caja = html("div", "bh");
+  const max = Math.max(...filas.map(f => f.valor));
+  filas.forEach(f => {
+    caja.appendChild(html("div", "bh-nombre", f.nombre));
+    const pista = html("div", "bh-pista");
+    const b = html("div", "bh-relleno");
+    b.style.width = (100 * f.valor / max) + "%"; b.style.background = `var(${f.color || color})`;
+    pista.appendChild(b);
+    pista.appendChild(html("span", "bh-valor", valorFmt(f.valor)));
+    caja.appendChild(pista);
+    if (f.nota) { caja.appendChild(html("div", null)); caja.appendChild(html("div", "bh-nota", f.nota)); }
+  });
+  fig.appendChild(caja);
+  if (cfg.fuente) fig.appendChild(html("figcaption", null, cfg.fuente));
+}
+
+// ---------- tarjetas de corrección ----------
+// Cada tarjeta: lo que se dijo (tachado), lo correcto y cómo se detectó.
+function tarjetasCorreccion(id, items) {
+  const caja = document.getElementById(id);
+  items.forEach(c => {
+    const t = html("article", "tarjeta");
+    t.appendChild(html("div", "tarjeta-n", "Error " + c.numero + " · " + c.tipo));
+    const dijo = html("p", "tarjeta-dijo"); dijo.appendChild(html("span", "rotulo", "Se dijo")); dijo.appendChild(html("s", null, c.lo_que_se_dijo));
+    const era = html("p", "tarjeta-era"); era.appendChild(html("span", "rotulo", "Era")); era.appendChild(document.createTextNode(c.lo_correcto));
+    t.appendChild(dijo); t.appendChild(era);
+    t.appendChild(html("div", "tarjeta-como", "Lo detectó: " + c.como_se_detecto.toLowerCase().replace("francisco", "Francisco")));
+    caja.appendChild(t);
+  });
+}
+
+
+const D = DATOS;
+const miles = v => fmt(v) + " mil oz";
+
+// ---------- cuánto llega al Estado ----------
+const p25 = D.pagos_oro.filter(d => d.anio === 2025).sort((a, b) => b.pct - a.pct);
+deCada100("g-cada-100", {
+  titulo: "De cada 100 dólares de oro producido en 2025, cuántos pagó cada mina al Estado",
+  subtitulo: "Impuestos, regalías y otros pagos en efectivo del año",
+  items: p25.map(d => ({ nombre: d.mina, valor: d.pct, nota: `pagó ${fmt(d.pagado_musd)} de ${fmt(d.valor_musd)} millones` })),
+  fuente: "Pagos: informe tributario de Barrick (Veladero) y base ESTMA de Canadá (las otras). Valor: onzas producidas por precio promedio del año.",
+});
+
+const pago = (mina, anio) => D.pagos_oro.find(d => d.mina === mina && d.anio === anio);
+antesDespues("g-parte-estado", {
+  titulo: "La parte que llega al Estado, 2023 contra 2025",
+  subtitulo: "Dólares pagados de cada 100 producidos",
+  antes: "2023", despues: "2025",
+  filas: ["Veladero", "Cerro Negro", "Lindero"].map(m => ({ nombre: m, antes: pago(m, 2023).pct, despues: pago(m, 2025).pct, fmt: v => fmt(v) })),
+  cambio: (a, b) => (b > a ? "+" : "−") + fmt(Math.abs(b - a)),
+  fuente: "La columna de la derecha es la diferencia en dólares de cada 100. Mismas fuentes que el gráfico anterior.",
+});
+
+// ---------- margen ----------
+barras("g-veladero-margen", {
+  titulo: "Veladero: de qué está hecho el precio de cada onza",
+  subtitulo: "Dólares por onza. La barra entera es el precio promedio del año.",
+  datos: D.veladero_margen.map(d => ({ ...d, margen: d.precio - d.aisc })), x: "anio",
+  series: [
+    { clave: "aisc", nombre: "Costo total", color: "--otros" },
+    { clave: "margen", nombre: "Margen", color: "--series-4" },
+  ],
+  fuente: "Costo total: AISC informado por Barrick (no incluye impuesto a las ganancias). Precio: promedio del año, Secretaría de Minería.",
+  columnas: ["Año", "Precio", "Costo total", "Margen por onza"],
+  filas: D.veladero_margen.map(d => [d.anio, fmt(d.precio), fmt(d.aisc), fmt(d.precio - d.aisc)]),
+});
+
+// ---------- Cerro Negro ----------
+const anios = Array.from({ length: 11 }, (_, i) => 2015 + i);
+lineas("g-cerro-negro", {
+  titulo: "Cerro Negro: onzas de oro producidas y lo que Newmont anunció en 2023",
+  subtitulo: "Miles de onzas por año",
+  datos: anios.map(a => D.cerro_negro_promesa.find(d => d.anio === a) || { anio: a, producido: null, prometido: null }),
+  x: "anio", margenDerecho: 84,
+  series: [
+    { clave: "producido", nombre: "Producido", color: "--series-2" },
+    { clave: "prometido", nombre: "Prometido", color: "--text-secondary", punteada: true },
+  ],
+  marcas: [
+    { x: 2023.42, texto: "Anuncio", izquierda: true },
+    { x: 2024.27, texto: "Accidente" },
+  ],
+  fuente: "Producción: informes de Goldcorp y Newmont (no hay dato del año completo 2019). Promesa: Bloomberg Línea, 1-6-2023. Accidente: comunicado de Newmont, 10-4-2024.",
+  columnas: ["Año", "Producido (miles de onzas)", "Prometido"],
+  filas: D.cerro_negro_promesa.map(d => [d.anio, fmt(d.producido), d.prometido ? "más de " + fmt(d.prometido) : ""]),
+});
+
+// ---------- mapa y cascada ----------
+const ubicacion = {
+  "Veladero": [135, -2], "Gualcamayo": [110, 40], "Bajo la Alumbrera": [75, -24], "Lindero": [70, -8],
+  "San José": [150, -95], "Cerro Negro": [150, -45], "Cerro Moro": [100, 0], "Cerro Vanguardia": [90, 52],
+};
+mapa("g-mapa", {
+  titulo: "Las minas de oro y lo que produjeron",
+  subtitulo: "Círculo lleno: 2025. Contorno punteado: 2015. El área es proporcional a las onzas.",
+  provincias: D.mapa, destacar: ["San Juan", "Santa Cruz", "Salta", "Catamarca"],
+  puntos: D.oro_mapa.map(m => ({
+    nombre: m.mina, lat: m.lat, lon: m.lon, valor: m.q2025, anterior: m.q2015,
+    dx: ubicacion[m.mina][0], dy: ubicacion[m.mina][1],
+    leyenda: m.q2025 ? miles(m.q2025) + (m.q2015 ? ` (2015: ${fmt(m.q2015)})` : "")
+           : m.mina === "Bajo la Alumbrera" ? "cerró en 2018" : `sin dato desde ${m.ultimo_anio}`,
+    tip: [{ nombre: "2015", valor: m.q2015 ? miles(m.q2015) : "sin dato" },
+          { nombre: "2025", valor: m.q2025 ? miles(m.q2025) : "sin dato" },
+          { nombre: m.provincia, valor: "" }],
+  })),
+  fuente: "Producción: informes de las empresas. Ubicación: Secretaría de Minería. Cerro Vanguardia, Cerro Moro, Lindero y San José no tienen dato de 2015 en la base (las dos del medio todavía no producían).",
+});
+
+const caso = Object.fromEntries(D.oro_cascada.map(d => [d.mina, d]));
+const paso = (nombre, mina = nombre) => ({ nombre, valor: caso[mina].q2025 - caso[mina].q2015,
+  detalle: `${fmt(caso[mina].q2015)} → ${fmt(caso[mina].q2025)} mil onzas` });
+cascada("g-cascada", {
+  titulo: "Cómo se pasó de 2.038 a 1.184 mil onzas",
+  subtitulo: "Miles de onzas de oro, cambio entre 2015 y 2025",
+  inicio: { nombre: "País 2015", valor: caso["País"].q2015 },
+  pasos: [paso("Cerro Negro"), paso("Veladero"), paso("Alumbrera", "Bajo la Alumbrera"),
+          paso("Resto de las minas"), paso("Cerro Moro"), paso("Lindero")],
+  fin: { nombre: "País 2025", valor: caso["País"].q2025 },
+  fuente: "Total del país: CAEM. Minas: informes de las empresas. \"Resto\" es la diferencia: Cerro Vanguardia, San José, Gualcamayo y minas chicas.",
+  columnas: ["", "2015", "2025", "Cambio"],
+  filas: D.oro_cascada.map(d => [d.mina, fmt(d.q2015), fmt(d.q2025), fmt(d.q2025 - d.q2015)]),
+});
+
+// ---------- línea de tiempo (tabla hecho_mina) ----------
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const fecha = h => {
+  const [a, m, d] = h.fecha.split("-").map(Number);
+  return h.precision === "año" ? String(a) : h.precision === "mes" ? `${MESES[m - 1]} ${a}` : `${d} de ${MESES[m - 1]} de ${a}`;
+};
+const claseHecho = { "Inicio": "sube", "Cierre": "baja", "Freno": "baja", "Accidente": "baja", "Promesa": "rigi", "RIGI": "rigi" };
+lineaDeTiempo("lt-oro", D.hechos.map(h => ({ fecha: fecha(h), texto: h.descripcion, clase: claseHecho[h.tipo] })));
+
+// ---------- cómo lo hice con una IA ----------
+document.getElementById("c-preguntas").textContent = D.cifras.preguntas;
+document.getElementById("c-controles").textContent = D.cifras.controles;
+document.getElementById("c-errores").textContent = D.correcciones.length;
+
+const porDeteccion = {};
+D.correcciones.forEach(c => { porDeteccion[c.como_se_detecto] = (porDeteccion[c.como_se_detecto] || 0) + 1; });
+barrasHorizontales("g-deteccion", {
+  titulo: `Cómo se detectaron los ${D.correcciones.length} errores`,
+  subtitulo: "Cantidad de afirmaciones corregidas, según qué las hizo aparecer. En naranja, las que detecté yo.",
+  filas: Object.entries(porDeteccion).sort((a, b) => b[1] - a[1])
+    .map(([nombre, valor]) => ({ nombre, valor, color: nombre === "Francisco" ? "--series-2" : "--series-1" })),
+  fuente: "Tabla correccion_ia, armada desde la bitácora del proyecto. Solo están los errores que se detectaron.",
+});
+
+tarjetasCorreccion("tarjetas", [5, 9, 14, 6].map(n => D.correcciones.find(c => c.numero === n)));
+tabla("t-errores", ["#", "Se dijo", "Era", "Cómo se detectó", "Qué quedó"],
+  D.correcciones.map(c => [c.numero, c.lo_que_se_dijo, c.lo_correcto, c.como_se_detecto, c.que_quedo]));
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+mina,anio,indicador,valor,unidad,fuente,pagina,nota
+Veladero,2012,ley,1.1,gramos por tonelada,"Barrick, Annual Report 2014",53,
+Veladero,2012,toneladas_procesadas,27695,miles de toneladas,"Barrick, Annual Report 2014",53,
+Veladero,2013,ley,0.94,gramos por tonelada,"Barrick, Annual Report 2014",53,
+Veladero,2013,toneladas_procesadas,29086,miles de toneladas,"Barrick, Annual Report 2014",53,
+Veladero,2014,ley,1.0,gramos por tonelada,"Barrick, Annual Report 2016",60,
+Veladero,2014,toneladas_procesadas,29500,miles de toneladas,"Barrick, Annual Report 2016",60,
+Veladero,2015,ley,0.82,gramos por tonelada,"Barrick, Annual Report 2016",60,
+Veladero,2015,toneladas_procesadas,28385,miles de toneladas,"Barrick, Annual Report 2016",60,
+Veladero,2016,ley,0.82,gramos por tonelada,"Barrick, Annual Report 2016",60,
+Veladero,2016,toneladas_procesadas,28028,miles de toneladas,"Barrick, Annual Report 2016",60,
+Veladero,2012,aisc,761,dólares por onza,"Barrick, Annual Report 2014",53,
+Veladero,2013,aisc,833,dólares por onza,"Barrick, Annual Report 2014",53,
+Veladero,2014,aisc,815,dólares por onza,"Barrick, Annual Report 2014",53,
+Veladero,2017,costo_de_ventas,897,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2017,cash_cost,598,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2017,aisc,987,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2018,costo_de_ventas,1112,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2018,cash_cost,629,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2018,aisc,1154,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2019,costo_de_ventas,1188,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2019,cash_cost,734,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2019,aisc,1105,dólares por onza,"Barrick, Annual Report 2019",68,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2020,costo_de_ventas,1151,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2020,cash_cost,748,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2020,aisc,1308,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2021,costo_de_ventas,1256,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2021,cash_cost,816,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2021,aisc,1493,dólares por onza,"Barrick, Annual Report 2021",72,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2022,costo_de_ventas,1628,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2022,cash_cost,890,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2022,aisc,1528,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2023,costo_de_ventas,1440,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2023,cash_cost,1011,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2023,aisc,1516,dólares por onza,"Barrick, Annual Report 2023",76,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2024,costo_de_ventas,1254,dólares por onza,"Barrick, Annual Report 2024",63,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2024,cash_cost,905,dólares por onza,"Barrick, Annual Report 2024",63,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2024,aisc,1334,dólares por onza,"Barrick, Annual Report 2024",63,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2025,costo_de_ventas,1286,dólares por onza,"Barrick, Annual Report 2025",16,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2025,cash_cost,785,dólares por onza,"Barrick, Annual Report 2025",16,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Veladero,2025,aisc,1450,dólares por onza,"Barrick, Annual Report 2025",16,Barrick informa los costos por onza de su 50%; el costo por onza es el mismo para la mina entera
+Cerro Negro,2015,cash_cost,600,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2015,aisc,769,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2016,cash_cost,505,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2016,aisc,705,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2017,cash_cost,457,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2017,aisc,684,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida"
+Cerro Negro,2018,cash_cost,431,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida. Sin el derecho de exportación de 2018 (41 dólares por onza)"
+Cerro Negro,2018,aisc,535,dólares por onza,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm,,"Goldcorp calcula los costos ""por subproducto"": descuenta la plata vendida. Sin el derecho de exportación de 2018 (41 dólares por onza)"
+Cerro Negro,2016,toneladas_procesadas,827,miles de toneladas,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2016,ley,14.35,gramos por tonelada,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2016,recuperacion,95,por ciento,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2017,toneladas_procesadas,1031,miles de toneladas,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2017,ley,14.31,gramos por tonelada,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2017,recuperacion,96,por ciento,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm,,
+Cerro Negro,2018,toneladas_procesadas,1126,miles de toneladas,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm,,
+Cerro Negro,2018,ley,13.89,gramos por tonelada,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm,,
+Cerro Negro,2018,recuperacion,96,por ciento,Goldcorp (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm,,
+Cerro Negro,2019,costo_de_ventas,603,dólares por onza,"Newmont, Annual Report 2020",81,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp. 2019 cubre desde abril
+Cerro Negro,2019,aisc,753,dólares por onza,"Newmont, Annual Report 2020",81,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp. 2019 cubre desde abril
+Cerro Negro,2020,costo_de_ventas,718,dólares por onza,"Newmont, Annual Report 2020",81,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2020,aisc,1147,dólares por onza,"Newmont, Annual Report 2020",81,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2021,costo_de_ventas,912,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2021,aisc,1247,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2022,costo_de_ventas,1007,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2022,aisc,1262,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2023,costo_de_ventas,1257,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2023,aisc,1509,dólares por onza,"Newmont, Annual Report 2023",109,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2024,costo_de_ventas,1325,dólares por onza,"Newmont, Annual Report 2025",103,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2024,aisc,1631,dólares por onza,"Newmont, Annual Report 2025",103,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2025,costo_de_ventas,1594,dólares por onza,"Newmont, Annual Report 2025",103,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2025,aisc,2220,dólares por onza,"Newmont, Annual Report 2025",103,Newmont: costo aplicable a ventas y AISC por onza vendida; no es la misma definición que Goldcorp
+Cerro Negro,2021,toneladas_procesadas,885,miles de toneladas,"Newmont, Annual Report 2023",76,
+Cerro Negro,2021,ley,10.152,gramos por tonelada,"Newmont, Annual Report 2023",76,
+Cerro Negro,2021,recuperacion,93.2,por ciento,"Newmont, Annual Report 2023",76,
+Cerro Negro,2022,toneladas_procesadas,946,miles de toneladas,"Newmont, Annual Report 2023",74,
+Cerro Negro,2022,ley,9.84,gramos por tonelada,"Newmont, Annual Report 2023",74,
+Cerro Negro,2022,recuperacion,93.6,por ciento,"Newmont, Annual Report 2023",74,
+Cerro Negro,2023,toneladas_procesadas,1076,miles de toneladas,"Newmont, Annual Report 2023",72,
+Cerro Negro,2023,ley,8.314,gramos por tonelada,"Newmont, Annual Report 2023",72,
+Cerro Negro,2023,recuperacion,92.8,por ciento,"Newmont, Annual Report 2023",72,
+Cerro Negro,2024,toneladas_procesadas,837,miles de toneladas,"Newmont, Annual Report 2025",73,
+Cerro Negro,2024,ley,9.379,gramos por tonelada,"Newmont, Annual Report 2025",73,
+Cerro Negro,2024,recuperacion,94.2,por ciento,"Newmont, Annual Report 2025",73,
+Cerro Negro,2025,toneladas_procesadas,789,miles de toneladas,"Newmont, Annual Report 2025",71,
+Cerro Negro,2025,ley,8.287,gramos por tonelada,"Newmont, Annual Report 2025",71,
+Cerro Negro,2025,recuperacion,95.5,por ciento,"Newmont, Annual Report 2025",71,
+Gualcamayo,2020,cash_cost,1189,dólares por onza,"Mineros, MD&A 2021",15,
+Gualcamayo,2020,aisc,1473,dólares por onza,"Mineros, MD&A 2021",15,
+Gualcamayo,2021,cash_cost,1403,dólares por onza,"Mineros, MD&A 2021",15,
+Gualcamayo,2021,aisc,1969,dólares por onza,"Mineros, MD&A 2021",15,
+Gualcamayo,2021,toneladas_procesadas,1721.782,miles de toneladas,"Mineros, MD&A 2022",15,Toneladas puestas en la pila de lixiviación
+Gualcamayo,2021,ley,1.41,gramos por tonelada,"Mineros, MD&A 2022",15,
+Gualcamayo,2021,recuperacion,63,por ciento,"Mineros, MD&A 2022",15,
+Gualcamayo,2022,toneladas_procesadas,2388.447,miles de toneladas,"Mineros, MD&A 2022",15,Toneladas puestas en la pila de lixiviación
+Gualcamayo,2022,ley,1.77,gramos por tonelada,"Mineros, MD&A 2022",15,
+Gualcamayo,2022,recuperacion,52,por ciento,"Mineros, MD&A 2022",15,

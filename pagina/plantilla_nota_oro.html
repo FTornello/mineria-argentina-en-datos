@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuánto oro le queda al país</title>
+<style>
+/*ESTILO*/
+/* Formato de nota: título, bajada, firma e intertítulos. */
+.nota-cabecera { padding: 48px 0 8px; }
+.seccion-nota { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--acento); }
+.nota-cabecera h1 { font-size: clamp(30px, 5.6vw, 42px); margin: 12px 0 14px; }
+.firma { font: 13px/1.4 system-ui, sans-serif; color: var(--text-muted); margin: 0 0 8px; }
+h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
+.nota-corta { font-size: 17px; }
+.separador { border: 0; border-top: 1px solid var(--rule); margin: 64px 0 0; }
+.dos-cifras .fuente-cifra { font: 12px/1.4 system-ui, sans-serif; color: var(--text-muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+<header class="nota-cabecera">
+  <div class="seccion-nota">Minería · Oro</div>
+  <h1>El oro bate récords. ¿Cuánto le queda al país?</h1>
+  <p class="bajada">Las minas de oro nunca facturaron tanto. Pero en tres de las cuatro minas de las que hay datos de pagos, la parte que llegó al Estado se achicó justo en los años de precio récord. Y la mina que más cayó es la que había prometido crecer.</p>
+  <p class="firma"><a href="../index.html">← Todas las notas</a> · Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026 · <a href="#como-lo-hice">Cómo lo hice con una IA</a> · <a href="litio.html">El litio</a> · <a href="san-juan.html">San Juan</a></p>
+</header>
+
+<figure class="grafico" id="g-cada-100"></figure>
+<p class="nota-corta">Veladero, en San Juan, pagó 363 millones de dólares en 2025 entre impuestos y regalías: 23 de cada 100 dólares del oro que produjo. Dos años antes eran 32.</p>
+
+<figure class="grafico" id="g-parte-estado"></figure>
+<p class="nota-corta">Cerro Vanguardia, en Santa Cruz, es la excepción: pasó de 14 a 20 entre 2024 y 2025 (no hay dato de 2023).</p>
+<p class="limite"><strong>Lo que todavía no se sabe:</strong> son pagos en efectivo de cada año. El impuesto a las ganancias se paga en buena parte al año siguiente, así que lo que corresponde al récord de 2025 recién aparece en los pagos de 2026. Tampoco incluyen cargas sociales ni IVA.</p>
+
+<h2 class="intertitulo">Por qué: el precio subió, el costo no</h2>
+<div class="dos-cifras">
+  <div><div class="n">+147%</div><div class="t"><i style="background: var(--series-2)"></i>subió el precio del oro entre 2019 y 2025</div></div>
+  <div><div class="n">−27%</div><div class="t"><i style="background: var(--series-3)"></i>bajaron las onzas producidas en el país</div><div class="fuente-cifra">El récord de exportaciones es de precio, como ya señalaron la cámara minera y la Bolsa de Comercio de Rosario.</div></div>
+</div>
+<figure class="grafico" id="g-veladero-margen"></figure>
+<p class="nota-corta">En Veladero, producir una onza cuesta lo mismo que en 2021. Todo lo que subió el precio fue margen: unos 900 millones de dólares en 2025, antes del impuesto a las ganancias. Lo pagado al Estado creció 43% en dos años; el valor producido, 97%.</p>
+
+<h2 class="intertitulo">Cerro Negro: lo prometido y lo producido</h2>
+<figure class="grafico" id="g-cerro-negro"></figure>
+<p class="nota-corta">En junio de 2023 Newmont anunció 540 millones de dólares para extender la vida de Cerro Negro hasta 2034 y subir la producción a más de 350.000 onzas por año desde 2024. Produjo 238.000 en 2024 y 202.000 en 2025.</p>
+<p class="nota-corta">En abril de 2024 murieron dos trabajadores y la mina estuvo parada seis semanas. Aun sumándole esas semanas, 2024 habría dado unas 270.000 onzas. La otra explicación está en los informes de la empresa: cada tonelada trae hoy 8,3 gramos de oro; en 2018 traía 13,9.</p>
+
+<h2 class="intertitulo">Dónde se saca el oro</h2>
+<figure class="grafico" id="g-mapa"></figure>
+<figure class="grafico" id="g-cascada"></figure>
+<p class="nota-corta">El país sacó 2.038.000 onzas en 2015 y 1.184.000 en 2025. Las dos minas nuevas, Cerro Moro y Lindero, compensan apenas una sexta parte de lo que perdieron las demás.</p>
+
+<h2 class="intertitulo">Veinte años en doce fechas</h2>
+<ol class="linea-tiempo" id="lt-oro"></ol>
+<p class="lt-referencia"><i style="background: var(--series-3)"></i>empieza una mina <i style="background: var(--series-2)"></i>cierra, se frena o hay un accidente <i style="background: var(--series-1)"></i>anuncio o RIGI <i style="border: 2px solid var(--text-muted); width: 6px; height: 6px"></i>cambio de dueño</p>
+
+<hr class="separador" id="como-lo-hice">
+<h2 class="intertitulo">Cómo lo hice con una IA</h2>
+<p class="nota-corta">Hice este análisis con Claude Code, una inteligencia artificial que escribe código. Buscó fuentes, bajó los datos, escribió las consultas SQL y armó esta página. Yo marqué el rumbo, revisé lo que hacía y decidí qué contar.</p>
+<div class="dos-cifras tres-cifras">
+  <div><div class="n" id="c-preguntas"></div><div class="t">preguntas respondidas con consultas SQL, cada una comentada</div></div>
+  <div><div class="n" id="c-controles"></div><div class="t">controles automáticos que frenan todo si un número no cierra</div></div>
+  <div><div class="n" id="c-errores"></div><div class="t">afirmaciones que resultaron estar mal, detectadas y corregidas</div></div>
+</div>
+<p class="nota-corta">Hubo errores, casi todos de la IA, y cada uno quedó registrado: qué se dijo, qué era en realidad y cómo se detectó.</p>
+<figure class="grafico" id="g-deteccion"></figure>
+<p class="nota-corta">Los controles automáticos atraparon solo tres. La mayoría apareció al volver a leer la fuente original o al cruzarla con otra que no tenía por qué coincidir. Algunos ejemplos:</p>
+<div class="tarjetas" id="tarjetas"></div>
+<details class="tabla"><summary>Ver los 19 errores</summary><div class="tabla-scroll"><table class="datos" id="t-errores"></table></div></details>
+
+<footer>
+  <p class="nota"><strong>Fuentes.</strong> Producción de cada mina: informes anuales de Barrick, Goldcorp, Newmont, AngloGold Ashanti, Fortuna, Yamana, Pan American y Hochschild. Total del país: Cámara Argentina de Empresarios Mineros. Precios, exportaciones y ubicación de las minas: Secretaría de Minería. Pagos al Estado: informe tributario de Barrick y base canadiense ESTMA. RIGI: tablero del Ministerio de Economía. Mapa: Instituto Geográfico Nacional. Hechos: comunicados de las empresas y prensa, citados uno por uno en la base. Todo está en una base PostgreSQL que se reconstruye desde cero y se controla sola.</p>
+</footer>
+
+</div>
+
+<script>
+/*DATOS*/
+
+/*GRAFICOS*/
+
+const D = DATOS;
+const miles = v => fmt(v) + " mil oz";
+
+// ---------- cuánto llega al Estado ----------
+const p25 = D.pagos_oro.filter(d => d.anio === 2025).sort((a, b) => b.pct - a.pct);
+deCada100("g-cada-100", {
+  titulo: "De cada 100 dólares de oro producido en 2025, cuántos pagó cada mina al Estado",
+  subtitulo: "Impuestos, regalías y otros pagos en efectivo del año",
+  items: p25.map(d => ({ nombre: d.mina, valor: d.pct, nota: `pagó ${fmt(d.pagado_musd)} de ${fmt(d.valor_musd)} millones` })),
+  fuente: "Pagos: informe tributario de Barrick (Veladero) y base ESTMA de Canadá (las otras). Valor: onzas producidas por precio promedio del año.",
+});
+
+const pago = (mina, anio) => D.pagos_oro.find(d => d.mina === mina && d.anio === anio);
+antesDespues("g-parte-estado", {
+  titulo: "La parte que llega al Estado, 2023 contra 2025",
+  subtitulo: "Dólares pagados de cada 100 producidos",
+  antes: "2023", despues: "2025",
+  filas: ["Veladero", "Cerro Negro", "Lindero"].map(m => ({ nombre: m, antes: pago(m, 2023).pct, despues: pago(m, 2025).pct, fmt: v => fmt(v) })),
+  cambio: (a, b) => (b > a ? "+" : "−") + fmt(Math.abs(b - a)),
+  fuente: "La columna de la derecha es la diferencia en dólares de cada 100. Mismas fuentes que el gráfico anterior.",
+});
+
+// ---------- margen ----------
+barras("g-veladero-margen", {
+  titulo: "Veladero: de qué está hecho el precio de cada onza",
+  subtitulo: "Dólares por onza. La barra entera es el precio promedio del año.",
+  datos: D.veladero_margen.map(d => ({ ...d, margen: d.precio - d.aisc })), x: "anio",
+  series: [
+    { clave: "aisc", nombre: "Costo total", color: "--otros" },
+    { clave: "margen", nombre: "Margen", color: "--series-4" },
+  ],
+  fuente: "Costo total: AISC informado por Barrick (no incluye impuesto a las ganancias). Precio: promedio del año, Secretaría de Minería.",
+  columnas: ["Año", "Precio", "Costo total", "Margen por onza"],
+  filas: D.veladero_margen.map(d => [d.anio, fmt(d.precio), fmt(d.aisc), fmt(d.precio - d.aisc)]),
+});
+
+// ---------- Cerro Negro ----------
+const anios = Array.from({ length: 11 }, (_, i) => 2015 + i);
+lineas("g-cerro-negro", {
+  titulo: "Cerro Negro: onzas de oro producidas y lo que Newmont anunció en 2023",
+  subtitulo: "Miles de onzas por año",
+  datos: anios.map(a => D.cerro_negro_promesa.find(d => d.anio === a) || { anio: a, producido: null, prometido: null }),
+  x: "anio", margenDerecho: 84,
+  series: [
+    { clave: "producido", nombre: "Producido", color: "--series-2" },
+    { clave: "prometido", nombre: "Prometido", color: "--text-secondary", punteada: true },
+  ],
+  marcas: [
+    { x: 2023.42, texto: "Anuncio", izquierda: true },
+    { x: 2024.27, texto: "Accidente" },
+  ],
+  fuente: "Producción: informes de Goldcorp y Newmont (no hay dato del año completo 2019). Promesa: Bloomberg Línea, 1-6-2023. Accidente: comunicado de Newmont, 10-4-2024.",
+  columnas: ["Año", "Producido (miles de onzas)", "Prometido"],
+  filas: D.cerro_negro_promesa.map(d => [d.anio, fmt(d.producido), d.prometido ? "más de " + fmt(d.prometido) : ""]),
+});
+
+// ---------- mapa y cascada ----------
+const ubicacion = {
+  "Veladero": [135, -2], "Gualcamayo": [110, 40], "Bajo la Alumbrera": [75, -24], "Lindero": [70, -8],
+  "San José": [150, -95], "Cerro Negro": [150, -45], "Cerro Moro": [100, 0], "Cerro Vanguardia": [90, 52],
+};
+mapa("g-mapa", {
+  titulo: "Las minas de oro y lo que produjeron",
+  subtitulo: "Círculo lleno: 2025. Contorno punteado: 2015. El área es proporcional a las onzas.",
+  provincias: D.mapa, destacar: ["San Juan", "Santa Cruz", "Salta", "Catamarca"],
+  puntos: D.oro_mapa.map(m => ({
+    nombre: m.mina, lat: m.lat, lon: m.lon, valor: m.q2025, anterior: m.q2015,
+    dx: ubicacion[m.mina][0], dy: ubicacion[m.mina][1],
+    leyenda: m.q2025 ? miles(m.q2025) + (m.q2015 ? ` (2015: ${fmt(m.q2015)})` : "")
+           : m.mina === "Bajo la Alumbrera" ? "cerró en 2018" : `sin dato desde ${m.ultimo_anio}`,
+    tip: [{ nombre: "2015", valor: m.q2015 ? miles(m.q2015) : "sin dato" },
+          { nombre: "2025", valor: m.q2025 ? miles(m.q2025) : "sin dato" },
+          { nombre: m.provincia, valor: "" }],
+  })),
+  fuente: "Producción: informes de las empresas. Ubicación: Secretaría de Minería. Cerro Vanguardia, Cerro Moro, Lindero y San José no tienen dato de 2015 en la base (las dos del medio todavía no producían).",
+});
+
+const caso = Object.fromEntries(D.oro_cascada.map(d => [d.mina, d]));
+const paso = (nombre, mina = nombre) => ({ nombre, valor: caso[mina].q2025 - caso[mina].q2015,
+  detalle: `${fmt(caso[mina].q2015)} → ${fmt(caso[mina].q2025)} mil onzas` });
+cascada("g-cascada", {
+  titulo: "Cómo se pasó de 2.038 a 1.184 mil onzas",
+  subtitulo: "Miles de onzas de oro, cambio entre 2015 y 2025",
+  inicio: { nombre: "País 2015", valor: caso["País"].q2015 },
+  pasos: [paso("Cerro Negro"), paso("Veladero"), paso("Alumbrera", "Bajo la Alumbrera"),
+          paso("Resto de las minas"), paso("Cerro Moro"), paso("Lindero")],
+  fin: { nombre: "País 2025", valor: caso["País"].q2025 },
+  fuente: "Total del país: CAEM. Minas: informes de las empresas. \"Resto\" es la diferencia: Cerro Vanguardia, San José, Gualcamayo y minas chicas.",
+  columnas: ["", "2015", "2025", "Cambio"],
+  filas: D.oro_cascada.map(d => [d.mina, fmt(d.q2015), fmt(d.q2025), fmt(d.q2025 - d.q2015)]),
+});
+
+// ---------- línea de tiempo (tabla hecho_mina) ----------
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const fecha = h => {
+  const [a, m, d] = h.fecha.split("-").map(Number);
+  return h.precision === "año" ? String(a) : h.precision === "mes" ? `${MESES[m - 1]} ${a}` : `${d} de ${MESES[m - 1]} de ${a}`;
+};
+const claseHecho = { "Inicio": "sube", "Cierre": "baja", "Freno": "baja", "Accidente": "baja", "Promesa": "rigi", "RIGI": "rigi" };
+lineaDeTiempo("lt-oro", D.hechos.map(h => ({ fecha: fecha(h), texto: h.descripcion, clase: claseHecho[h.tipo] })));
+
+// ---------- cómo lo hice con una IA ----------
+document.getElementById("c-preguntas").textContent = D.cifras.preguntas;
+document.getElementById("c-controles").textContent = D.cifras.controles;
+document.getElementById("c-errores").textContent = D.correcciones.length;
+
+const porDeteccion = {};
+D.correcciones.forEach(c => { porDeteccion[c.como_se_detecto] = (porDeteccion[c.como_se_detecto] || 0) + 1; });
+barrasHorizontales("g-deteccion", {
+  titulo: `Cómo se detectaron los ${D.correcciones.length} errores`,
+  subtitulo: "Cantidad de afirmaciones corregidas, según qué las hizo aparecer. En naranja, las que detecté yo.",
+  filas: Object.entries(porDeteccion).sort((a, b) => b[1] - a[1])
+    .map(([nombre, valor]) => ({ nombre, valor, color: nombre === "Francisco" ? "--series-2" : "--series-1" })),
+  fuente: "Tabla correccion_ia, armada desde la bitácora del proyecto. Solo están los errores que se detectaron.",
+});
+
+tarjetasCorreccion("tarjetas", [5, 9, 14, 6].map(n => D.correcciones.find(c => c.numero === n)));
+tabla("t-errores", ["#", "Se dijo", "Era", "Cómo se detectó", "Qué quedó"],
+  D.correcciones.map(c => [c.numero, c.lo_que_se_dijo, c.lo_correcto, c.como_se_detecto, c.que_quedo]));
+</script>
+</body>
+</html>

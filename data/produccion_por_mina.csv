@@ -1,0 +1,64 @@
+mina,provincia,empresa,anio,mineral,unidad,publicado,participacion_pct,fuente,pagina,nota
+Veladero,San Juan,Barrick,2011,Oro,miles de onzas,957,100,"Barrick, Annual Report 2011",15,
+Veladero,San Juan,Barrick,2012,Oro,miles de onzas,766,100,"Barrick, Annual Report 2013",42,
+Veladero,San Juan,Barrick,2013,Oro,miles de onzas,641,100,"Barrick, Annual Report 2013",42,
+Veladero,San Juan,Barrick,2014,Oro,miles de onzas,722,100,"Barrick, Annual Report 2014",53,
+Veladero,San Juan,Barrick,2015,Oro,miles de onzas,602,100,"Barrick, Annual Report 2015",61,
+Veladero,San Juan,Barrick,2016,Oro,miles de onzas,544,100,"Barrick, Annual Report 2016",60,
+Veladero,San Juan,Barrick,2017,Oro,miles de onzas,432,,"Barrick, Annual Report 2017",2,Barrick vendió el 50% a mitad de año: el dato mezcla 100% del primer semestre y 50% del segundo
+Veladero,San Juan,Barrick,2018,Oro,miles de onzas,278,50,"Barrick, Annual Report 2019",68,
+Veladero,San Juan,Barrick,2019,Oro,miles de onzas,274,50,"Barrick, Annual Report 2019",68,
+Veladero,San Juan,Barrick,2020,Oro,miles de onzas,226,50,"Barrick, Annual Report 2020",69,
+Veladero,San Juan,Barrick,2021,Oro,miles de onzas,172,50,"Barrick, Annual Report 2021",72,
+Veladero,San Juan,Barrick,2022,Oro,miles de onzas,195,50,"Barrick, Annual Report 2022",77,
+Veladero,San Juan,Barrick,2023,Oro,miles de onzas,207,50,"Barrick, Annual Report 2023",76,
+Veladero,San Juan,Barrick,2024,Oro,miles de onzas,252,50,"Barrick, Annual Report 2024",63,
+Veladero,San Juan,Barrick,2025,Oro,miles de onzas,230,50,"Barrick, Annual Report 2025",16,
+Cerro Negro,Santa Cruz,Newmont,2019,Oro,miles de onzas,334,,"Newmont, Full Year and Q4 2019 Regional Operating Statistics",1,"Solo desde el 18 de abril de 2019, cuando Newmont compró Goldcorp: no es el año completo"
+Cerro Negro,Santa Cruz,Newmont,2020,Oro,miles de onzas,216,100,"Newmont, Annual Report 2020",81,
+Cerro Negro,Santa Cruz,Newmont,2021,Oro,miles de onzas,270,100,"Newmont, Full Year and Fourth Quarter 2022 Operating Statistics",1,
+Cerro Negro,Santa Cruz,Newmont,2022,Oro,miles de onzas,278,100,"Newmont, Full Year and Fourth Quarter 2022 Operating Statistics",1,
+Cerro Negro,Santa Cruz,Newmont,2023,Oro,miles de onzas,269,100,"Newmont, Annual Report 2023",109,
+Cerro Negro,Santa Cruz,Newmont,2024,Oro,miles de onzas,238,100,"Newmont, Annual Report 2024",109,
+Cerro Negro,Santa Cruz,Newmont,2025,Oro,miles de onzas,202,100,"Newmont, Annual Report 2025",103,
+San José,Santa Cruz,Hochschild,2024,Oro,miles de onzas,73.73,100,"Hochschild, Q4 2025 Production Report",3,La tabla del informe está al 100% de la mina; Hochschild tiene el 51%
+San José,Santa Cruz,Hochschild,2025,Oro,miles de onzas,76.97,100,"Hochschild, Q4 2025 Production Report",3,La tabla del informe está al 100% de la mina; Hochschild tiene el 51%
+Cerro Moro,Santa Cruz,Pan American Silver,2023,Oro,miles de onzas,84.6,,"Pan American Silver, Preliminary 2023 Production Results",2,"Solo desde el 31 de marzo de 2023, cuando Pan American compró Yamana: no es el año completo"
+Cerro Moro,Santa Cruz,Pan American Silver,2025,Oro,miles de onzas,83.1,100,"Pan American Silver, 2025 Production Results",3,
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2019,Oro,miles de onzas,225,92.5,"AngloGold Ashanti, Form 20-F 2020 (SEC): https://www.sec.gov/Archives/edgar/data/1067428/000162828021005759/au-20201231.htm",,El informe no aclara si es la parte de la empresa o el total; uso la misma base que 2021-2023
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2020,Oro,miles de onzas,173,92.5,"AngloGold Ashanti, Form 20-F 2020 (SEC): https://www.sec.gov/Archives/edgar/data/1067428/000162828021005759/au-20201231.htm",,El informe no aclara si es la parte de la empresa o el total; uso la misma base que 2021-2023
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2021,Oro,miles de onzas,145,92.5,"AngloGold Ashanti, Form 20-F 2023 (SEC): https://www.sec.gov/Archives/edgar/data/1973832/000162828024017820/au-20231231.htm",,"Hasta 2023 AngloGold informaba su parte (92,5%); desde 2024 informa el total de la mina"
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2022,Oro,miles de onzas,170,92.5,"AngloGold Ashanti, Form 20-F 2023 (SEC): https://www.sec.gov/Archives/edgar/data/1973832/000162828024017820/au-20231231.htm",,"Hasta 2023 AngloGold informaba su parte (92,5%); desde 2024 informa el total de la mina"
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2023,Oro,miles de onzas,152,92.5,"AngloGold Ashanti, Form 20-F 2023 (SEC): https://www.sec.gov/Archives/edgar/data/1973832/000162828024017820/au-20231231.htm",,"Hasta 2023 AngloGold informaba su parte (92,5%); desde 2024 informa el total de la mina"
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2024,Oro,miles de onzas,175,100,"AngloGold Ashanti, Q4 December 2025 Operating Statistics (SEC): https://www.sec.gov/Archives/edgar/data/1973832/000197383226000010/agaq4december2025operating.htm",,"Hasta 2023 AngloGold informaba su parte (92,5%); desde 2024 informa el total de la mina"
+Cerro Vanguardia,Santa Cruz,AngloGold Ashanti,2025,Oro,miles de onzas,179,100,"AngloGold Ashanti, Q4 December 2025 Operating Statistics (SEC): https://www.sec.gov/Archives/edgar/data/1973832/000197383226000010/agaq4december2025operating.htm",,"Hasta 2023 AngloGold informaba su parte (92,5%); desde 2024 informa el total de la mina"
+Cerro Negro,Santa Cruz,Goldcorp,2014,Oro,miles de onzas,152.1,100,"Goldcorp, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm",,Producción previa al inicio comercial (enero de 2015)
+Cerro Negro,Santa Cruz,Goldcorp,2015,Oro,miles de onzas,507.4,100,"Goldcorp, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm",,
+Cerro Negro,Santa Cruz,Goldcorp,2016,Oro,miles de onzas,363,100,"Goldcorp, MD&A 2017 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm",,
+Cerro Negro,Santa Cruz,Goldcorp,2017,Oro,miles de onzas,452,100,"Goldcorp, MD&A 2017 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923918000004/mda2017q4.htm",,
+Cerro Negro,Santa Cruz,Goldcorp,2018,Oro,miles de onzas,489,100,"Goldcorp, MD&A 2018 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000091923919000004/a12312018mda.htm",,
+Cerro Moro,Santa Cruz,Yamana Gold,2018,Oro,miles de onzas,92.793,100,"Yamana Gold, MD&A 2019 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408920000016/ex992q42019mda.htm",,La mina empezó a producir a mediados de 2018
+Cerro Moro,Santa Cruz,Yamana Gold,2019,Oro,miles de onzas,120.802,100,"Yamana Gold, MD&A 2019 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408920000016/ex992q42019mda.htm",,
+Cerro Moro,Santa Cruz,Yamana Gold,2020,Oro,miles de onzas,66.995,100,"Yamana Gold, MD&A 2021 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408922000015/ex992q42021mda.htm",,
+Cerro Moro,Santa Cruz,Yamana Gold,2021,Oro,miles de onzas,79.988,100,"Yamana Gold, MD&A 2021 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408922000015/ex992q42021mda.htm",,
+Cerro Moro,Santa Cruz,Yamana Gold,2022,Oro,miles de onzas,108.24,100,"Yamana Gold, MD&A 2022 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408923000006/ex992q42022mda.htm",,
+Cerro Moro,Santa Cruz,Pan American Silver,2024,Oro,miles de onzas,77.5,100,"Pan American Silver, 2024 Production Results (preliminar)",2,Dato preliminar del comunicado de enero de 2025
+Gualcamayo,San Juan,Yamana Gold,2014,Oro,miles de onzas,180.412,100,"Yamana Gold, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408916000019/ex9922015mda.htm",,
+Gualcamayo,San Juan,Yamana Gold,2015,Oro,miles de onzas,180.674,100,"Yamana Gold, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408916000019/ex9922015mda.htm",,
+Gualcamayo,San Juan,Yamana Gold,2016,Oro,miles de onzas,164.265,100,"Yamana Gold, MD&A 2016 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408917000004/ex9922016mda.htm",,
+Gualcamayo,San Juan,Yamana Gold,2017,Oro,miles de onzas,154.052,100,"Yamana Gold, MD&A 2018 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408919000005/ex992q4_2018mda.htm",,
+Gualcamayo,San Juan,Yamana Gold,2018,Oro,miles de onzas,92.284,100,"Yamana Gold, MD&A 2018 (SEC): https://www.sec.gov/Archives/edgar/data/1264089/000126408919000005/ex992q4_2018mda.htm",,Yamana vendió la mina a Mineros en diciembre de 2018
+Lindero,Salta,Fortuna,2021,Oro,miles de onzas,104.161,100,"Fortuna, comunicado de producción 2021: https://fortunamining.com/news/fortuna-reports-2021-full-year-record-production-of-305859-gold-equivalent-ounces-and-issues-2022-annual-guidance/",,
+Lindero,Salta,Fortuna,2022,Oro,miles de onzas,118.418,100,"Fortuna, comunicado de producción 2022: https://fortunamining.com/news/fortuna-reports-2022-full-year-record-production-of-401878-gold-equivalent-ounces-and-issues-2023-annual-guidance/",,
+Lindero,Salta,Fortuna,2023,Oro,miles de onzas,101.238,100,"Fortuna, comunicado de producción 2023: https://fortunamining.com/news/fortuna-reports-record-2023-production-of-452-koz-au-eq-and-2024-annual-guidance-of-457-to-497-koz-au-eq/",,
+Lindero,Salta,Fortuna,2024,Oro,miles de onzas,97.287,100,"Fortuna, comunicado de producción 2024: https://fortunamining.com/news/fortuna-reports-record-production-of-455958-au-eq-ounces-for-2024-and-provides-2025-outlook/",,
+Lindero,Salta,Fortuna,2025,Oro,miles de onzas,87.489,100,"Fortuna, comunicado de producción 2025: https://fortunamining.com/news/fortuna-achieves-2025-production-guidance-delivering-317001-geo-and-issues-2026-outlook/",,
+San José,Santa Cruz,Hochschild,2021,Oro,miles de onzas,83.62,100,"Hochschild, 2022 Full Year Results",9,La tabla del informe está al 100% de la mina; Hochschild tiene el 51%
+San José,Santa Cruz,Hochschild,2022,Oro,miles de onzas,78.8,100,"Hochschild, 2022 Full Year Results",9,La tabla del informe está al 100% de la mina; Hochschild tiene el 51%
+San José,Santa Cruz,Hochschild,2023,Oro,miles de onzas,80.99,100,"Hochschild, 2023 Full Year Results",9,La tabla del informe está al 100% de la mina; Hochschild tiene el 51%. En el PDF la tabla es una imagen: la leí de la página
+Bajo la Alumbrera,Catamarca,Goldcorp,2014,Oro,miles de onzas,120.1,37.5,"Goldcorp, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm",,"Goldcorp informaba su 37,5% de la mina; el resto era de Glencore y Yamana"
+Bajo la Alumbrera,Catamarca,Goldcorp,2015,Oro,miles de onzas,73.7,37.5,"Goldcorp, MD&A 2015 (SEC): https://www.sec.gov/Archives/edgar/data/919239/000119312516521641/d135734dex992.htm",,"Goldcorp informaba su 37,5% de la mina; el resto era de Glencore y Yamana"
+Gualcamayo,San Juan,Mineros,2020,Oro,miles de onzas,72.427,100,"Mineros, MD&A 2021",10,
+Gualcamayo,San Juan,Mineros,2021,Oro,miles de onzas,61.487,100,"Mineros, MD&A 2022",9,
+Gualcamayo,San Juan,Mineros,2022,Oro,miles de onzas,62.247,100,"Mineros, MD&A 2022",9,
+Gualcamayo,San Juan,Mineros,2023,Oro,miles de onzas,31.061,,"Mineros, MD&A 2023",11,"Solo hasta el 21 de septiembre de 2023, cuando Mineros vendió la mina a Eris LLC"

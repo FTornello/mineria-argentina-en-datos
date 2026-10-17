@@ -1,0 +1,465 @@
+ncm,descripcion,rubro,grupo
+25010000,"Sal de gema, sal de salinas, sal marina, sal de mesa, cloruro sódico puro, aguas madre de salina, agua de mar.",No metalíferos,Sal
+25010001,"Sal de mesa, incluso yodada o fosfatada.",No metalíferos,Sal
+25010010,"Sal (incluidas las de mesa y la desnaturalizada) y cloruro de sodio puro, incluso en disolución acuosa; agua de mar.",No metalíferos,Sal
+25010011,Sal marina,No metalíferos,Sal
+25010019,"Las demás sales a granel, sin agregados",No metalíferos,Sal
+25010020,Sal de mesa,No metalíferos,Sal
+25010030,Cloruro de Sodio-Sal común uso farmacopea,No metalíferos,Sal
+25010090,Las demás sales,No metalíferos,Sal
+25010099,Las demás sales incluidas las de mesa y la desnaturalizada,No metalíferos,Sal
+25020000,Piritas de hierro sin tostar,Metalíferos,Hierro
+25030000,"Azufre con exclusión de sublimado, precipitado y coloidal",No metalíferos,Azufre
+25030010,Azufre a granel,No metalíferos,Azufre
+25030090,Los demás azufre,No metalíferos,Azufre
+25031000,Azufre en bruto y azufre sin refinar,No metalíferos,Azufre
+25039000,Los demás azufre,No metalíferos,Azufre
+25039090,Los demás de los demás azufres,No metalíferos,Azufre
+25041000,Grafito natural en polvo o en escamas.,No metalíferos,Grafito
+25041010,Grafito natural con contenido de carbono superior a 85%,No metalíferos,Grafito
+25041090,Los demás de los demás grafitos,No metalíferos,Grafito
+25049000,"Los demás, grafito natural",No metalíferos,Grafito
+25049010,Los demás con contenido de carbono superior a 85%,No metalíferos,Grafito
+25050001,"Arenas naturales de cualquier clase incluso coloreadas con exclusión de las metalíferas de la partida 26,01",No metalíferos,Arenas
+25050099,Las demás arenas naturales,No metalíferos,Arenas
+25051000,Arenas silíceas y cuarzosas,No metalíferos,Arenas
+25051010,Arenas silíceas y cuarzosas aptas para construcción,No metalíferos,Arenas
+25051020,Arenas silíceas y cuarzosas aptas para fracturación de pozos de petróleo,No metalíferos,Arenas
+25051090,Otras arenas silíceas y cuarzosas,No metalíferos,Arenas
+25059000,"Las demás, arenas naturales",No metalíferos,Arenas
+25060001,Cuarzos y cuarcitas molidas,No metalíferos,Cuarzo
+25060090,Los demás cuarzos,No metalíferos,Cuarzo
+25061000,Cuarzo,No metalíferos,Cuarzo
+25061010,Cuarzos y cuarcitas molidas,No metalíferos,Cuarzo
+25062000,Cuarcita,Rocas de aplicación,Cuarcita
+25062100,Cuarcita en bruto o desbastada,Rocas de aplicación,Cuarcita
+25062900,Las demás cuarcitas,Rocas de aplicación,Cuarcita
+25070000,"Arcillas excepto las dilatadas de la partida 68,07",No metalíferos,Arcillas
+25070001,Caolín,No metalíferos,Caolín
+25070002,Bentonita.,No metalíferos,Bentonita
+25070003,Mullita,No metalíferos,Arcillas
+25070010,Caolín,No metalíferos,Caolín
+25070011,Caolín en bruto,No metalíferos,Caolín
+25070012,"Caolín y demás arcillas caolínicas beneficiadas por cualquier procedimiento, incluso molido y calcinado",No metalíferos,Arcillas
+25070090,Las demás arcillas caolínicas.,No metalíferos,Caolín
+25070099,Los demás caolines y demás arcillas caolínicas incluso las calcinadas,No metalíferos,Caolín
+25081000,Bentonita.,No metalíferos,Bentonita
+25082000,Tierras decolorantes y tierras de batán,No metalíferos,Arcillas
+25083000,Arcillas refractarias,No metalíferos,Arcillas
+25084000,Las demás arcillas,No metalíferos,Arcillas
+25084010,"Arcillas plásticas, con un contenido de Fe2O3, en peso inferior a 1,5% y con pérdida por calcinación, en peso, superior a 12%",No metalíferos,Arcillas
+25084090,"Las demás, arcillas plásticas",No metalíferos,Arcillas
+25085000,"Andalucita, cianita y silimanita",No metalíferos,Arcillas
+25087000,Tierras de chamota o de dinas,No metalíferos,Arcillas
+25087020,Tierras de dinas,No metalíferos,Arcillas
+25090000,Creta,No metalíferos,Creta
+25101090,"Los demás, fosfatos naturales sin moler",No metalíferos,Fosfatos
+25102000,"Fosfatos de calcio naturales, aluminocalcicos naturales y cretas fosfatadas molidos",No metalíferos,Fosfatos
+25102010,"Fosfatos de calcio naturales, molidos",No metalíferos,Fosfatos
+25102090,"Los demás, fosfatos naturales molidos",No metalíferos,Fosfatos
+25110001,Sulfato de bario natural (baritina),No metalíferos,Baritina
+25111000,Sulfato de bario natural (baritina),No metalíferos,Baritina
+25112000,Carbonato de bario natural (witherita),No metalíferos,Witherita
+25120000,Harinas silíceas fósiles,No metalíferos,Diatomitas
+25130000,"Piedra pómez, esmeril, corindón natural, granate natural y otros incluso tratados térmicamente",Rocas de aplicación,Piedra pómez
+25131000,Piedra pómez,Rocas de aplicación,Piedra pómez
+25131100,"Piedra pómez, en bruto o en trozos irregulares",Rocas de aplicación,Piedra pómez
+25131900,"Los demás, piedra pómez:",Rocas de aplicación,Piedra pómez
+25132000,"Esmeril, corindón natural, granate natural y demás abrasivos naturales.",No metalíferos,Abrasivos naturales
+25132900,Abrasivos naturales excluido en bruto o trozos irregulares,No metalíferos,Abrasivos naturales
+25140000,"Pizarra, incluso desbastada o simplemente troceada, por aserrado o de otro modo, en bloques o en placas cuadradas o rectangulares.",Rocas de aplicación,Pizarra
+25150001,Mármoles en bruto excluido el ónix,Rocas de aplicación,Mármoles
+25150002,Mármol ónix en bruto,Rocas de aplicación,Mármol Onix
+25150003,Travertinos en bruto,Rocas de aplicación,Mármol travertino
+25150099,Los demás travertinos,Rocas de aplicación,Mármol travertino
+25151100,"Mármol y travertino, en bruto o desbastados",Rocas de aplicación,Mármol travertino
+25151110,Onix,Rocas de aplicación,Mármol Onix
+25151190,Los demás onix,Rocas de aplicación,Mármol Onix
+25151200,"Mármol, Travertinos, «Ecaussines» Y Demás Piedras Calizas De Talla o De Construcción. Simplemente Troceados, Por Aserrado u otro modo, En Bloques o Placas Cuadradas o Rectangulares",Rocas de aplicación,"Mármoles, travertinos y calizas"
+25151210,"Mármol simplemente troceado, por aserrado o de otro modo, en bloques o en placas cuadradas o rectangulares.",Rocas de aplicación,Mármoles
+25151220,"Travertino simplemente troceados, por aserrado o de otro modo, en bloques o en placas cuadradas o rectangulares.",Rocas de aplicación,Mármol travertino
+25151290,"Los demás mármoles y travertinos simplemente troceados por aserrado u otro modo, en bloques o placas cuadradas o rectangulares",Rocas de aplicación,Mármoles y travertinos
+25152000,"""Ecaussines"" y demás piedras calizas de talla o de construcción; alabastro",Rocas de aplicación,Caliza
+25160001,Granate en bruto,Rocas de aplicación,Granate
+25160099,Los demás granates,Rocas de aplicación,Granate
+25161100,"Granito, en bruto o desbastado",Rocas de aplicación,Granito
+25161200,"Granito simplemente troceado, por aserrado o de otro modo, en bloques o en placas cuadradas o rectangulares.",Rocas de aplicación,Granito
+25162000,Arenisca,Rocas de aplicación,Arenisca
+25162100,Arenisca en bruto o desbastada,Rocas de aplicación,Arenisca
+25162200,Arenisca simpl. troc. p/aserr. en blq/plac. cuadr/rect.,Rocas de aplicación,Arenisca
+25169000,Las demás piedras de talla o de construcción,Rocas de aplicación,Demás piedras de talla o construcción
+25170002,Arenisca en bruto o desbastada,Rocas de aplicación,Arenisca
+25171000,"Cantos, grava, piedras machacadas, para hormigón u otros balastos",Rocas de aplicación,Cantos rodados y Triturados pétreos
+25172000,Macadán de escorias o de desechos industriales similares,Rocas de aplicación,Triturados pétreos
+25174100,"Gránulos, tasquiles y polvo de mármol",Rocas de aplicación,Mármoles
+25174900,"Los demás, gránulos, tasquiles y polvo de piedras de las partidas 25.15 ó 25.16",Rocas de aplicación,"Gránulos,tasquile s y polvo de mármol y arenisca"
+25174910,"Los demás Gránulos, tasquiles (fragmentos) y polvo de piedras de las partidas nº 25.15 ó 25.16 incluso tratados térmicamente:",Rocas de aplicación,"Gránulos,tasquile s y polvo de mármol y arenisca"
+25174990,"Los demás Canto, grava que se usa en hormigonado, carretera, vías férreas, otros balastos, guijarros y pedernal, incluso tratados térmicamente, etc,",Rocas de aplicación,Cantos rodados y Triturados pétreos
+25180001,"Dolomita en bruto, desbastada o troceada por aserrado",Rocas de aplicación,Dolomita
+25180002,Dolomita fritada o calcinada,Rocas de aplicación,Dolomita
+25181000,"Dolomita sin calcinar ni sinterizar, llamada ""cruda""",Rocas de aplicación,Dolomita
+25181010,Dolomita desbastada,Rocas de aplicación,Dolomita
+25181020,Dolomita troceada por aserrado,Rocas de aplicación,Dolomita
+25181030,"Dolomita molida, triturada o pulverizada",Rocas de aplicación,Dolomita
+25182000,Dolomita calcinada o sinterizada,Rocas de aplicación,Dolomita
+25191000,Carbonato de magnesio natural (magnesita),No metalíferos,Magnesio
+25199000,"Los demás Carbonatos de Magnesio natural (Magnesita), Magnesia Electrofundida, Magnesia Calcinada a muerte (Sinterizada).",No metalíferos,Magnesio
+25199010,Magnesia electrofundida,No metalíferos,Magnesio
+25199020,Óxido de magnesio químicamente puro,No metalíferos,Magnesio
+25199090,Los demás carbonatos de magnesio,No metalíferos,Magnesio
+25200101,Yeso natural,No metalíferos,Yesos
+25200201,"Yesos calcinados, coloreados o c/adición de pequeñas cantidades de aceleradores o retardadores",No metalíferos,Yesos
+25201000,"Yeso Natural, Anhidrita",No metalíferos,Yesos
+25201010,Yeso Natural,No metalíferos,Yesos
+25201011,"Yeso natural, en trozos irregulares",No metalíferos,Yesos
+25201019,"Los demás, yeso natural",No metalíferos,Yesos
+25201020,Anhidrita,No metalíferos,Anhidrita
+25202010,"Yeso fraguable, molidos, aptos para uso odontológico",No metalíferos,Yesos
+25202020,"Yesos calcinados, finalmente molidos, incluso c/peq cant.de aceleradores o retardadores aptos p/odontologia",No metalíferos,Yesos
+25202090,"Los demás, yeso fraguable",No metalíferos,Yesos
+25210000,"Castinas, piedras para la fabricación de cal o de cemento",Rocas de aplicación,Caliza
+25220001,Cal Ordinaria,Rocas de aplicación,Cales
+25220002,Cal Hidráulica,Rocas de aplicación,Cales
+25221000,Cal viva,Rocas de aplicación,Cales
+25221010,Cal Viva natural,Rocas de aplicación,Cales
+25221020,Cal apagada,Rocas de aplicación,Cales
+25221090,Las demás cales,Rocas de aplicación,Cales
+25222000,Cal apagada,Rocas de aplicación,Cales
+25222010,Cal viva industrial,Rocas de aplicación,Cales
+25222020,Cal apagada,Rocas de aplicación,Cales
+25222090,Las demás cal apagada,Rocas de aplicación,Cales
+25223000,Cal hidráulica,Rocas de aplicación,Cales
+25230002,Cemento Pórtland normal,Rocas de aplicación,Cementos
+25230003,Cementos aluminosos o fundidos,Rocas de aplicación,Cementos
+25230099,Los demás cementos,Rocas de aplicación,Cementos
+25231000,"Cementos sin pulverizar (""clinker"")",Rocas de aplicación,Cementos
+25232100,"Cemento Pórtland blanco, incluso coloreado artificialmente",Rocas de aplicación,Cementos
+25232900,"Los demás cementos hidráulicos (comprendidos Cementos Sin Pulverizar), incluso coloreados.",Rocas de aplicación,Cementos
+25232910,Cemento Pórtland normal,Rocas de aplicación,Cementos
+25232990,"Los demás, cemento Pórtland",Rocas de aplicación,Cementos
+25233000,Cementos aluminosos,Rocas de aplicación,Cementos
+25239000,Los demás cementos hidráulicos,Rocas de aplicación,Cementos
+25239010,Cemento de albañilería,Rocas de aplicación,Cementos
+25239090,Los demás de los demás cementos,Rocas de aplicación,Cementos
+25240000,Amianto (Asbesto).,No metalíferos,Amianto
+25240010,Amianto en fibras,No metalíferos,Amianto
+25240020,Amianto en polvo,No metalíferos,Amianto
+25240090,Los demás amiantos,No metalíferos,Amianto
+25251000,Mica en bruto o exfoliada en hojas o en laminillas irregulares,No metalíferos,Mica
+25251020,Mica exfoliada en hojas,No metalíferos,Mica
+25251030,Mica exfoliada en laminillas irregulares,No metalíferos,Mica
+25252000,Mica en polvo,No metalíferos,Mica
+25253000,Desperdicios de mica,No metalíferos,Mica
+25260001,Mica en bruto o exfoliada o en hojas o laminillas irregulares,No metalíferos,Mica
+25260002,Mica en polvo,No metalíferos,Mica
+25260003,Desperdicios de mica,No metalíferos,Mica
+25261000,"Esteatita natural, sin triturar ni pulverizar",No metalíferos,Talco
+25261020,Talco sin triturar ni pulverizar,No metalíferos,Talco
+25262000,"Esteatita natural, triturados o pulverizados",No metalíferos,Talco
+25262020,"Esteatita natural, talco.",No metalíferos,Talco
+25270002,Esteatita en talco,No metalíferos,Talco
+25281000,Boratos de sodio naturales y sus concentrados (incluso calcinados),No metalíferos,Boratos
+25289000,"Los demás, boratos naturales",No metalíferos,Boratos
+25289010,Colemanita,No metalíferos,Boratos
+25289020,Ulexita (Boronatrocalcita),No metalíferos,Boratos
+25289030,Boracita e hidroboracita,No metalíferos,Boratos
+25289090,Las demás de las demás boratos,No metalíferos,Boratos
+25291000,Feldespato,No metalíferos,Feldespato
+25292100,"Espato flúor, contenido FCa inferior o igual a 97%, en peso",No metalíferos,Fluorita
+25292200,"Espato flúor, contenido FCa superior a 97%, en peso",No metalíferos,Fluorita
+25293000,Leucita; Nefelina y Nefelina sienita,No metalíferos,Feldespato
+25300001,Boratos de calcio,No metalíferos,Boratos
+25300002,Boratos de sodio,No metalíferos,Boratos
+25300003,Otros Boratos naturales,No metalíferos,Boratos
+25301000,"Vermiculita, perlita y cloritas, sin dilatar",No metalíferos,Vermiculita
+25301010,"Perlita, sin dilatar",Rocas de aplicación,Perlita
+25301020,Perlita,Rocas de aplicación,Perlita
+25301090,Los demás (Vermiculita y cloritas) sin dilatar,No metalíferos,Vermiculita
+25302000,Kieserita y epsomita (sulfatos de magnesio naturales),No metalíferos,Sulfatos de magnesio
+25303000,Tierras colorantes,No metalíferos,Tierras Colorantes
+25303090,Las demás tierras colorantes,No metalíferos,Tierras Colorantes
+25304000,Óxido de hierro micáceo natural,No metalíferos,Óxidos de hierro
+25309000,Las demás materias minerales no expresadas ni comprendidas en otra parte,No metalíferos,Demás minerales n.c.p
+25309020,"Arena de circonio micronizada, apta para la preparación de esmaltes cerámicos",No metalíferos,Arenas de Circonio
+25309040,Tierras colorantes,No metalíferos,Tierras Colorantes
+25309050,Sulfuro de arsénico naturales,No metalíferos,Sulfuros de arsénico
+25309060,Celestina,No metalíferos,Celestina
+25309090,Las demás materias minerales no expresadas ni comprendidas en otra parte,No metalíferos,Demás minerales n.c.p
+25309099,Las demás materias minerales no expresadas ni comprendidas en otra parte,No metalíferos,Demás minerales n.c.p
+25310001,Feldespato,No metalíferos,Feldespato
+25310002,Leucita,No metalíferos,Feldespato
+25320002,Óxidos de hierro micáceos naturales.,No metalíferos,Óxidos de hierro
+25320008,Celestina,No metalíferos,Celestina
+25320013,"Vermiculita, perlita y cloritas, sin dilatar",No metalíferos,Vermiculita
+25320099,Las demás materias minerales no expresadas ni comprendidas en otra parte,No metalíferos,Demás minerales n.c.p
+26010700,Minerales de plomo,Metalíferos,Plomo
+26010800,Minerales de cinc,Metalíferos,Cinc
+26011000,"Minerales de manganeso, incluidos los minerales de hierro manganesíferos con un contenido de manganeso >= 20% en peso",Metalíferos,Manganeso
+26011100,"Minerales de hierro y sus concentrados, sin aglomerar",Metalíferos,Hierro
+26011200,"Minerales de hierro y sus concentrados, aglomerados",Metalíferos,Hierro
+26011210,"Minerales de hierro y sus concentrados, aglomerados por proceso de peletización, de diámetro >= a 8mm, pero <= 18 mm",Metalíferos,Hierro
+26011290,"Minerales de hierro y sus concentrados, aglomerados los demás",Metalíferos,Hierro
+26011599,"Los demás minerales metalíferos, escorias y cenizas excepto los de molibdeno, titanio, circonio y berilio",Metalíferos,Molibdeno
+26012000,Piritas de hierro tostadas,Metalíferos,Hierro
+26020000,"Escorias, batiduras, y otros desperdicios de la fabricación del hierro y del acero",Metalíferos,Hierro
+26020090,"Los demás, minerales de manganeso y sus concentrados",Metalíferos,Manganeso
+26030000,"Cenizas y residuos (distintos de los de la partida 26,02) que contengan metal o compuestos metálicos",Metalíferos,Cenizas y residuos
+26030010,"Minerales de cobre y sus concentrados, sulfuros",Metalíferos,Cobre
+26030090,Los demás minerales de cobre y sus concentrados.,Metalíferos,Cobre
+26050000,Minerales de cobalto y sus concentrados,Metalíferos,Cobalto
+26060000,Minerales de Aluminio y sus concentrados.,Metalíferos,Aluminio
+26060011,Bauxita sin calcinar,Metalíferos,Bauxita
+26060012,"Bauxita, calcinada",Metalíferos,Bauxita
+26060090,Los demás minerales de aluminio y sus concentrados,Metalíferos,Aluminio
+26070000,Minerales de plomo y sus concentrados,Metalíferos,Plomo
+26080000,Minerales de Cinc y sus concentrados.,Metalíferos,Cinc
+26080010,"Minerales de cinc y sus concentrados, sulfuros",Metalíferos,Cinc
+26080090,Los demás minerales de cinc y sus concentrados,Metalíferos,Cinc
+26090000,Minerales de estaño y sus concentrados,Metalíferos,Estaño
+26100000,Minerales de Cromo y sus concentrados.,Metalíferos,Cromo
+26100010,Cromita,Metalíferos,Cromo
+26140010,Ilmenita,Metalíferos,Titanio
+26140090,Los demás minerales de titanio y sus concentrados,Metalíferos,Titanio
+26151010,Badeleyita,Metalíferos,Circonio
+26151020,Circón,Metalíferos,Circonio
+26151090,Los demás minerales de circonio y sus concentrados,Metalíferos,Circón
+26161000,Minerales de plata y sus concentrados,Metalíferos,Plata
+26169000,Los demás minerales y sus concentrados de los metales preciosos,Metalíferos,"Min.y Conc, de metales preciosos"
+26171000,Minerales de antimonio y sus concentrados,Metalíferos,Antimonio
+26179000,"Los demás minerales y sus concentrados (berilio, bismuto, germanio, mercurio, etc.)",Metalíferos,Bismuto
+26180000,Escorias granuladas (arenas de escorias) de la siderurgia,Metalíferos,Arenas de escorias de siderurgia
+26190000,"Escorias (excepto las granuladas), batiduras y demás desperdicios de la siderurgia",Metalíferos,Demás desperdicios metalicos
+26201100,"Matas de galvanización, que contengan principalmente cinc",Metalíferos,Cinc
+26201900,"Las demás cenizas y residuos, que contengan principalmente cinc",Metalíferos,Cinc
+26203000,"Cenizas y residuos (excepto los de la siderurgia), que contengan principalmente cobre",Metalíferos,Cobre
+26204000,"Cenizas y residuos (excepto los de la siderurgia), que contengan principalmente aluminio",Metalíferos,Aluminio
+26205000,Cenizas y residuos (excepto los de la siderurgia) que contengan principalmente vanadio,Metalíferos,Vanadio
+26209000,"Las demás cenizas y residuos, (excepto de la siderurgia) que contengan metal o compuestos de metales con excepción de las que contienen matas de galvanización, plomo, aluminio, y vanadio",Metalíferos,Cenizas y residuos
+26209090,L.as demás de las demás cenizas y residuos,No metalíferos,Cenizas y residuos
+26209990,"Los demás, escorias, cenizas y residuos (excepto los de la siderurgia).",Metalíferos,Cenizas y residuos
+25183000,Aglomerado de dolomita,Rocas de aplicación,Dolomita
+25280000,"Boratos naturales y sus concentrados (incluso calcinados), excepto los boratos extraídos de las salmueras naturales; Ácido bórico natural con un contenido de H3BO3<= al 85%, calculado sobre peso seco",No metalíferos,Boratos
+26020010,"Minerales de manganeso y sus concentrados, aglomerados",Metalíferos,Manganeso
+26139090,Los demás minerales de molibdeno y sus concentrados,Metalíferos,Molibdeno
+25101010,"Fosfatos de calcio naturales, sin moler",No metalíferos,Fosfatos
+25030001,"Azufre a granel excepto el sublimado, precipitado y coloidal",No metalíferos,Azufre
+25030099,"Azufre De Cualquier Clase, Excepto El Sublimado, El Precipitado Y El Coloidal. -Los demás",No metalíferos,Azufre
+25031010,Azufre en bruto y sin refinar a granel,No metalíferos,Azufre
+25031090,Los demás de los demás azufres en bruto sin refinar,No metalíferos,Azufre
+25039010,Azufre a granel excluido en bruto o sin refinar,No metalíferos,Azufre
+25040001,Grafito natural con más del 85% de carbono,No metalíferos,Grafito
+25040099,Los demás grafitos,No metalíferos,Grafito
+25049090,Los demás de los demás grafitos con contenido de carbón superior a 85%,No metalíferos,Grafito
+25060000,"Cuarzo (excepto las naturales), cuarcitas incluso desbastadas o troceadas en bloques o placas",No metalíferos,Cuarzo
+25070004,Tierras de chamota o de dinas,No metalíferos,Arcillas
+25080000,"Las demás arcillas (Excepto las dilatadas partida 68.06), Andalucita, Cianita y Silimanita, incluso calcinadas; Mullita; Tierras de Chamota o de Dinas.. excepto bentonita,tierras decolorantes de batán y refractarias",No metalíferos,Arcillas
+25086000,Mullita,No metalíferos,Mullita
+25100200,"Fosfatos de calcio naturales, aluminocalcicos naturales y cretas fosfatadas molidos",No metalíferos,Fosfatos
+25101000,"Fosfatos de calcio naturales, aluminocalcicos naturales y cretas fosfatadas sin moler",No metalíferos,Fosfatos
+25110002,Carbonato de bario natural (witherita),No metalíferos,Witherita
+25120001,Diatomitas,No metalíferos,Diatomitas
+25120099,Otras harinas silíceas fósiles y demás tierras silíceas análogas de densidad aparente inferior o igual a 1 incluso calcinadas,No metalíferos,Diatomitas
+25130001,Esmeril,No metalíferos,Abrasivos naturales
+25130002,Corindón,No metalíferos,Corindón
+25130003,Trípoli (tierra o roca podrida),No metalíferos,Tierras
+25130099,Otros abrasivos naturales,No metalíferos,Abrasivos naturales
+25132100,"Esmeril, corindón natural, granate natural y demás abrasivos naturales en bruto o en trozos irregulares",No metalíferos,Abrasivos naturales
+25170099,"Las demás areniscas en bruto o desbastadas, cantos, gravas, piedras machacadas utilizados para hormigón, firmes de carreteras, vías férreas, u otros balastos",Rocas de aplicación,Cantos rodados y Triturados pétreos
+25173000,Macadán alquitranado,Rocas de aplicación,Triturados pétreos
+25190001,Carbonato de magnesio natural,No metalíferos,Magnesio
+25190002,Óxido de Magnesio,No metalíferos,Magnesio
+25200100,Yeso natural o anhidrita,No metalíferos,Yesos
+25200299,Los demás yesos,No metalíferos,Yesos
+25220000,"Cal Ordinaria (Viva o Apagada) y Cal Hidráulica, excepto Óxido e Hidróxido de Calcio",Rocas de aplicación,Cales
+25230001,"Cementos sin pulverizar (""clinker"")",Rocas de aplicación,Cementos
+25240001,Amianto en fibras,No metalíferos,Amianto
+25240002,Amianto en polvo,No metalíferos,Amianto
+25240019,Amianto en fibras excluido crocidolita,No metalíferos,Amianto
+25240021,"Crocidolita, en polvo",No metalíferos,Crocidolita
+25240029,"Los demás amianto, en polvo",No metalíferos,Amianto
+25240099,Los demás amiantos,No metalíferos,Amianto
+25241000,Crocidolita,No metalíferos,Crocidolita
+25249000,"Amianto (asbesto), los demás",No metalíferos,Amianto
+25260004,Desperdicios y polvo de mica,No metalíferos,Mica
+25270000,"Esteatita natural en bruto, desbastada o triturada por aserrado, talco.",No metalíferos,Talcos
+25300099,Los demás boratos excluidos los de calcio y sodio,No metalíferos,Boratos
+25309010,Espodumeno,Metalíferos,Litio
+25309030,Minerales de metales de las tierras raras,No metalíferos,Tierras raras
+26011301,Minerales de molibdeno,Metalíferos,Molibdeno
+26011304,Minerales de Titanio,Metalíferos,Titanio
+26011306,Minerales de Circonio,Metalíferos,Circón
+26011501,Minerales de berilio,Metalíferos,Berilio
+26040000,Minerales de níquel y sus concentrados,Metalíferos,Níquel
+26100090,Los demás minerales de cromo y sus concentrados,Metalíferos,Cromo
+26110000,Minerales de volframio y sus concentrados,Metalíferos,Volframio
+26121000,Minerales de uranio y sus concentrados,Metalíferos,Uranio
+26122000,Minerales de torio y sus concentrados,Metalíferos,Torio
+26131000,Minerales de Molibdeno y sus concentrados tostados,Metalíferos,Molibdeno
+26131010,Molibdenita tostada,Metalíferos,Molibdeno
+26131090,"Los demás minerales de molibdeno y sus concentrados, tostados",Metalíferos,Molibdeno
+26139000,Los demás minerales de Molibdeno y sus concentrados.,Metalíferos,Molibdeno
+26139010,Molibdenita,Metalíferos,Molibdeno
+26140000,Minerales de Titanio y sus concentrados.,Metalíferos,Titanio
+26151000,Minerales de Circonio y sus concentrados,Metalíferos,Circonio
+26159000,"Los demás, minerales y sus concentrados de niobio, de tantalio y de vanadio.",Metalíferos,Vanadio
+26202900,"Cenizas y residuos (excepto los de la siderurgia), que contengan principalmente plomo",Metalíferos,Plomo
+26206000,"Cenizas y residuos (excepto los de la siderurgia), que contengan",Metalíferos,"Cenizas y residuos principalmente mercurio, talio o sus mezclas"
+26209100,"Escorias,cenizas y residuos (excepto los de la siderurgia), que contengan principalmente antimonio, berilio, cadmio, cromo o sus mezclas.",Metalíferos,Antimonio
+26209910,"Escorias, cenizas y residuos (excepto los de la siderurgia), que contengan principalmente titanio",Metalíferos,Titanio
+27011900,"Las demás hullas, incluso pulverizadas, pero sin aglomerar:",Combustibles,Hullas
+27030000,"Turba (comprendida la utilizada para cama de animales), incluso aglomerada.",No metalíferos,Turba
+27149000,"Los demás, betunes y asfaltos naturales; asfaltitas y rocas asfálticas.",No metalíferos,Asfaltita
+28100010,Acido ortobórico,No metalíferos,Boratos
+28100090,"Los demás, óxidos de boro",No metalíferos,Boratos
+28182010,Alúmina calcinada,Metalíferos,Aluminio
+28182090,"Los demás, óxido de aluminio, excepto el corindón artificial",Metalíferos,Aluminio
+28183000,Hidróxido de aluminio,Metalíferos,Aluminio
+28211011,"Óxido férrico, con un contenido de Fe2O3 superior o igual al 85%, en peso",No metalíferos,Óxidos de hierro
+28211019,"Los demás, óxido férrico",No metalíferos,Óxidos de hierro
+28212000,Tierras colorantes,No metalíferos,Tierras Colorantes
+28252020,Hidróxidos de litio,No metalíferos,Litio
+28273960,Cloruro de litio,No metalíferos,Litio
+28331110,"Sulfato de disodio, anhidro",No metalíferos,Sulfatos
+28332100,Sulfatos de magnesio,No metalíferos,Sulfatos
+28332200,Sulfatos de aluminio,No metalíferos,Sulfatos
+28332300,Sulfatos de cromo,No metalíferos,Sulfatos
+28332960,Sulfatos de cromo,No metalíferos,Sulfatos
+28342110,"Nitratos de potasio, con un contenido de KNO3 inferior o igual al 98%, en peso",No metalíferos,Potasio
+28342190,Los demás nitratos de potasio,No metalíferos,Potasio
+28369100,Carbonatos de litio,No metalíferos,Litio
+28401100,"Bórax refinado, anhidro",No metalíferos,Boratos
+28401900,Los demás bórax refinado,No metalíferos,Boratos
+28402000,Los demás boratos,No metalíferos,Boratos
+28403000,Peroxoboratos (perboratos),No metalíferos,Boratos
+28441000,"Uranio natural y sus compuestos; aleaciones, dispersiones (incluido el cermet), productos cerámicos y mezclas, que contengan uranio natural o compuestos de uranio natural",Metalíferos,Uranio
+28442000,"Uranio enriquecido en U 235 y sus compuestos; plutonio y sus compuestos; aleaciones, dispersiones (incluido el cermet), productos cerámicos y mezclas, que contengan uranio enriquecido en U 235, plutonio o compuestos de estos productos",Metalíferos,Uranio
+28443000,"Uranio empobrecido en U 235 y sus compuestos; torio y sus compuestos; aleaciones, dispersiones (incluido el cermet), productos cerámicos y mezclas, que contengan uranio",Metalíferos,"Uranio empobrecido en U 235, torio o compuestos de estos productos"
+31042010,"Cloruro de Potasio, con un contenido de óxido de potasio (K2O)<= al 60% en peso",No metalíferos,Potasio
+31042090,"Cloruro de Potasio, Los demás",No metalíferos,Potasio
+38029010,"Harinas silíceas fósiles, activadas",No metalíferos,Diatomita activada
+38029020,"Bentonita, activada",No metalíferos,Arcillas activadas
+38029030,"Atapulgita, activada",No metalíferos,Arcillas activadas
+38029040,"Otras arcillas y tierras, activadas",No metalíferos,Arcillas activadas
+38029050,"Bauxita, activada",Metalíferos,Bauxita Activada
+68010000,"Adoquines, encintados y losas para pavimentos, de piedra natural (excepto la pizarra)",Rocas de aplicación,"Adoquines, encintados y losas para pavimentos, de piedra natural (excepto la pizarra)"
+68021000,"Losetas, cubos, dados y artículos similares, incluso en forma distinta a la cuadrada o rectangular",Rocas de aplicación,"Losetas, cubos, dados y artículos similares, incluso en forma distinta a la cuadrada o rectangular"
+68022100,"Mármol, travertinos y alabastro",Rocas de aplicación,Mármoles
+68022300,Granito,Rocas de aplicación,Granito
+68022900,"Las demás piedras, simplemente talladas o aserradas, con superficie plana o lisa",Rocas de aplicación,Piedras talladas o aserradas
+68029100,"Las demás manufacturas de mármol, travertinos y alabastro",Rocas de aplicación,Mármoles
+68029200,Las demás manufacturas de las demás piedras calizas,Rocas de aplicación,Caliza
+68029310,Bolas para molinos de granito,Rocas de aplicación,Bolas de piedra para molinos
+68029390,Los demás manufacturas de granito,Rocas de aplicación,Granito
+68029910,Bolas para molinos de las demás piedras,Rocas de aplicación,Bolas de piedra para molinos
+68029990,Las demás manufacturas de las demás piedras,Rocas de aplicación,Las demás manufacturas de las demás piedras
+68030000,Pizarra natural trabajada y manufacturas de pizarra natural o aglomerada,Rocas de aplicación,Pizarra
+68061000,"Lana de escoria, de roca y lanas minerales similares, incluso mezcladas entre sí, en masas, hojas o enrolladas",Rocas de aplicación,Lanas de escoria de rocas y lanas de minerales
+68062000,"Vermiculita dilatada, arcilla dilatada, espuma de escoria y productos minerales similares dilatados",Rocas de aplicación,Arcillas Dilatadas
+71031000,"Piedras preciosas o semipreciosas naturales, en bruto o simplemente aserradas o desbastadas",Piedras preciosas o semipreciosas,Piedras preciosas o semipreciosas
+71039900,"Las demás piedras preciosas o semipreciosas, trabajadas de otro modo",Piedras preciosas o semipreciosas,Piedras preciosas o semipreciosas
+71061000,Plata en polvo,Metalíferos,Plata
+71069100,Plata en bruto,Metalíferos,Plata
+71081100,Oro en polvo,Metalíferos,Oro
+71081210,Aleación dorada o bullón dorado,Metalíferos,Oro
+71081290,"Oro, las demás formas en bruto",Metalíferos,Oro
+72021100,"Ferromanganeso, con un contenido de carbono superior al 2% en peso",Metalíferos,Ferroaleaciones
+72021900,Los demás ferromanganeso,Metalíferos,Ferroaleaciones
+72022100,"Ferrosilicio, con un contenido de silicio superior al 55% en peso",Metalíferos,Ferroaleaciones
+72022900,Los demás ferrosilicio,Metalíferos,Ferroaleaciones
+72023000,Ferro-sílico-manganeso,Metalíferos,Ferroaleaciones
+72024100,"Ferrocromo, con un contenido de carbono superior al 4% en peso",Metalíferos,Ferroaleaciones
+72024900,Los demás ferrocromo,Metalíferos,Ferroaleaciones
+72025000,Ferro-sílico-cromo,Metalíferos,Ferroaleaciones
+72026000,Ferroníquel,Metalíferos,Ferroaleaciones
+72027000,Ferromolibdeno,Metalíferos,Ferroaleaciones
+72028000,Ferrovolframio y ferro-sílico-volframio,Metalíferos,Ferroaleaciones
+72029100,Ferrotitanio y ferro-sílico-titanio,Metalíferos,Ferroaleaciones
+72029200,Ferrovanadio,Metalíferos,Ferroaleaciones
+72029300,Ferroniobio,Metalíferos,Ferroaleaciones
+72029910,Ferrofósforo.,Metalíferos,Ferroaleaciones
+72029990,Las demás ferroaleaciones,Metalíferos,Ferroaleaciones
+74010000,Matas De Cobre; Cobre De Cementación (Cobre Precipitado).,Metalíferos,Cobre
+74011000,Matas de cobre,Metalíferos,Cobre
+74020000,Anodos de cobre para refinado electrolítico,Metalíferos,Cobre
+74031100,"Cobre refinado, cátodos y secciones de cátodos",Metalíferos,Cobre
+74031200,"Barras para alambrón (""wire-bars"")",Metalíferos,Cobre
+74031300,Tochos,Metalíferos,Cobre
+74031900,"Los demás, cobre refinado",Metalíferos,Cobre
+74040000,Desperdicios y desechos de cobre,Metalíferos,Cobre
+75011000,Matas de níquel,Metalíferos,Níquel
+75021010,"Níquel sin alear, cátodos",Metalíferos,Níquel
+75021090,"Los demás, níquel sin alear",Metalíferos,Níquel
+75030000,Desperdicios y desechos de níquel,Metalíferos,Níquel
+75040010,"Polvos y escamillas, de níquel, sin alear",Metalíferos,Níquel
+78011011,"Plomo electrolítico, en lingotes",Metalíferos,Plomo
+78011019,"Los demás, plomo electrolítico.",Metalíferos,Plomo
+78011090,"Los demás, plomo refinado",Metalíferos,Plomo
+78019100,"Plomo en bruto, con antimonio",Metalíferos,Plomo
+78019900,"Los demás, plomo en bruto",Metalíferos,Plomo
+78020000,Desperdicios y desechos de plomo,Metalíferos,Plomo
+79011111,"Cinc electrolítico, en lingotes, con un contenido de cinc superior o igual al 99,99%",Metalíferos,Cinc
+79011119,"Los demás, cinc electrolítico, con un contenido de cinc superior o igual al 99,99%",Metalíferos,Cinc
+79011191,"Cinc, en lingotes, con un contenido de cinc superior o igual al 99,99%",Metalíferos,Cinc
+79011199,"Los demás, cinc con un contenido de cinc superior o igual al 99,99%",Metalíferos,Cinc
+79011210,"Cinc, en lingotes, con un contenido de cinc inferior al 99,99%",Metalíferos,Cinc
+79011290,"Los demás cinc, con un contenido de cinc inferior al 99,99%",Metalíferos,Cinc
+79020000,Desperdicios y desechos de cinc,Metalíferos,Cinc
+79031000,"Polvo de condensación, de cinc",Metalíferos,Cinc
+79039000,"Los demás, polvo y escamillas, de cinc",Metalíferos,Cinc
+80011000,"Estaño en bruto, sin alear",Metalíferos,Estaño
+80020000,"Desperdicios y desechos, de estaño",Metalíferos,Estaño
+81011000,Volframio en polvo,Metalíferos,Volframio
+81019400,"Volframio en bruto, incluidas las barras simplemente obtenidas por sinterizado",Metalíferos,Volframio
+81019700,Desperdicios y desechos de volframio,Metalíferos,Volframio
+81021000,Molibdeno en polvo,Metalíferos,Molibdeno
+81029400,"Molibdeno en bruto, incluidas las barras simplemente obtenidas por sinterizado",Metalíferos,Molibdeno
+81029700,Desperdicios y desechos de molibdeno,Metalíferos,Molibdeno
+81032000,"Tantalio en bruto, incluidas las barras simplemente obtenidas por sinterizado; polvo",Metalíferos,Tantalio
+81033000,Desperdicios y desechos de tantalio,Metalíferos,Tantalio
+81041100,"Magnesio en bruto, con un contenido de magnesio superior o igual al 99,8% en peso",Metalíferos,Magnesio
+81041900,"Los demás, magnesio en bruto",Metalíferos,Magnesio
+81042000,"Desperdicios y desechos, de magnesio",Metalíferos,Magnesio
+81043000,"Magnesio, torneaduras y gránulos calibrados; polvo",Metalíferos,Magnesio
+81052010,"Cobalto, en bruto",Metalíferos,Cobalto
+81052020,Cobalto en polvo,Metalíferos,Cobalto
+81052021,Cobalto en polvo - De aleaciones a base de cobalto-cromo-volframio (tungsteno) (estelitas).,Metalíferos,Cobalto
+81052029,Cobalto en polvo - Los demás.,Metalíferos,Cobalto
+81052090,Matas de cobalto,Metalíferos,Cobalto
+81053000,Desperdicios y desechos de cobalto,Metalíferos,Cobalto
+81060010,"Bismuto, en bruto",Metalíferos,Bismuto
+81072010,"Cadmio, en bruto",Metalíferos,Cadmio
+81072020,Cadmio en polvo,Metalíferos,Cadmio
+81073000,"Desperdicios y desechos, de cadmio",Metalíferos,Cadmio
+81082000,Titanio en bruto; polvo,Metalíferos,Titanio
+81083000,Desperdicios y desechos de titanio,Metalíferos,Titanio
+81092000,Circonio en bruto; polvo,Metalíferos,Circonio
+81093000,Desperdicios y desechos de circonio,Metalíferos,Circonio
+81101010,Antimonio en bruto,Metalíferos,Antimonio
+81101020,Antimonio en polvo,Metalíferos,Antimonio
+81102000,Desperdicios y desechos de antimonio,Metalíferos,Antimonio
+81110010,Manganeso en bruto,Metalíferos,Manganeso
+81121200,"Berilio, en bruto; polvo",Metalíferos,Berilio
+81121300,Desperdicios y desechos de berilio,Metalíferos,Berilio
+81122110,"Cromo, en bruto",Metalíferos,Cromo
+81122120,Cromo en polvo,Metalíferos,Cromo
+81122200,Desperdicios y desechos de cromo,Metalíferos,Cromo
+81123000,Germanio,Metalíferos,Germanio
+81124000,Vanadio,Metalíferos,Vanadio
+81125100,"Talio, en bruto; polvo",Metalíferos,Talio
+81125200,Desperdicios y desechos de talio,Metalíferos,Talio
+81129200,"Los demás (galio, hafnio,indio, niobio, etc.), en bruto; desperdicios y desechos; polvo",Metalíferos,"Los demás (galio, hafnio,indio, niobio, etc.), en bruto; desperdicios y desechos; polvo"
+28342100,"Nitrato de potasio, cont KNO3 <=98%",No metalíferos,Potasio
+68022200,L. d. piedras calizas de sup. plana o lisa,Rocas de aplicación,Caliza
+71081200,Bullón dorado o aleación dorada,Metalíferos,Oro
+81031000,Tantalio en bruto; desp. y desech.; incl sinter.,Metalíferos,Tantalio
+81051010,Cobalto en polvo,Metalíferos,Cobalto
+81051090,Desperdicios y desechos de cobalto,Metalíferos,Cobalto
+81071010,"Cadmio, en bruto",Metalíferos,Cadmio
+81091000,Circonio en bruto; desperdic. y desechos,Metalíferos,Circonio
+81123010,Germanio,Metalíferos,Germanio
+81051020,"Cobalto, en bruto",Metalíferos,Cobalto
+81071090,"Desperdicios y desechos, de cadmio",Metalíferos,Cadmio
+81081000,"Titanio en bruto, desp. desech., polvo",Metalíferos,Titanio
+81100010,Antimonio en bruto,Metalíferos,Antimonio
+81121100,Berilio: en bruto; desperdic. y desech.; polvo,Metalíferos,Berilio
+81122010,"Cromo, en bruto",Metalíferos,Cromo

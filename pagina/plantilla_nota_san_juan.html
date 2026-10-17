@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>San Juan, del oro al cobre</title>
+<style>
+/*ESTILO*/
+/* Formato de nota: título, bajada, firma e intertítulos. */
+.nota-cabecera { padding: 48px 0 8px; }
+.seccion-nota { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--acento); }
+.nota-cabecera h1 { font-size: clamp(30px, 5.6vw, 42px); margin: 12px 0 14px; }
+.firma { font: 13px/1.4 system-ui, sans-serif; color: var(--text-muted); margin: 0 0 8px; }
+h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
+.nota-corta { font-size: 17px; }
+.separador { border: 0; border-top: 1px solid var(--rule); margin: 64px 0 0; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+<header class="nota-cabecera">
+  <div class="seccion-nota">Minería · San Juan</div>
+  <h1>San Juan: lo que dejaron veinte años de oro y lo que promete el cobre</h1>
+  <p class="bajada">Veladero dejó unos dos mil puestos directos que pagan cinco veces más que el resto y una regalía del 3%. Los proyectos de cobre declaran veinte veces esos empleos. A fin de 2026 habrá llegado una de cada diez partes de la inversión en cobre, y el empleo que ya genera no se ve en las estadísticas.</p>
+  <p class="firma"><a href="../index.html">← Todas las notas</a> · Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026 · <a href="#como-lo-verifique">Cómo lo verifiqué</a> · <a href="oro.html">El oro</a> · <a href="litio.html">El litio</a></p>
+</header>
+
+<div class="dos-cifras">
+  <div><div class="n" id="c-hoy"></div><div class="t">puestos registrados en la minería de metales de San Juan en enero de 2026</div></div>
+  <div><div class="n" id="c-rigi"></div><div class="t">empleos declaran los cuatro proyectos mineros de San Juan aprobados en el RIGI</div></div>
+</div>
+
+<h2 class="intertitulo">Veinte años de oro</h2>
+<figure class="grafico" id="g-exportado"></figure>
+<p class="nota-corta">Veladero empezó a producir en 2005 en Iglesia. Las exportaciones mineras de la provincia tocaron su máximo en 2011, cuando la mina sacó 957 mil onzas. En 2025 volvieron casi a ese nivel con menos de la mitad de las onzas: es el precio.</p>
+<figure class="grafico" id="g-puestos"></figure>
+<p class="nota-corta">El empleo directo creció con la mina hasta 2017 y después bajó. Sumando las canteras, la minería es entre el 3,3% y el 3,8% del empleo privado registrado de la provincia.</p>
+
+<h2 class="intertitulo">Pocos puestos, muy bien pagos</h2>
+<figure class="grafico" id="g-salarios"></figure>
+<p class="nota-corta">Un puesto en la minería de metales paga más de cinco veces el promedio del resto del empleo privado de San Juan. La brecha era de 3,6 veces en 2010. Le pone número a la queja de la industria sanjuanina de que pierde gente con la minería.</p>
+<p class="limite"><strong>Lo que no se puede saber:</strong> en Iglesia los servicios pagan el triple que el promedio de la provincia y el comercio apenas 15% más. Mi lectura es que son los contratistas de la mina y no un derrame hacia el pueblo, pero con estos datos no lo puedo verificar.</p>
+
+<h2 class="intertitulo">Lo que cobra la provincia</h2>
+<figure class="grafico" id="g-regalias"></figure>
+<p class="nota-corta">San Juan cobró <span id="c-reg"></span> millones de dólares de regalías en 2025. Es el 3% que fija la ley, y no depende de cuánto gana la mina: con el oro a precio récord, Veladero tuvo un margen de unos 900 millones de dólares ese año.</p>
+
+<h2 class="intertitulo">La promesa del cobre</h2>
+<figure class="grafico" id="g-escala"></figure>
+<p class="nota-corta">Vicuña sola, en Iglesia, declara 9.737 millones de dólares y 31.700 empleos. Los números del RIGI mezclan obra, operación y empleo indirecto, así que no se comparan uno a uno con los puestos de hoy. Pero dan la escala: lo prometido es más de la mitad de todo el empleo privado registrado de la provincia.</p>
+<figure class="grafico" id="g-calendario"></figure>
+<p class="nota-corta">Según el plan oficial del RIGI, a fin de 2026 se habrá invertido el <span id="c-pct-2026"></span> de lo comprometido en cobre en todo el país. La mitad llega recién en 2028.</p>
+
+<h2 class="intertitulo">El empleo que no se ve</h2>
+<p class="nota-corta">Vicuña informó que en 2025 trabajaban en el proyecto 2.576 personas de sus contratistas, 80% sanjuaninas, y que tuvo 580 proveedores. Pero el empleo registrado de Iglesia no creció ese año:</p>
+<figure class="grafico" id="g-iglesia"></figure>
+<p class="nota-corta">No es que no existan: el empleo se cuenta donde lo declara la empresa, y los contratistas anotan a su gente donde tienen la sede. Donde sí aparece algo es en la provincia, en las ramas de obra y servicios:</p>
+<figure class="grafico" id="g-ramas"></figure>
+<p class="limite"><strong>Una señal, no una medida:</strong> esas ramas pueden crecer por obra pública, otra mina o cualquier otra cosa. Con las estadísticas oficiales no se puede medir cuánto empleo genera el cobre. Hoy la única cifra es la que da la empresa.</p>
+
+<h2 class="intertitulo">El antecedente: Catamarca</h2>
+<figure class="grafico" id="g-catamarca"></figure>
+<p class="nota-corta">Bajo la Alumbrera dejó de producir en 2018. Las exportaciones mineras de Catamarca pasaron de 2.024 millones de dólares en 2007 a 99 en 2020, y el empleo en metales cayó a la cuarta parte. Lo que vino después fue el litio, con otros dueños y en otro lugar de la provincia.</p>
+
+<hr class="separador" id="como-lo-verifique">
+<h2 class="intertitulo">Cómo lo verifiqué</h2>
+<p class="nota-corta">Hice este análisis con Claude Code, una IA que escribe código. Lo más firme de esta nota está validado por dos caminos: las regalías que publica el presupuesto de San Juan dan entre 2,7% y 3,6% de lo que exporta su minería según la Secretaría de Minería, todos los años. Son dos fuentes que no dependen una de la otra, y quedó como control automático: si un año no cierra, la base no se arma.</p>
+<p class="nota-corta">Lo menos firme está marcado en cada caso: la cifra de empleo de Vicuña la da la empresa, los empleos del RIGI son declarados y la lectura sobre los contratistas de Iglesia es mía. Los errores que se corrigieron en el proyecto están en <a href="oro.html#como-lo-hice">la nota del oro</a>.</p>
+
+<footer>
+  <p class="nota"><strong>Fuentes.</strong> Exportaciones por provincia: Secretaría de Minería (SIACAM). Empleo y salarios por rama y por departamento: Observatorio de Empleo y Dinámica Empresarial, Ministerio de Trabajo. Regalías: ejecución presupuestaria del Ministerio de Hacienda de San Juan, pasada a dólares con el tipo de cambio oficial del Banco Nación. RIGI: tablero del Ministerio de Economía. Producción de Veladero y margen: informes de Barrick. Vicuña: primer Reporte de Sostenibilidad, según Ámbito (25-9-2026). Todo está en una base PostgreSQL que se reconstruye desde cero y se controla sola.</p>
+</footer>
+
+</div>
+
+<script>
+/*DATOS*/
+
+/*GRAFICOS*/
+
+const D = DATOS;
+document.getElementById("c-hoy").textContent = fmt(D.cifras.puestos_metal_sj_2026);
+document.getElementById("c-rigi").textContent = fmt(D.cifras.rigi_empleos_sj);
+
+// ---------- veinte años de oro ----------
+lineas("g-exportado", {
+  titulo: "Exportaciones mineras de San Juan",
+  subtitulo: "Millones de dólares por año",
+  datos: D.san_juan, x: "anio", margenDerecho: 84, alto: 220,
+  series: [{ clave: "exportado_musd", nombre: "Exportado", color: "--series-4" }],
+  marcas: [{ x: 2005.8, texto: "Arranca Veladero" }],
+  fuente: "Fuente: Secretaría de Minería, exportaciones por provincia.",
+  columnas: ["Año", "Exportado (millones de USD)", "Puestos en minería de metales"],
+  filas: D.san_juan.map(d => [d.anio, fmt(d.exportado_musd), fmt(d.puestos)]),
+});
+lineas("g-puestos", {
+  titulo: "Puestos registrados en la minería de metales de San Juan",
+  subtitulo: "Promedio de cada año",
+  datos: D.san_juan, x: "anio", margenDerecho: 84, alto: 200,
+  series: [{ clave: "puestos", nombre: "Puestos", color: "--series-1" }],
+  fuente: "Fuente: OEDE, Ministerio de Trabajo (rama 1320). Solo empleo directo: los contratistas figuran en otras ramas.",
+});
+
+// ---------- salarios ----------
+lineas("g-salarios", {
+  titulo: "Cuántas veces paga la minería de metales el salario del resto del empleo privado",
+  subtitulo: "Salario promedio de la minería de metales dividido por el del resto, San Juan",
+  datos: D.salarios, x: "anio", margenDerecho: 84, alto: 220, referencia: 1,
+  yFmt: v => fmt(v, 0) + "×",
+  series: [{ clave: "veces", nombre: "Veces", color: "--series-2" }],
+  fuente: "Fuente: OEDE, Ministerio de Trabajo. Promedio de enero a mayo de cada año.",
+  columnas: ["Año", "Veces"],
+  filas: D.salarios.map(d => [d.anio, fmt(d.veces, 1)]),
+});
+
+// ---------- regalías ----------
+barras("g-regalias", {
+  titulo: "Regalías que cobró San Juan",
+  subtitulo: "Millones de dólares por año",
+  datos: D.sj_regalias, x: "anio", alto: 200,
+  series: [{ clave: "regalias_musd", nombre: "Regalías", color: "--series-3" }],
+  fuente: "Fuente: Ministerio de Hacienda de San Juan, ejecución presupuestaria (incluye regalías hidroeléctricas), pasada a dólares con el tipo de cambio oficial promedio del año.",
+  columnas: ["Año", "Regalías (millones de USD)", "Exportado por San Juan", "Parte de lo exportado"],
+  filas: D.sj_regalias.map(d => [d.anio, fmt(d.regalias_musd, 1), fmt(d.exportado_san_juan_musd), fmt(d.pct_de_lo_exportado, 1) + "%"]),
+});
+document.getElementById("c-reg").textContent = fmt(D.sj_regalias.find(d => d.anio === 2025).regalias_musd);
+
+// ---------- la promesa ----------
+barrasHorizontales("g-escala", {
+  titulo: "La escala de lo que se promete",
+  subtitulo: "Personas. En amarillo, cifras declaradas por las empresas; en azul, empleo registrado.",
+  filas: [
+    { nombre: "Minería de metales hoy (enero 2026)", valor: D.cifras.puestos_metal_sj_2026, color: "--series-1" },
+    { nombre: "Contratistas de Vicuña en 2025", valor: 2576, color: "--series-4" },
+    { nombre: "Empleos declarados en el RIGI", valor: D.cifras.rigi_empleos_sj, color: "--series-4" },
+    { nombre: "Todo el empleo privado de San Juan", valor: D.cifras.puestos_privados_sj_2026, color: "--series-1" },
+  ],
+  fuente: "Empleo registrado: OEDE. RIGI: tablero del Ministerio de Economía (Vicuña, Los Azules, Carbonatos Profundos y la ampliación de Veladero). Vicuña: Reporte de Sostenibilidad 2025, según Ámbito.",
+});
+
+const total = D.rigi_calendario.reduce((a, d) => a + (d.cobre || 0), 0);
+const hasta2026 = D.rigi_calendario.filter(d => d.anio <= 2026).reduce((a, d) => a + d.cobre, 0);
+document.getElementById("c-pct-2026").textContent = fmt(100 * hasta2026 / total) + "%";
+barras("g-calendario", {
+  titulo: "Cuándo llega la inversión del cobre",
+  subtitulo: "Millones de dólares por año, según el plan de los proyectos aprobados en el RIGI (todo el país)",
+  datos: D.rigi_calendario, x: "anio", alto: 200,
+  series: [{ clave: "cobre", nombre: "Cobre", color: "--series-2" }],
+  fuente: "Fuente: tablero del RIGI, Ministerio de Economía. Es un plan, no lo invertido.",
+  columnas: ["Año", "Cobre", "Litio", "Oro y plata"],
+  filas: D.rigi_calendario.map(d => [d.anio, fmt(d.cobre), fmt(d.litio), fmt(d.oro_plata)]),
+});
+
+// ---------- el empleo que no se ve ----------
+const serie = nombre => D.sj_empleo_cobre.filter(d => d.serie.startsWith(nombre));
+lineas("g-iglesia", {
+  titulo: "Puestos registrados en el departamento Iglesia",
+  subtitulo: "Todos los sectores, promedio del año",
+  datos: serie("Iglesia"), x: "anio", margenDerecho: 84, alto: 200,
+  series: [{ clave: "puestos", nombre: "Iglesia", color: "--series-1" }],
+  fuente: "Fuente: OEDE, empleo por departamento. Algunos sectores se tapan por secreto estadístico en algunos años.",
+  columnas: ["Año", "Puestos"],
+  filas: serie("Iglesia").map(d => [d.anio, fmt(d.puestos)]),
+});
+const enero = (rama, anio) => D.sj_empleo_cobre.find(d => d.serie.startsWith(rama) && d.anio === anio).puestos;
+antesDespues("g-ramas", {
+  titulo: "San Juan: puestos en ramas de obra y servicios, enero de 2025 contra enero de 2026",
+  antes: "2025", despues: "2026",
+  filas: [
+    { nombre: "Movimiento de suelos y preparación de terrenos", rama: "4519" },
+    { nombre: "Explotación de minas y canteras n.c.p.", rama: "1429" },
+    { nombre: "Servicios empresariales n.c.p.", rama: "7499" },
+    { nombre: "Minería de metales", rama: "1320" },
+  ].map(f => ({ nombre: f.nombre, antes: enero(f.rama, 2025), despues: enero(f.rama, 2026), color: "--series-3" })),
+  fuente: "Fuente: OEDE, empleo por rama (ClaNAE). Se compara enero con enero para no mezclar estaciones.",
+});
+
+// ---------- Catamarca ----------
+lineas("g-catamarca", {
+  titulo: "Catamarca: puestos en minería de metales y en litio",
+  subtitulo: "Promedio de cada año",
+  datos: D.catamarca, x: "anio", margenDerecho: 84, alto: 220,
+  series: [
+    { clave: "metaliferos", nombre: "Metales", color: "--series-4" },
+    { clave: "litio", nombre: "Litio", color: "--series-1" },
+  ],
+  marcas: [{ x: 2018, texto: "Cierra Alumbrera" }],
+  fuente: "Fuente: Secretaría de Minería, empleo minero por provincia.",
+  columnas: ["Año", "Metales", "Litio"],
+  filas: D.catamarca.map(d => [d.anio, fmt(d.metaliferos), fmt(d.litio)]),
+});
+</script>
+</body>
+</html>

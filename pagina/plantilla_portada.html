@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minería argentina en datos</title>
+<style>
+/*ESTILO*/
+/* Portada: presentación, tres tarjetas de notas y el método. */
+.portada-cabecera { padding: 56px 0 8px; }
+.portada-cabecera h1 { font-size: clamp(34px, 6.4vw, 52px); margin: 12px 0 14px; }
+.seccion-nota { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--acento); }
+.firma { font: 13px/1.4 system-ui, sans-serif; color: var(--text-muted); margin: 0 0 8px; }
+h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
+.nota-corta { font-size: 17px; }
+
+.notas { display: grid; gap: 16px; margin: 28px 0 0; }
+.nota-tarjeta {
+  display: grid; grid-template-columns: 1fr 200px; gap: 20px; align-items: center;
+  background: var(--surface-1); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px;
+  color: inherit; text-decoration: none; transition: border-color .15s;
+}
+.nota-tarjeta:hover, .nota-tarjeta:focus-visible { border-color: var(--acento); }
+.nota-tarjeta .seccion-nota { margin-bottom: 8px; }
+.nota-tarjeta h3 { font-size: 22px; line-height: 1.2; margin: 0 0 8px; }
+.nota-tarjeta p { margin: 0; font: 15px/1.5 system-ui, sans-serif; color: var(--text-secondary); }
+.nota-tarjeta .leer { display: inline-block; margin-top: 10px; font: 600 14px system-ui, sans-serif; color: var(--acento); }
+.mini { text-align: center; }
+.mini .n { font: 700 40px/1 system-ui, sans-serif; }
+.mini .t { font: 12.5px/1.35 system-ui, sans-serif; color: var(--text-muted); margin-top: 6px; }
+.mini svg { width: 110px; display: block; margin: 0 auto 8px; }
+.mini-barra { display: flex; height: 18px; border-radius: 4px; overflow: hidden; gap: 2px; margin: 4px 0 8px; }
+.mini-barra span { display: block; height: 100%; }
+.mini-filas { display: grid; gap: 6px; text-align: left; }
+.mini-filas div { font: 12px/1.3 system-ui, sans-serif; color: var(--text-secondary); }
+.mini-filas i { display: block; height: 12px; border-radius: 0 3px 3px 0; margin-top: 3px; min-width: 2px; }
+@media (max-width: 560px) { .nota-tarjeta { grid-template-columns: 1fr; } }
+
+ul.abierto { padding-left: 20px; font-size: 17px; }
+ul.abierto li { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+<header class="portada-cabecera">
+  <div class="seccion-nota">Minería argentina en datos</div>
+  <h1>¿Cuánto del récord minero le queda al país?</h1>
+  <p class="bajada">La minería argentina nunca exportó tanto. Tres notas para ver qué hay detrás: quién gana con el precio del oro, a quién y a qué precio se vende el litio, y qué dejó y qué promete la minería en San Juan. Hechas con una inteligencia artificial, con cada error a la vista.</p>
+  <p class="firma">Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026</p>
+</header>
+
+<div class="notas">
+  <a class="nota-tarjeta" href="notas/oro.html">
+    <div>
+      <div class="seccion-nota">Oro</div>
+      <h3>El oro bate récords. ¿Cuánto le queda al país?</h3>
+      <p>El precio subió 147% y la producción bajó 27%. Mina por mina, la parte que llegó al Estado se achicó en los años de precio récord. Y Cerro Negro no llegó a lo que prometió Newmont.</p>
+      <span class="leer">Leer la nota →</span>
+    </div>
+    <div class="mini" id="mini-oro"></div>
+  </a>
+  <a class="nota-tarjeta" href="notas/litio.html">
+    <div>
+      <div class="seccion-nota">Litio</div>
+      <h3>Tres cuartos para China y a mitad de precio para Estados Unidos</h3>
+      <p>Las exportaciones casi se triplicaron en lo que va de 2026. Entre 2018 y 2023 Estados Unidos pagó por el litio argentino entre 44% y 86% de lo que pagó por el chileno. Y la operación más grande no paga ganancias.</p>
+      <span class="leer">Leer la nota →</span>
+    </div>
+    <div class="mini" id="mini-litio"></div>
+  </a>
+  <a class="nota-tarjeta" href="notas/san-juan.html">
+    <div>
+      <div class="seccion-nota">San Juan</div>
+      <h3>Lo que dejaron veinte años de oro y lo que promete el cobre</h3>
+      <p>Pocos puestos, muy bien pagos, y una regalía del 3%. El cobre promete veinte veces ese empleo, la mayor parte de la inversión llega desde 2027 y el empleo que ya genera no se ve en las estadísticas.</p>
+      <span class="leer">Leer la nota →</span>
+    </div>
+    <div class="mini" id="mini-sj"></div>
+  </a>
+</div>
+
+<h2 class="intertitulo">Cómo lo hice con una IA</h2>
+<p class="nota-corta">Trabajé con Claude Code, una IA que escribe código. Buscó fuentes, bajó los datos, escribió las consultas SQL y armó estas páginas. Yo marqué el rumbo, revisé lo que hacía y decidí qué contar.</p>
+<div class="dos-cifras tres-cifras">
+  <div><div class="n" id="c-preguntas"></div><div class="t">preguntas respondidas con consultas SQL comentadas</div></div>
+  <div><div class="n" id="c-controles"></div><div class="t">controles automáticos que frenan todo si un número no cierra</div></div>
+  <div><div class="n" id="c-errores"></div><div class="t">errores detectados y corregidos, cada uno registrado</div></div>
+</div>
+<figure class="grafico" id="g-deteccion"></figure>
+<p class="nota-corta">Los controles automáticos atraparon solo tres. La mayoría apareció al volver a la fuente original o al cruzarla con otra. Los 19 errores, uno por uno, están al final de <a href="notas/oro.html#como-lo-hice">la nota del oro</a>.</p>
+
+<h2 class="intertitulo">Lo que todavía no se sabe</h2>
+<ul class="abierto">
+  <li><strong>Cuánto impuesto a las ganancias pagan las mineras de oro por el récord de 2025.</strong> Se paga al año siguiente: va a aparecer en los pagos de 2026.</li>
+  <li><strong>Por qué la Secretaría de Minería dice que China compró el 81% del litio en 2025</strong> cuando su propio archivo de destinos da 75%.</li>
+  <li><strong>Cuánto empleo genera hoy el cobre en San Juan.</strong> Las estadísticas oficiales cuentan a los trabajadores donde los declara la empresa; la única cifra es la que dan las propias mineras.</li>
+  <li><strong>Qué empresa vendió barato el litio a Estados Unidos.</strong> La aduana no lo dice; la denuncia de 2022 contra Livent apunta en esa dirección.</li>
+</ul>
+
+<footer>
+  <p class="nota"><strong>Cómo está hecho.</strong> Una base PostgreSQL con los datos crudos de cada fuente en una capa y el modelo limpio en otra, que se reconstruye desde cero con un script y corre sus controles. Fuentes: INDEC, Secretaría de Minería, UN Comtrade, Ministerio de Trabajo, Ministerio de Economía (RIGI), Ministerio de Hacienda de San Juan, Banco Nación, Banco de Canadá, Cámara Argentina de Empresarios Mineros, la base canadiense ESTMA, el Instituto Geográfico Nacional e informes anuales de las empresas. Cada decisión está en la bitácora del proyecto.</p>
+</footer>
+
+</div>
+
+<script>
+/*DATOS*/
+
+/*GRAFICOS*/
+
+const D = DATOS;
+
+// Oro: cuadrícula de 100 con la parte que pagó Veladero en 2025.
+(() => {
+  const v = D.pagos_oro.find(d => d.mina === "Veladero" && d.anio === 2025);
+  const caja = document.getElementById("mini-oro");
+  const svg = el("svg", { viewBox: "0 0 100 100", role: "img", "aria-label": `Veladero pagó ${Math.round(v.pct)} de cada 100 dólares` });
+  for (let k = 0; k < 100; k++) {
+    const fila = 9 - Math.floor(k / 10), col = k % 10;
+    el("rect", { x: col * 10 + 1, y: fila * 10 + 1, width: 8, height: 8, rx: 1.5, fill: k < Math.round(v.pct) ? "var(--series-1)" : "var(--grid)" }, svg);
+  }
+  caja.appendChild(svg);
+  caja.appendChild(html("div", "n", String(Math.round(v.pct))));
+  caja.appendChild(html("div", "t", "dólares de cada 100 producidos pagó Veladero al Estado en 2025"));
+})();
+
+// Litio: una barra partida por comprador en 2025.
+(() => {
+  const d = D.litio_destinos.find(x => x.anio === 2025);
+  const caja = document.getElementById("mini-litio");
+  caja.appendChild(html("div", "n", d.china + "%"));
+  const barra = html("div", "mini-barra");
+  [[d.china, "--series-2"], [d.eeuu, "--series-1"], [100 - d.china - d.eeuu, "--otros"]].forEach(([v, c]) => {
+    const s = document.createElement("span"); s.style.width = v + "%"; s.style.background = `var(${c})`; barra.appendChild(s);
+  });
+  caja.appendChild(barra);
+  caja.appendChild(html("div", "t", `del litio de 2025 fue a China (naranja). A Estados Unidos, el ${d.eeuu}% (azul)`));
+})();
+
+// San Juan: empleo de hoy contra empleo declarado en el RIGI.
+(() => {
+  const caja = document.getElementById("mini-sj");
+  const hoy = D.cifras.puestos_metal_sj_2026, rigi = D.cifras.rigi_empleos_sj;
+  const filas = html("div", "mini-filas");
+  [["Puestos en minería de metales hoy", hoy, "--series-1"], ["Empleos declarados en el RIGI", rigi, "--series-4"]].forEach(([n, v, c]) => {
+    const f = html("div", null, `${n}: ${fmt(v)}`);
+    const i = document.createElement("i"); i.style.width = (100 * v / rigi) + "%"; i.style.background = `var(${c})`;
+    f.appendChild(i); filas.appendChild(f);
+  });
+  caja.appendChild(filas);
+})();
+
+// Método.
+document.getElementById("c-preguntas").textContent = D.cifras.preguntas;
+document.getElementById("c-controles").textContent = D.cifras.controles;
+document.getElementById("c-errores").textContent = D.correcciones.length;
+const porDeteccion = {};
+D.correcciones.forEach(c => { porDeteccion[c.como_se_detecto] = (porDeteccion[c.como_se_detecto] || 0) + 1; });
+barrasHorizontales("g-deteccion", {
+  titulo: `Cómo se detectaron los ${D.correcciones.length} errores`,
+  subtitulo: "En naranja, los que detecté yo.",
+  filas: Object.entries(porDeteccion).sort((a, b) => b[1] - a[1])
+    .map(([nombre, valor]) => ({ nombre, valor, color: nombre === "Francisco" ? "--series-2" : "--series-1" })),
+  fuente: "Tabla correccion_ia, armada desde la bitácora del proyecto. Solo están los errores que se detectaron.",
+});
+</script>
+</body>
+</html>

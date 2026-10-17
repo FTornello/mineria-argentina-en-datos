@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El litio, a quién y a qué precio</title>
+<style>
+/*ESTILO*/
+/* Formato de nota: título, bajada, firma e intertítulos. */
+.nota-cabecera { padding: 48px 0 8px; }
+.seccion-nota { font: 700 12px/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--acento); }
+.nota-cabecera h1 { font-size: clamp(30px, 5.6vw, 42px); margin: 12px 0 14px; }
+.firma { font: 13px/1.4 system-ui, sans-serif; color: var(--text-muted); margin: 0 0 8px; }
+h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
+.nota-corta { font-size: 17px; }
+.separador { border: 0; border-top: 1px solid var(--rule); margin: 64px 0 0; }
+.dos-cifras .fuente-cifra { font: 12px/1.4 system-ui, sans-serif; color: var(--text-muted); margin-top: 6px; }
+td.coincide { color: var(--series-3); font-weight: 600; }
+td.no-coincide { color: var(--series-2); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+<header class="nota-cabecera">
+  <div class="seccion-nota">Minería · Litio</div>
+  <h1>El litio argentino: tres cuartos para China y a mitad de precio para Estados Unidos</h1>
+  <p class="bajada">Las exportaciones de litio casi se triplicaron en lo que va de 2026. Argentina firmó un acuerdo de minerales críticos con Estados Unidos, pero le vende a China. A Estados Unidos, durante seis años, le vendió más barato que Chile. Y la operación más grande del país no paga impuesto a las ganancias.</p>
+  <p class="firma"><a href="../index.html">← Todas las notas</a> · Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026 · <a href="#como-lo-verifique">Cómo lo verifiqué</a> · <a href="oro.html">El oro</a> · <a href="san-juan.html">San Juan</a></p>
+</header>
+
+<div class="dos-cifras">
+  <div><div class="n" id="c-2026"></div><div class="t">millones de dólares de litio exportados entre enero y agosto de 2026, <span id="c-var"></span> más que un año antes</div></div>
+  <div><div class="n" id="c-china"></div><div class="t">del litio exportado en 2025 fue a China. A Estados Unidos, el <span id="c-eeuu"></span></div></div>
+</div>
+
+<h2 class="intertitulo">Se lo vendemos a China</h2>
+<figure class="grafico" id="g-destinos"></figure>
+<p class="nota-corta">En 2012 Estados Unidos compraba seis de cada diez dólares de litio argentino. Hoy compra menos de uno. En febrero de 2026 los dos países firmaron en Washington un acuerdo marco sobre minerales críticos; mientras tanto, China pasó del 43% al 75% en dos años. De los siete proyectos de litio en producción, tres tienen como dueño principal a una empresa china y ninguno a una de Estados Unidos.</p>
+<p class="limite"><strong>Un número que no cierra:</strong> el informe de la Secretaría de Minería de octubre de 2026 dice que China compró el 81,1%. El archivo de destinos que publica la misma Secretaría da 74,9%. No encontré el informe completo para ver cómo lo calcula; puede ser en toneladas y no en dólares.</p>
+
+<h2 class="intertitulo">A Estados Unidos, a mitad de precio</h2>
+<figure class="grafico" id="g-eeuu-chile"></figure>
+<p class="nota-corta">Mismo comprador, mismo producto, dos proveedores. Hasta 2017 la aduana de Estados Unidos registraba el mismo precio para el carbonato de litio argentino y el chileno. Entre 2018 y 2023, el argentino entró más barato todos los años.</p>
+<figure class="grafico" id="g-cada-100"></figure>
+<p class="nota-corta">En julio de 2022 la Aduana argentina denunció a Livent, que exporta desde el salar de Fénix, en Catamarca, por declarar el litio a 5.100 dólares la tonelada en 403 operaciones de 2018 y 2019. Le reclamó 8 millones de dólares. Un mes antes había fijado un precio de referencia de 53.000.</p>
+<div class="dos-cifras">
+  <div><div class="n">222</div><div class="t">millones de dólares más se habrían exportado entre 2018 y 2023 si Estados Unidos hubiera pagado el precio chileno</div></div>
+  <div><div class="n">10 a 17</div><div class="t">millones de dólares más habría cobrado el Estado, según se sume o no una regalía de 3% a los derechos de exportación de hoy</div></div>
+</div>
+<p class="limite"><strong>Lo que no dicen los datos:</strong> la aduana no dice qué empresa vendió. Que la diferencia sea de ventas entre empresas del mismo grupo es una lectura apoyada en la denuncia. Y el precio chileno tampoco era el de mercado: en 2022 Estados Unidos pagó 13.585 dólares por el litio chileno con la referencia de Asia en 69.500. La cuenta supone que el precio chileno era el correcto.</p>
+
+<h2 class="intertitulo">¿Cuánto queda en el país?</h2>
+<p class="nota-corta">Depende de la operación. Hay dos que publican sus números.</p>
+<figure class="grafico" id="g-olaroz"></figure>
+<p class="nota-corta">Olaroz, en Jujuy, en el pico de precios: de cada 100 dólares vendidos le quedaban 80 de margen operativo. Pagó al Estado 13 en el mismo ejercicio. Como el impuesto a las ganancias se paga con atraso, en los seis meses siguientes pagó 66 millones más: sumando los dos, lo pagado por ese año ronda el 30% del margen.</p>
+<figure class="grafico" id="g-cauchari"></figure>
+<p class="nota-corta">Cauchari-Olaroz, también en Jujuy, es la operación más grande del país. Le vende todo a sus propios socios (Ganfeng y, a través de Lithium Argentina, la tailandesa Bangchak), gana poco por cada tonelada y les paga intereses por los préstamos con los que se construyó. En 2025 los costos financieros cuadruplicaron lo que le quedó de vender. Con pérdida no hay impuesto a las ganancias. El Estado cobra regalías, y la empresa jujeña JEMSE tiene el 8,5%.</p>
+<p class="limite"><strong>La comparación tiene trampa:</strong> Olaroz está medida en el pico de precios y Cauchari-Olaroz en la baja. Y que una operación financiada por sus dueños les venda a ellos y les pague intereses es una estructura común, que no dice por sí sola que haya algo irregular. Lo que sí dice es que, así, el Estado no cobra ganancias de la operación más grande.</p>
+
+<hr class="separador" id="como-lo-verifique">
+<h2 class="intertitulo">Cómo lo verifiqué</h2>
+<p class="nota-corta">Hice este análisis con Claude Code, una IA que escribe código. Antes de escribir, pusimos a prueba contra los datos lo que se publicó sobre el litio en octubre de 2026:</p>
+<div class="tabla-scroll"><table class="datos" id="t-prensa"></table></div>
+<p class="nota-corta">Los tres primeros coinciden, pero salen de la misma Secretaría que publica los archivos: confirma que se leen igual, no es una validación independiente. La independiente es la de los países compradores, que declaran a su aduana lo que importan desde Argentina. Ahí está la base de todo lo de Estados Unidos.</p>
+<p class="nota-corta">En el camino la IA dijo dos cosas que resultaron estar mal: que el litio exportado en 2022 fue de 207 millones (fueron 695; parte estaba bajo secreto estadístico) y que Estados Unidos pagó "la mitad" que a Chile (fue entre 44% y 86% según el año). Están, con los otros 17 errores del proyecto, en <a href="oro.html#como-lo-hice">la nota del oro</a>.</p>
+
+<footer>
+  <p class="nota"><strong>Fuentes.</strong> Exportaciones y destinos: Secretaría de Minería (SIACAM). Precio de llegada a Estados Unidos desde Argentina y desde Chile: aduana de Estados Unidos, vía UN Comtrade. Precio de referencia: Secretaría de Minería. Olaroz: Allkem, informe anual al 30-6-2023 (bolsa australiana); pagos: base canadiense ESTMA. Cauchari-Olaroz: estados contables de Minera Exar en el informe anual de Lithium Argentina ante la SEC. Denuncia a Livent: Bloomberg Línea, 14-7-2022. Acuerdo con Estados Unidos: Energiminas, 5-2-2026. Prensa de octubre de 2026: Acero y Roca (16-10) y El Pregón Minero (7-10). Todo está en una base PostgreSQL que se reconstruye desde cero y se controla sola.</p>
+</footer>
+
+</div>
+
+<script>
+/*DATOS*/
+
+/*GRAFICOS*/
+
+const D = DATOS;
+const prensa = Object.fromEntries(D.litio_prensa.map(d => [d.dato.slice(0, 12), d]));
+const fila = texto => D.litio_prensa.find(d => d.dato.startsWith(texto));
+document.getElementById("c-2026").textContent = fmt(fila("Exportado enero").mis_datos);
+document.getElementById("c-var").textContent = fmt(fila("Variación").mis_datos, 1) + "%";
+const d25 = D.litio_destinos.find(d => d.anio === 2025);
+document.getElementById("c-china").textContent = d25.china + "%";
+document.getElementById("c-eeuu").textContent = d25.eeuu + "%.";
+
+// ---------- destinos ----------
+barras("g-destinos", {
+  titulo: "A dónde va el litio argentino",
+  subtitulo: "Parte de lo exportado en dólares, por país comprador",
+  datos: D.litio_destinos.map(d => ({ ...d, resto: Math.max(0, 100 - d.china - d.eeuu - d.japon - d.corea) })),
+  x: "anio", porcentaje: true,
+  series: [
+    { clave: "china", nombre: "China", color: "--series-2" },
+    { clave: "eeuu", nombre: "Estados Unidos", color: "--series-1" },
+    { clave: "japon", nombre: "Japón", color: "--series-3" },
+    { clave: "corea", nombre: "Corea del Sur", color: "--series-4" },
+    { clave: "resto", nombre: "Resto", color: "--otros" },
+  ],
+  fuente: "Fuente: Secretaría de Minería, exportaciones de litio por destino. Los porcentajes están redondeados.",
+  columnas: ["Año", "Total (millones de USD)", "China", "Estados Unidos", "Japón", "Corea"],
+  filas: D.litio_destinos.map(d => [d.anio, fmt(d.total_musd), d.china + "%", d.eeuu + "%", d.japon + "%", d.corea + "%"]),
+});
+
+// ---------- Estados Unidos: Argentina contra Chile ----------
+lineas("g-eeuu-chile", {
+  titulo: "Lo que pagó Estados Unidos por cada tonelada de carbonato de litio",
+  subtitulo: "Dólares por tonelada, según la aduana de Estados Unidos",
+  datos: D.litio_eeuu, x: "anio", margenDerecho: 74,
+  series: [
+    { clave: "chile", nombre: "Chile", color: "--series-1" },
+    { clave: "argentina", nombre: "Argentina", color: "--series-2" },
+  ],
+  marcas: [{ x: 2022.5, texto: "Denuncia a Livent", izquierda: true }],
+  fuente: "Fuente: aduana de Estados Unidos, vía UN Comtrade (código 283691). Denuncia: Bloomberg Línea, 14-7-2022.",
+  columnas: ["Año", "Desde Argentina", "Desde Chile", "Referencia de Asia"],
+  filas: D.litio_eeuu.map(d => [d.anio, fmt(d.argentina), fmt(d.chile), fmt(d.referencia)]),
+});
+
+barrasHorizontales("g-cada-100", {
+  titulo: "Por cada 100 dólares que pagó por el litio chileno, cuánto pagó por el argentino",
+  subtitulo: "En naranja, los años en que el argentino entró al menos 5% más barato",
+  filas: D.litio_eeuu.filter(d => d.anio >= 2016).map(d => {
+    const v = Math.round(100 * d.argentina / d.chile);
+    return { nombre: String(d.anio), valor: v, color: v < 95 ? "--series-2" : "--otros" };
+  }),
+  fuente: "Fuente: aduana de Estados Unidos, vía UN Comtrade.",
+});
+
+// ---------- cuánto queda ----------
+const ol = D.litio_operaciones.find(d => d.mina === "Olaroz" && d.periodo.startsWith("07/2022"));
+const olPago = D.olaroz_pagos.find(d => d.anio === 2023).musd;
+deCada100("g-olaroz", {
+  titulo: "Olaroz, julio de 2022 a junio de 2023: de cada 100 dólares vendidos",
+  subtitulo: `Ventas: ${fmt(ol.ingresos_musd)} millones de dólares`,
+  items: [
+    { nombre: "Margen operativo", valor: 100 * ol.ebitda_musd / ol.ingresos_musd, nota: `${fmt(ol.ebitda_musd)} millones, antes de impuestos e intereses` },
+    { nombre: "Pagado al Estado en el ejercicio", valor: 100 * olPago / ol.ingresos_musd, nota: `${fmt(olPago, 1)} millones` },
+  ],
+  color: "--series-3",
+  fuente: "Ventas y margen (EBITDA): Allkem, informe anual al 30-6-2023. Pagos: base ESTMA de Canadá, mismo ejercicio.",
+});
+
+const cx = D.litio_operaciones.find(d => d.mina === "Cauchari-Olaroz" && d.periodo.startsWith("01/2025"));
+const costo = cx.resultado_bruto_musd - cx.ingresos_musd;
+// "Todo lo demás" se calcula con los valores ya redondeados, para que la cascada sume exacto.
+const otros = Math.round(cx.resultado_neto_musd) - Math.round(cx.ingresos_musd) - Math.round(costo) - Math.round(cx.costos_financieros_musd);
+cascada("g-cauchari", {
+  titulo: "Cauchari-Olaroz en 2025: de 271 millones de ventas a una pérdida",
+  subtitulo: "Millones de dólares",
+  inicio: { nombre: "Ventas", valor: Math.round(cx.ingresos_musd) },
+  pasos: [
+    { nombre: "Costo de producir", valor: Math.round(costo), detalle: "Le quedan " + fmt(cx.resultado_bruto_musd) + " millones: 12 de cada 100" },
+    { nombre: "Costos financieros", valor: Math.round(cx.costos_financieros_musd), detalle: "Intereses y otros costos de la deuda" },
+    { nombre: "Todo lo demás", valor: Math.round(otros), detalle: "Neto de gastos, diferencias de cambio y otros resultados" },
+  ],
+  fin: { nombre: "Resultado", valor: Math.round(cx.resultado_neto_musd) },
+  fuente: "Fuente: estados contables de Minera Exar en el informe anual de Lithium Argentina ante la SEC. \"Todo lo demás\" es la diferencia entre el resultado y las líneas anteriores.",
+  columnas: ["Año", "Ventas", "Resultado bruto", "Costos financieros", "Resultado"],
+  filas: D.litio_operaciones.filter(d => d.mina === "Cauchari-Olaroz")
+    .map(d => [d.periodo.slice(-4), fmt(d.ingresos_musd), fmt(d.resultado_bruto_musd), fmt(d.costos_financieros_musd), fmt(d.resultado_neto_musd)]),
+});
+
+// ---------- prensa contra datos ----------
+const t = document.getElementById("t-prensa");
+const cab = document.createElement("tr");
+["Lo que se publicó", "Publicado", "Mis datos", ""].forEach(c => cab.appendChild(html("th", null, c)));
+t.appendChild(cab);
+D.litio_prensa.forEach(d => {
+  const r = document.createElement("tr");
+  const dec = String(d.publicado).includes(".") ? 1 : 0;
+  r.appendChild(html("td", null, d.dato));
+  r.appendChild(html("td", null, fmt(d.publicado, dec)));
+  r.appendChild(html("td", null, fmt(d.mis_datos, dec)));
+  const ok = Math.abs(d.mis_datos - d.publicado) <= Math.max(1, Math.abs(d.publicado) * 0.005);
+  r.appendChild(html("td", ok ? "coincide" : "no-coincide", ok ? "Coincide" : "No coincide"));
+  t.appendChild(r);
+});
+</script>
+</body>
+</html>
