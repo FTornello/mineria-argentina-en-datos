@@ -120,6 +120,14 @@ createdb mineria
 python3 scripts/exportar_pagina.py   # arma la portada y las notas en pagina/ con los datos de la base
 ```
 
+Si PostgreSQL no está corriendo (por ejemplo, después de reiniciar la computadora), hay que arrancarlo antes. En una Mac con PostgreSQL 17 instalado con Homebrew:
+
+```bash
+LC_ALL=en_US.UTF-8 /opt/homebrew/opt/postgresql@17/bin/pg_ctl -D /opt/homebrew/var/postgresql@17 -l /opt/homebrew/var/log/postgresql@17.log start
+```
+
+`LC_ALL` hace falta porque, sin un idioma definido, PostgreSQL 17 no arranca en macOS (el registro dice "postmaster became multithreaded during startup"). Para apagarlo, el mismo comando con `stop` en lugar de `start`.
+
 Los informes de algunas empresas no se pueden bajar de forma automática (la SEC bloquea las descargas sin identificación); sus números están copiados a mano en `data/`, con la fuente y la página de cada uno.
 
 ## Fuentes
