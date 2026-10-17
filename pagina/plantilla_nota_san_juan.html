@@ -21,8 +21,8 @@ h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
 
 <header class="nota-cabecera">
   <div class="seccion-nota">Minería · San Juan</div>
-  <h1>San Juan: lo que dejaron veinte años de oro y lo que promete el cobre</h1>
-  <p class="bajada">Veladero dejó unos dos mil puestos directos que pagan cinco veces más que el resto y una regalía del 3%. Los proyectos de cobre declaran veinte veces esos empleos. A fin de 2026 habrá llegado una de cada diez partes de la inversión en cobre, y el empleo que ya genera no se ve en las estadísticas.</p>
+  <h1>San Juan: lo que dejaron veinte años de oro y lo que proyecta el cobre</h1>
+  <p class="bajada">Veladero dejó unos dos mil puestos directos que pagan cinco veces más que el resto y una regalía del 3%. Los proyectos de cobre declaran veinte veces esos empleos. A fin de 2026 habrá llegado una de cada diez partes de la inversión en cobre, y el empleo que ya genera todavía no se puede medir con las estadísticas oficiales.</p>
   <p class="firma"><a href="../index.html">← Todas las notas</a> · Por Francisco Tornello, con Claude Code como asistente · Datos a octubre de 2026 · <a href="#como-lo-verifique">Cómo lo verifiqué</a> · <a href="oro.html">El oro</a> · <a href="litio.html">El litio</a></p>
 </header>
 
@@ -39,20 +39,20 @@ h2.intertitulo { font-size: 24px; margin: 56px 0 8px; }
 
 <h2 class="intertitulo">Pocos puestos, muy bien pagos</h2>
 <figure class="grafico" id="g-salarios"></figure>
-<p class="nota-corta">Un puesto en la minería de metales paga más de cinco veces el promedio del resto del empleo privado de San Juan. La brecha era de 3,6 veces en 2010. Le pone número a la queja de la industria sanjuanina de que pierde gente con la minería.</p>
+<p class="nota-corta">Un puesto en la minería de metales paga más de cinco veces el promedio del resto del empleo privado de San Juan. La brecha era de 3,6 veces en 2010. Le pone número a lo que plantea la industria sanjuanina: que compite con la minería por los trabajadores.</p>
 <p class="limite"><strong>Lo que no se puede saber:</strong> en Iglesia los servicios pagan el triple que el promedio de la provincia y el comercio apenas 15% más. Mi lectura es que son los contratistas de la mina y no un derrame hacia el pueblo, pero con estos datos no lo puedo verificar.</p>
 
 <h2 class="intertitulo">Lo que cobra la provincia</h2>
 <figure class="grafico" id="g-regalias"></figure>
 <p class="nota-corta">San Juan cobró <span id="c-reg"></span> millones de dólares de regalías en 2025. Es el 3% que fija la ley, y no depende de cuánto gana la mina: con el oro a precio récord, Veladero tuvo un margen de unos 900 millones de dólares ese año.</p>
 
-<h2 class="intertitulo">La promesa del cobre</h2>
+<h2 class="intertitulo">Lo que proyecta el cobre</h2>
 <figure class="grafico" id="g-escala"></figure>
-<p class="nota-corta">Vicuña sola, en Iglesia, declara 9.737 millones de dólares y 31.700 empleos. Los números del RIGI mezclan obra, operación y empleo indirecto, así que no se comparan uno a uno con los puestos de hoy. Pero dan la escala: lo prometido es más de la mitad de todo el empleo privado registrado de la provincia.</p>
+<p class="nota-corta">Vicuña sola, en Iglesia, declara 9.737 millones de dólares y 31.700 empleos. Los números del RIGI mezclan obra, operación y empleo indirecto, así que no se comparan uno a uno con los puestos de hoy. Pero dan la escala: lo declarado equivale a más de la mitad de todo el empleo privado registrado de la provincia.</p>
 <figure class="grafico" id="g-calendario"></figure>
 <p class="nota-corta">Según el plan oficial del RIGI, a fin de 2026 se habrá invertido el <span id="c-pct-2026"></span> de lo comprometido en cobre en todo el país. La mitad llega recién en 2028.</p>
 
-<h2 class="intertitulo">El empleo que no se ve</h2>
+<h2 class="intertitulo">El empleo que todavía no se puede medir</h2>
 <p class="nota-corta">Vicuña informó que en 2025 trabajaban en el proyecto 2.576 personas de sus contratistas, 80% sanjuaninas, y que tuvo 580 proveedores. Pero el empleo registrado de Iglesia no creció ese año:</p>
 <figure class="grafico" id="g-iglesia"></figure>
 <p class="nota-corta">No es que no existan: el empleo se cuenta donde lo declara la empresa, y los contratistas anotan a su gente donde tienen la sede. Donde sí aparece algo es en la provincia, en las ramas de obra y servicios:</p>
@@ -128,7 +128,7 @@ document.getElementById("c-reg").textContent = fmt(D.sj_regalias.find(d => d.ani
 
 // ---------- la promesa ----------
 barrasHorizontales("g-escala", {
-  titulo: "La escala de lo que se promete",
+  titulo: "La escala de lo proyectado",
   subtitulo: "Personas. En amarillo, cifras declaradas por las empresas; en azul, empleo registrado.",
   filas: [
     { nombre: "Minería de metales hoy (enero 2026)", valor: D.cifras.puestos_metal_sj_2026, color: "--series-1" },

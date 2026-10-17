@@ -1,4 +1,4 @@
-# Minería en Argentina: ¿cuánto del récord le queda al país?
+# Minería en Argentina: el récord, mina por mina
 
 Análisis en SQL de la minería argentina con fuentes públicas e informes de las empresas, hecho con una IA (Claude Code) como asistente. 34 preguntas, 63 controles automáticos y 19 errores detectados y corregidos en el camino, todos registrados.
 
@@ -6,20 +6,20 @@ Análisis en SQL de la minería argentina con fuentes públicas e informes de la
 
 ## Tres hallazgos
 
-**1. El oro bate récords, pero la parte que llega al Estado se achicó.** En 2025 la minería exportó 6.074 millones de dólares, el máximo de la serie, y dos de cada tres son oro. El récord es de precio: la onza subió 147% desde 2019 y la producción bajó 27%. En tres de las cuatro minas de oro de las que hay datos de pagos, lo pagado al Estado fue una parte menor de lo producido justo en los años de precio récord. Veladero pagó 32 dólares de cada 100 producidos en 2023 y 23 en 2025; Cerro Negro, 14 y 8; Lindero, 9 y 3. *(Preguntas 3, 25 y 27)*
+**1. El récord del oro es precio, y lo que aporta cada mina todavía no se ve completo.** En 2025 la minería exportó 6.074 millones de dólares, el máximo de la serie, y dos de cada tres son oro. El récord es de precio: la onza subió 147% desde 2019 y la producción bajó 27%. Lo pagado al Estado en el año subió, pero menos que el valor producido: Veladero pagó 363 millones en 2025, su máximo, que son 23 dólares de cada 100 producidos contra 32 en 2023. El impuesto a las ganancias del récord se paga en 2026, así que la comparación completa queda pendiente. *(Preguntas 3, 25 y 27)*
 
-**2. La mina que más cayó es la que había prometido crecer.** En junio de 2023 Newmont anunció 540 millones de dólares para Cerro Negro, en Santa Cruz, y más de 350 mil onzas por año desde 2024. Produjo 238 mil en 2024 y 202 mil en 2025. Cada tonelada de mineral trae hoy 8,3 gramos de oro; en 2018 traía 13,9. *(23, 24 y 31)*
+**2. Cerro Negro: el plan de 2023 y la producción real.** En junio de 2023 se anunciaron 540 millones de dólares para Cerro Negro, en Santa Cruz, con el objetivo de superar las 350 mil onzas por año desde 2024. Produjo 238 mil en 2024 y 202 mil en 2025. Cada tonelada de mineral trae hoy 8,3 gramos de oro; en 2018 traía 13,9. *(23, 24 y 31)*
 
-**3. El litio argentino se vendió barato a Estados Unidos.** Entre 2018 y 2023 Estados Unidos pagó por el litio argentino entre el 44% y el 86% de lo que pagó por el chileno, según su propia aduana. Si hubiera pagado lo mismo, se habrían exportado 222 millones de dólares más, y el Estado habría cobrado entre 10 y 17 millones más (con los derechos de exportación de hoy, y sumando una regalía de 3%). *(9, 21 y 22)*
+**3. El precio del litio argentino depende del comprador.** Entre 2018 y 2023 Estados Unidos pagó por el litio argentino entre el 44% y el 86% de lo que pagó por el chileno, según su propia aduana. Como ejercicio: si hubiera pagado lo mismo, se habrían exportado 222 millones de dólares más, y el Estado habría cobrado entre 10 y 17 millones más (con los derechos de exportación de hoy, y sumando una regalía de 3%). *(9, 21 y 22)*
 
 ### Qué tan firme es cada cosa
 
 | Lo que digo | Cómo está respaldado | El límite |
 |---|---|---|
 | El récord del oro es precio | Tres medidas del volumen; dos coinciden (P04). Lo mismo dicen la cámara minera y la Bolsa de Comercio de Rosario | No es un hallazgo nuevo |
-| La parte que llega al Estado bajó | Informe de Barrick para Veladero y base canadiense ESTMA para las demás, mina por mina | El impuesto a las ganancias de 2025 se paga en 2026: hay que volver a mirar cuando salgan esos pagos |
-| Cerro Negro no llegó a lo prometido | Producción informada por Newmont; promesa citada por Bloomberg Línea | No encontré el comunicado original de Newmont con la cifra. En 2024 la mina estuvo parada seis semanas por un accidente fatal |
-| El litio se vendió barato a EE.UU. | Aduana de Estados Unidos (UN Comtrade), comparando el mismo producto desde Chile | Es un ejercicio: supone que el precio chileno era el correcto |
+| Lo pagado creció menos que el valor producido | Informe de Barrick para Veladero y base canadiense ESTMA para las demás, mina por mina | El impuesto a las ganancias de 2025 se paga en 2026: hay que volver a mirar cuando salgan esos pagos |
+| Cerro Negro produjo menos que el objetivo de 2023 | Producción informada por Newmont; objetivo citado por Bloomberg Línea | El objetivo lo publicó Bloomberg Línea; no encontré el comunicado original. En 2024 la mina estuvo parada seis semanas por un accidente fatal |
+| EE.UU. pagó menos por el litio argentino que por el chileno | Aduana de Estados Unidos (UN Comtrade), comparando el mismo producto desde Chile | La aduana no dice qué empresa vendió ni con qué contrato. El cálculo de lo que faltó supone que el precio chileno era el correcto |
 
 ## Cómo lo hice con una IA
 
@@ -56,7 +56,7 @@ No hay datos públicos de producción mina por mina. Los armé a partir de los i
 | `operacion_mina` | Ley, toneladas procesadas, recuperación y costo por onza | Los mismos informes |
 | `pago_gobierno` | Lo que cada minera pagó a los gobiernos argentinos, proyecto por proyecto | Base ESTMA de Canadá |
 | `resultado_operacion` | Ventas, margen y resultado de Olaroz y Cauchari-Olaroz | Allkem (bolsa australiana) y Lithium Argentina (SEC) |
-| `hecho_mina` | Inicios, cierres, cambios de dueño, accidentes y promesas, cada uno con su fuente | Comunicados y prensa |
+| `hecho_mina` | Inicios, cierres, cambios de dueño, accidentes y anuncios, cada uno con su fuente | Comunicados y prensa |
 
 ## Las 34 preguntas
 
@@ -78,7 +78,7 @@ No hay datos públicos de producción mina por mina. Los armé a partir de los i
 | [14](sql/analisis/p14_cuanto_mas_paga_la_mineria.sql) | ¿Cuánto más paga la minería? | 5,3 veces el resto del empleo privado de la provincia |
 | [15](sql/analisis/p15_iglesia_el_departamento_de_veladero.sql) | ¿Se derrama en Iglesia, donde está Veladero? | Pagan más los servicios y la construcción (mi lectura: los contratistas de la mina); el comercio, apenas 15% más |
 | [16](sql/analisis/p16_cuanto_paga_veladero_en_impuestos.sql) | ¿Cuánto paga Veladero de impuestos nacionales? | Entre 103 y 149 millones por año (2019-2023) |
-| [17](sql/analisis/p17_lo_que_promete_el_rigi_en_san_juan.sql) | ¿Cuánto promete el RIGI en San Juan? | 44.639 empleos y 13.510 millones; hoy la minería de metales tiene 2.264 puestos |
+| [17](sql/analisis/p17_lo_que_promete_el_rigi_en_san_juan.sql) | ¿Cuánto proyecta el RIGI en San Juan? | 44.639 empleos y 13.510 millones; hoy la minería de metales tiene 2.264 puestos |
 | [18](sql/analisis/p18_cuando_llega_la_plata_del_cobre.sql) | ¿Cuándo llega la plata del cobre? | A fin de 2026, el 11%; la mitad recién en 2028 |
 | [19](sql/analisis/p19_que_pasa_cuando_cierra_una_mina.sql) | ¿Qué pasó en Catamarca cuando cerró Alumbrera? | Exportaciones de 2.024 millones (2007) a 99 (2020); después vino el litio |
 | [20](sql/analisis/p20_cuanto_cobra_san_juan_de_regalias.sql) | ¿Cuánto cobra San Juan de regalías? | 49 millones en 2025, cerca del 3% de lo exportado; coincide con la ley |
@@ -91,8 +91,8 @@ No hay datos públicos de producción mina por mina. Los armé a partir de los i
 | [27](sql/analisis/p27_cuanto_del_valor_queda_en_impuestos.sql) | ¿Qué parte de lo producido se paga al Estado? | Bajó en tres de las cuatro minas con datos en los años de precio récord |
 | [28](sql/analisis/p28_pagos_al_estado_oro_y_litio.sql) | ¿Cuánto pagan en total las mineras que informan en Canadá? | 623 millones el oro y la plata en 2025 (con Veladero); 52 el litio |
 | [29](sql/analisis/p29_cuanto_deja_olaroz.sql) | ¿Cuánto deja Olaroz? | En el pico, 80 centavos de margen por dólar vendido |
-| [30](sql/analisis/p30_cauchari_olaroz_vende_a_sus_socios.sql) | ¿Y Cauchari-Olaroz, la más grande? | Le vende a sus socios, gana poco, paga intereses y da pérdida: no paga ganancias |
-| [31](sql/analisis/p31_cerro_negro_lo_prometido.sql) | ¿Cerro Negro cumplió lo prometido? | No: 32% menos en 2024 y 42% menos en 2025 |
+| [30](sql/analisis/p30_cauchari_olaroz_vende_a_sus_socios.sql) | ¿Y Cauchari-Olaroz, la más grande? | Vende a sus socios, tiene un margen bruto de 10% a 12% y costos financieros altos; cerró 2024 y 2025 con pérdida |
+| [31](sql/analisis/p31_cerro_negro_lo_prometido.sql) | ¿Cerro Negro alcanzó el objetivo anunciado en 2023? | No: produjo 32% menos en 2024 y 42% menos en 2025 |
 | [32](sql/analisis/p32_como_se_detectaron_los_errores.sql) | ¿Cómo se detectaron los errores? | Volviendo a la fuente (5), cruzando fuentes (3), controles (3) y yo (3), entre otros |
 | [33](sql/analisis/p33_litio_la_prensa_contra_los_datos.sql) | ¿Lo que se publicó del litio en octubre de 2026 cierra? | Las exportaciones de 2025 y de 2026 sí; el 81,1% de China no: el archivo de la misma Secretaría da 74,9% |
 | [34](sql/analisis/p34_se_ve_el_empleo_del_cobre.sql) | ¿Se ve en las estadísticas el empleo que ya genera el cobre? | No: Vicuña informa 2.576 trabajadores de contratistas en 2025 y el empleo registrado de Iglesia no creció. Se cuentan donde los declara la empresa |

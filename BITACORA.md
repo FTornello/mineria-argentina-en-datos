@@ -1041,3 +1041,28 @@ Activé GitHub Pages en el repositorio público. La portada quedó en
 https://ftornello.github.io/mineria-argentina-en-datos/pagina/ y la revisé en el navegador: carga, dibuja
 los gráficos y los links entre las notas funcionan.
 
+## 32. Otro encuadre para las notas (17 de octubre de 2026)
+
+Me plantearon un riesgo: si postulo a mineras o a sus contratistas, los títulos de las notas se podían
+leer como de denuncia ("la mina que más cayó es la que había prometido crecer", "a mitad de precio para
+Estados Unidos", "no paga impuesto a las ganancias"). Cada frase era cierta y tenía fuente, pero juntas
+armaban una línea editorial.
+
+Revisándolo apareció algo más importante: el hallazgo principal del oro ("la parte que llega al Estado se
+achicó") se apoya en pagos en efectivo, y el impuesto a las ganancias del récord de 2025 se paga en
+2026. En dólares, Veladero pagó en 2025 más que nunca. El título presentaba como conclusión algo que
+todavía no se puede saber.
+
+Cambié títulos, bajadas y algunas frases en las tres notas, la portada y el README, sin tocar ningún
+número:
+
+| Antes | Ahora |
+|---|---|
+| ¿Cuánto del récord minero le queda al país? | El récord minero argentino, mina por mina |
+| El oro bate récords. ¿Cuánto le queda al país? | Precio récord del oro: cuánto aporta cada mina y qué falta saber |
+| Cerro Negro: lo prometido y lo producido | Cerro Negro: el plan de 2023 y la producción real |
+| Tres cuartos para China y a mitad de precio para Estados Unidos | Litio: a quién se lo vende Argentina, a qué precio y cuánto queda en el país |
+| Lo que promete el cobre | Lo que proyecta el cobre |
+
+Lo de los pagos del oro quedó como pregunta abierta hasta que salgan los datos de 2026.
+
